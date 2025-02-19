@@ -5,6 +5,7 @@ import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
 import 'package:jak_sie_masz/routing/routes.dart';
+import 'package:provider/provider.dart';
 
 GoRouter router() =>
     GoRouter(initialLocation: Routes.home, debugLogDiagnostics: true, routes: [
@@ -26,7 +27,9 @@ GoRouter router() =>
       GoRoute(
           path: Routes.profile,
           builder: (context, state) {
-            return ProfileScreen();
+            return ProfileScreen(
+              viewModel: context.read(),
+            );
           }),
       GoRoute(
         path: Routes.home,

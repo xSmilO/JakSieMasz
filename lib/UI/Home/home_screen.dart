@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/UI/Profile/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Home"),
       ),
       body: Center(
-        child: Text("Hello World"),
+        child: Consumer<ProfileViewModel>(builder: (context, profile, child) {
+          return Text("Witaj ${profile.username}");
+        }),
       ),
       bottomNavigationBar: NavigationWidget(),
     );

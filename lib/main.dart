@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/UI/Profile/profile_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 import 'routing/router.dart';
 
 void main() {
   runApp(
-    const MainApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProfileViewModel(),
+        )
+      ],
+      child: MainApp(),
+    ),
   );
 }
 
