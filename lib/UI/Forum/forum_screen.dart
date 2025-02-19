@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 
-class Screen1Screen extends StatelessWidget {
-  const Screen1Screen({super.key});
+class ForumScreen extends StatefulWidget {
+  const ForumScreen({super.key});
 
+  @override
+  State<ForumScreen> createState() => _ForumScreenState();
+}
+
+class _ForumScreenState extends State<ForumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Screen1"),
+        title: Text("Forum"),
       ),
       body: Center(
-        child: Text("Welcome in the Screen1 wariacie!"),
+        child: Text("Feature is in development. Stay tuned!"),
       ),
       bottomNavigationBar: NavigationWidget(),
     );

@@ -17,27 +17,27 @@ class NavigationWidget extends StatelessWidget {
         children: [
           NavigationItem(
             title: "ćwiczenia",
-            route: Routes.home,
+            route: Routes.excercises,
             icon: Icons.workspace_premium_outlined,
           ),
           NavigationItem(
             title: "AI chat",
-            route: Routes.screen1,
+            route: Routes.aiChat,
             icon: Icons.access_alarm_outlined,
           ),
           NavigationItem(
             title: "Start",
-            route: Routes.screen1,
+            route: Routes.home,
             icon: Icons.home,
           ),
           NavigationItem(
             title: "forum",
-            route: Routes.home,
+            route: Routes.forum,
             icon: Icons.chat,
           ),
           NavigationItem(
             title: "profil",
-            route: Routes.home,
+            route: Routes.profile,
             icon: Icons.horizontal_distribute_rounded,
           ),
         ],
