@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 
-class ForumScreen extends StatefulWidget {
+class ForumScreen extends StatelessWidget {
   const ForumScreen({super.key});
 
-  @override
-  State<ForumScreen> createState() => _ForumScreenState();
-}
-
-class _ForumScreenState extends State<ForumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

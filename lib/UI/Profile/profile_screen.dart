@@ -3,18 +3,13 @@ import 'package:jak_sie_masz/UI/Profile/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
   final ProfileViewModel viewModel;
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  String formData = "";
-  @override
   Widget build(BuildContext context) {
+    String formData = "";
     return Scaffold(
       appBar: AppBar(
         title: Text("Profil uzytkownika"),
@@ -34,7 +29,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     decoration: InputDecoration(hintText: "nick"),
                     onChanged: (value) {
                       formData = value;
-                      print(formData);
                     },
                   ),
                 );
@@ -42,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             TextButton(
               child: Text("Zmien nick"),
-              onPressed: () => widget.viewModel.changeName(formData),
+              onPressed: () => viewModel.changeName(formData),
             ),
           ],
         ),
