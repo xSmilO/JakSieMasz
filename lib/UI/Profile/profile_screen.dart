@@ -15,7 +15,6 @@ class ProfileScreen extends StatelessWidget {
         title: Text("Profil uzytkownika"),
       ),
       body: Center(
-        // child: Text("profil."),
         child: Column(
           children: [
             Consumer<ProfileViewModel>(builder: (context, profile, child) {
@@ -24,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
             FormField<String>(
               builder: (state) {
                 return SizedBox(
-                  width: 300,
+                  width: 400,
                   child: TextFormField(
                     decoration: InputDecoration(hintText: "nick"),
                     onChanged: (value) {
@@ -35,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             TextButton(
-              child: Text("Zmien nick"),
+              child: Text("Kliknij mnie!"),
               onPressed: () => viewModel.changeName(formData),
             ),
           ],
