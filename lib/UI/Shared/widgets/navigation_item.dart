@@ -17,11 +17,6 @@ class NavigationItem extends StatefulWidget {
 
 class _NavigationItemState extends State<NavigationItem> {
   @override
-  initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Flexible(
       flex: 1,

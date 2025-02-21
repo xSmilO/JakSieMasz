@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        textTheme: GoogleFonts.lexendDecaTextTheme(Theme.of(context).textTheme),
+      ),
       routerConfig: router(),
     );
   }
