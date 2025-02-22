@@ -30,7 +30,7 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 8,
+      spacing: 2,
       children: [
         Container(
           key: Key("rate slider"),

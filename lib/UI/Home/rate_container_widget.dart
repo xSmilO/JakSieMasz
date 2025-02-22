@@ -15,6 +15,14 @@ class RateContainerWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(8)),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x667CB89B),
+            offset: Offset(0, 4),
+            blurRadius: 10,
+            spreadRadius: -2,
+          )
+        ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -28,7 +36,7 @@ class RateContainerWidget extends StatelessWidget {
                   "Jak",
                   style: TextStyle(
                     color: Styles.primaryColor500,
-                    fontSize: 16,
+                    fontSize: 18,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,
@@ -38,7 +46,7 @@ class RateContainerWidget extends StatelessWidget {
                   "się",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 18,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,
@@ -48,7 +56,7 @@ class RateContainerWidget extends StatelessWidget {
                   "masz?",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 18,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,

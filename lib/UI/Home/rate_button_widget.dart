@@ -21,7 +21,7 @@ class RateButtonWidget extends StatelessWidget {
                   width: 1,
                 ),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(16),
+                  Radius.circular(8),
                 ),
               ),
             ),
@@ -39,6 +39,7 @@ class RateButtonWidget extends StatelessWidget {
               fontFamily: Styles.fontFamily,
               color: Styles.primaryColor500,
               fontSize: 16,
+              fontWeight: FontWeight.w300,
             ),
           ),
         ));

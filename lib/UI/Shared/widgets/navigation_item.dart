@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 
 class NavigationItem extends StatefulWidget {
+  final int pageIdx;
   final String title;
   final String route;
   final String iconUrl;
-  const NavigationItem(
-      {super.key,
-      required this.title,
-      required this.route,
-      required this.iconUrl});
+  final Function(int idx) callback;
+  final NavigationService service;
 
+  const NavigationItem({
+    super.key,
+    required this.pageIdx,
+    required this.title,
+    required this.route,
+    required this.iconUrl,
+    required this.callback,
+    required this.service,
+  });
   @override
   State<NavigationItem> createState() => _NavigationItemState();
 }
@@ -25,6 +33,7 @@ class _NavigationItemState extends State<NavigationItem> {
       fit: FlexFit.tight,
       child: TextButton(
         onPressed: () {
+          widget.callback(widget.pageIdx);
           context.go(widget.route);
         },
         child: Column(
@@ -37,7 +46,9 @@ class _NavigationItemState extends State<NavigationItem> {
               width: 24,
               height: 24,
               fit: BoxFit.fill,
-              color: Styles.primaryColor500,
+              color: widget.service.selectedPageIdx == widget.pageIdx
+                  ? Styles.primaryColor500
+                  : Colors.grey,
             ),
             Text(
               widget.title,
