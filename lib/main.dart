@@ -19,7 +19,7 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) =>
-              RateSliderViewmodel(sliderRepository: context.read()),
+              RateSliderViewmodel(rateSliderRepository: context.read()),
         ),
       ],
       child: MainApp(),

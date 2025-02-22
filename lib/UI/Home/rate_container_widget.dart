@@ -57,7 +57,9 @@ class RateContainerWidget extends StatelessWidget {
               ],
             ),
             RateSliderWidget(
-              viewModel: RateSliderViewmodel(sliderRepository: context.read()),
+              viewModel:
+                  RateSliderViewmodel(rateSliderRepository: context.read()),
+              rateSliderRepository: context.read(),
             ),
           ],
         ),

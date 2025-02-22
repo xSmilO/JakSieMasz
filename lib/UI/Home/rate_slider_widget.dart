@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
 import 'package:jak_sie_masz/UI/Home/rate_slider_item_widget.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class RateSliderWidget extends StatelessWidget {
-  const RateSliderWidget({super.key, required this.viewModel});
+class RateSliderWidget extends StatefulWidget {
+  const RateSliderWidget(
+      {super.key, required this.viewModel, required this.rateSliderRepository});
 
   final RateSliderViewmodel viewModel;
+  final RateSliderRepository rateSliderRepository;
+
+  @override
+  State<RateSliderWidget> createState() => _RateSliderWidgetState();
+}
+
+class _RateSliderWidgetState extends State<RateSliderWidget> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.rateSliderRepository.setSliderWidth(context.size!.width);
+      widget.rateSliderRepository.setItemCount(10);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
