@@ -39,8 +39,10 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       "Witaj Śmigło!",
                       style: TextStyle(
+                        fontFamily: Styles.fontFamily,
                         color: Colors.white,
                         decoration: TextDecoration.none,
+                        fontWeight: FontWeight.w500,
                         fontSize: 24,
                       ),
                     ),
