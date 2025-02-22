@@ -8,7 +8,21 @@ class NavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFF7CE9B4),
+            offset: Offset(0, -4),
+            blurRadius: 9,
+            spreadRadius: -4,
+          )
+        ],
+      ),
       height: 72,
       child: const Flex(
         direction: Axis.horizontal,
@@ -18,27 +32,27 @@ class NavigationWidget extends StatelessWidget {
           NavigationItem(
             title: "ćwiczenia",
             route: Routes.excercises,
-            icon: Icons.workspace_premium_outlined,
+            iconUrl: "assets/navigation_icons/excercise.svg",
           ),
           NavigationItem(
             title: "AI chat",
             route: Routes.aiChat,
-            icon: Icons.access_alarm_outlined,
+            iconUrl: "assets/navigation_icons/aichat.svg",
           ),
           NavigationItem(
             title: "Start",
             route: Routes.home,
-            icon: Icons.home,
+            iconUrl: "assets/navigation_icons/home.svg",
           ),
           NavigationItem(
             title: "forum",
             route: Routes.forum,
-            icon: Icons.chat,
+            iconUrl: "assets/navigation_icons/forum.svg",
           ),
           NavigationItem(
             title: "profil",
             route: Routes.profile,
-            icon: Icons.horizontal_distribute_rounded,
+            iconUrl: "assets/navigation_icons/profile.svg",
           ),
         ],
       ),

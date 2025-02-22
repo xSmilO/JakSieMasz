@@ -71,9 +71,15 @@ flutter:
               - asset: "assets/fonts/LexendDeca-Light.ttf"
                 weight: 300
     assets:
-        - "assets/emoji_slightly_frowning_face.svg"
-        - "assets/emoji_slightly_smiling_face.svg"
-        - "assets/emoji_star_struck.svg"
+        - "assets/emojis/emoji_slightly_frowning_face.svg"
+        - "assets/emojis/emoji_slightly_smiling_face.svg"
+        - "assets/emojis/emoji_star_struck.svg"
+
+        - "assets/navigation_icons/excercise.svg"
+        - "assets/navigation_icons/aichat.svg"
+        - "assets/navigation_icons/forum.svg"
+        - "assets/navigation_icons/home.svg"
+        - "assets/navigation_icons/profile.svg"
     # To add assets to your application, add an assets section, like this:
     # assets:
     #   - images/a_dot_burr.jpeg

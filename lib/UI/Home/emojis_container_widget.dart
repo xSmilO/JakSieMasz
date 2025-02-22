@@ -11,17 +11,17 @@ class EmojisContainerWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset(
-          "assets/emoji_slightly_frowning_face.svg",
+          "assets/emojis/emoji_slightly_frowning_face.svg",
           width: 32,
           fit: BoxFit.fill,
         ),
         SvgPicture.asset(
-          "assets/emoji_slightly_smiling_face.svg",
+          "assets/emojis/emoji_slightly_smiling_face.svg",
           width: 32,
           fit: BoxFit.fill,
         ),
         SvgPicture.asset(
-          "assets/emoji_star_struck.svg",
+          "assets/emojis/emoji_star_struck.svg",
           width: 32,
           fit: BoxFit.fill,
         ),
