@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/UI/Profile/profile_viewmodel.dart';
+import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
 

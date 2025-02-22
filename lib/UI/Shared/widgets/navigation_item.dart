@@ -35,7 +35,7 @@ class _NavigationItemState extends State<NavigationItem> {
             ),
             Text(
               widget.title,
-              style: TextStyle(fontSize: 12, color: Colors.black),
+              style: TextStyle(fontSize: 10, color: Colors.black),
             ),
           ],
         ),

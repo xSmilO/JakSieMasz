@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/rate_container_widget.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key, required this.userRepository});
+  final UserRepository userRepository;
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Future<String> username;
+
+  @override
+  void initState() {
+    super.initState();
+    username = widget.userRepository.getUsername();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     height: 200,
                     decoration: BoxDecoration(
-                        color: Color(0xFF24DB82),
+                        color: Styles.primaryColor500,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16),
@@ -42,15 +57,20 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 48),
-                          child: Text(
-                            "Witaj Śmigło!",
-                            style: TextStyle(
-                              fontFamily: Styles.fontFamily,
-                              color: Colors.white,
-                              decoration: TextDecoration.none,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 24,
-                            ),
+                          child: FutureBuilder(
+                            builder: (context, snapshot) {
+                              return Text(
+                                "Witaj ${snapshot.data}!",
+                                style: TextStyle(
+                                  fontFamily: Styles.fontFamily,
+                                  color: Colors.white,
+                                  decoration: TextDecoration.none,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                ),
+                              );
+                            },
+                            future: username,
                           ),
                         ),
                         RateContainerWidget(),

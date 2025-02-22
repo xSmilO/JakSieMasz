@@ -34,7 +34,9 @@ GoRouter router() =>
       GoRoute(
         path: Routes.home,
         builder: (context, state) {
-          return HomeScreen();
+          return HomeScreen(
+            userRepository: context.read(),
+          );
         },
       )
     ]);
