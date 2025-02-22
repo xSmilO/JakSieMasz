@@ -21,7 +21,7 @@ class RateButtonWidget extends StatelessWidget {
                   width: 1,
                 ),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(8),
+                  Radius.circular(12),
                 ),
               ),
             ),
@@ -31,7 +31,7 @@ class RateButtonWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 32,
-            vertical: 6,
+            vertical: 4,
           ),
           child: Text(
             "oceń",

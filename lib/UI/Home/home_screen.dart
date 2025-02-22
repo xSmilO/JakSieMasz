@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
-import 'package:jak_sie_masz/UI/Home/rate_container_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_container_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateDay/rate_container_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.userRepository});
@@ -67,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 RateContainerWidget(),
+                RateChartContainerWidget(),
               ],
             ),
           ),

@@ -28,7 +28,7 @@ class RateSliderItemWidget extends StatelessWidget {
             child: Text(
               label,
               style: TextStyle(
-                color: active == true ? Colors.white : Colors.black,
+                color: active == true ? Colors.white : Styles.fontColorDark,
                 fontSize: 12,
                 decoration: TextDecoration.none,
               ),

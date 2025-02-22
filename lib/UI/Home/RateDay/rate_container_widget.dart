@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
-import 'package:jak_sie_masz/UI/Home/rate_button_widget.dart';
-import 'package:jak_sie_masz/UI/Home/rate_slider_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateDay/rate_button_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateDay/rate_slider_widget.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +27,7 @@ class RateContainerWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          spacing: 16,
+          spacing: 12,
           children: [
             Row(
               spacing: 4,
@@ -36,7 +36,7 @@ class RateContainerWidget extends StatelessWidget {
                   "Jak",
                   style: TextStyle(
                     color: Styles.primaryColor500,
-                    fontSize: 18,
+                    fontSize: Styles.fontSizeH2,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,
@@ -45,8 +45,8 @@ class RateContainerWidget extends StatelessWidget {
                 Text(
                   "się",
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
+                    color: Styles.fontColorDark,
+                    fontSize: Styles.fontSizeH2,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,
@@ -55,8 +55,8 @@ class RateContainerWidget extends StatelessWidget {
                 Text(
                   "masz?",
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
+                    color: Styles.fontColorDark,
+                    fontSize: Styles.fontSizeH2,
                     decoration: TextDecoration.none,
                     fontFamily: Styles.fontFamily,
                     fontWeight: FontWeight.normal,
