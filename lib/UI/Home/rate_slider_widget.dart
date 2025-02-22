@@ -49,72 +49,75 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
               ]),
           child: Consumer<RateSliderViewmodel>(
             builder: (context, slider, child) {
-              return Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  RateSliderItemWidget(
-                    id: 0,
-                    label: "1",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 0,
-                  ),
-                  RateSliderItemWidget(
-                    label: "2",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 1,
-                    id: 1,
-                  ),
-                  RateSliderItemWidget(
-                    label: "3",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 2,
-                    id: 2,
-                  ),
-                  RateSliderItemWidget(
-                    label: "4",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 3,
-                    id: 3,
-                  ),
-                  RateSliderItemWidget(
-                    label: "5",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 4,
-                    id: 4,
-                  ),
-                  RateSliderItemWidget(
-                    label: "6",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 5,
-                    id: 5,
-                  ),
-                  RateSliderItemWidget(
-                    label: "7",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 6,
-                    id: 6,
-                  ),
-                  RateSliderItemWidget(
-                    label: "8",
-                    id: 7,
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 7,
-                  ),
-                  RateSliderItemWidget(
-                    label: "9",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 8,
-                    id: 8,
-                  ),
-                  RateSliderItemWidget(
-                    label: "10",
-                    callback: slider.setCurrentIndex,
-                    active: slider.currentIndex == 9,
-                    id: 9,
-                  ),
-                ],
+              return Container(
+                color: Colors.white,
+                child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    RateSliderItemWidget(
+                      id: 0,
+                      label: "1",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 0,
+                    ),
+                    RateSliderItemWidget(
+                      label: "2",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 1,
+                      id: 1,
+                    ),
+                    RateSliderItemWidget(
+                      label: "3",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 2,
+                      id: 2,
+                    ),
+                    RateSliderItemWidget(
+                      label: "4",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 3,
+                      id: 3,
+                    ),
+                    RateSliderItemWidget(
+                      label: "5",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 4,
+                      id: 4,
+                    ),
+                    RateSliderItemWidget(
+                      label: "6",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 5,
+                      id: 5,
+                    ),
+                    RateSliderItemWidget(
+                      label: "7",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 6,
+                      id: 6,
+                    ),
+                    RateSliderItemWidget(
+                      label: "8",
+                      id: 7,
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 7,
+                    ),
+                    RateSliderItemWidget(
+                      label: "9",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 8,
+                      id: 8,
+                    ),
+                    RateSliderItemWidget(
+                      label: "10",
+                      callback: slider.setCurrentIndex,
+                      active: slider.currentIndex == 9,
+                      id: 9,
+                    ),
+                  ],
+                ),
               );
             },
           ),
