@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 
 class ExcercisesScreen extends StatelessWidget {
   const ExcercisesScreen({super.key});
@@ -13,7 +12,6 @@ class ExcercisesScreen extends StatelessWidget {
       body: Center(
         child: Text("Tutaj są ćwiczenia, normalnie jest gitara"),
       ),
-      bottomNavigationBar: NavigationWidget(),
     );
   }
 }

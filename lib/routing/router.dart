@@ -1,42 +1,55 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/UI/AIChat/aichat_screen.dart';
 import 'package:jak_sie_masz/UI/Excercises/excercises_screen.dart';
 import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
+import 'package:jak_sie_masz/UI/Shared/Layout_widget.dart';
 import 'package:jak_sie_masz/routing/routes.dart';
 import 'package:provider/provider.dart';
 
-GoRouter router() =>
-    GoRouter(initialLocation: Routes.home, debugLogDiagnostics: true, routes: [
-      GoRoute(
-          path: Routes.excercises,
-          builder: (context, state) {
-            return ExcercisesScreen();
-          }),
-      GoRoute(
-          path: Routes.aiChat,
-          builder: (context, state) {
-            return AIChatScreen();
-          }),
-      GoRoute(
-          path: Routes.forum,
-          builder: (context, state) {
-            return ForumScreen();
-          }),
-      GoRoute(
-          path: Routes.profile,
-          builder: (context, state) {
-            return ProfileScreen(
-              viewModel: context.read(),
-            );
-          }),
-      GoRoute(
-        path: Routes.home,
-        builder: (context, state) {
-          return HomeScreen(
-            userRepository: context.read(),
-          );
-        },
-      )
-    ]);
+final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+
+GoRouter router() => GoRouter(
+      initialLocation: Routes.home,
+      debugLogDiagnostics: true,
+      navigatorKey: _rootNavigatorKey,
+      routes: [
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) => LayoutWidget(
+            navigationShell: navigationShell,
+          ),
+          branches: [
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: Routes.home,
+                  builder: (context, state) => HomeScreen(
+                    userRepository: context.read(),
+                  ),
+                ),
+                GoRoute(
+                  path: Routes.profile,
+                  builder: (context, state) => ProfileScreen(
+                    viewModel: context.read(),
+                  ),
+                ),
+                GoRoute(
+                  path: Routes.excercises,
+                  builder: (context, state) => ExcercisesScreen(),
+                ),
+                GoRoute(
+                  path: Routes.forum,
+                  builder: (context, state) => ForumScreen(),
+                ),
+                GoRoute(
+                  path: Routes.aiChat,
+                  builder: (context, state) => AIChatScreen(),
+                ),
+              ],
+            )
+          ],
+        )
+      ],
+    );

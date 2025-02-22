@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/UI/Shared/widgets/navigation_widget.dart';
 
 class AIChatScreen extends StatefulWidget {
   const AIChatScreen({super.key});
@@ -18,7 +17,6 @@ class _AIChatScreenState extends State<AIChatScreen> {
       body: Center(
         child: Text("Popiszemy sobie"),
       ),
-      bottomNavigationBar: NavigationWidget(),
     );
   }
 }
