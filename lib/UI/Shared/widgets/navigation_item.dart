@@ -48,14 +48,17 @@ class _NavigationItemState extends State<NavigationItem> {
               fit: BoxFit.fill,
               color: widget.service.selectedPageIdx == widget.pageIdx
                   ? Styles.primaryColor500
-                  : Colors.grey,
+                  : Styles.inactiveNavItem,
             ),
             Text(
               widget.title,
               style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 10,
+                color: widget.service.selectedPageIdx == widget.pageIdx
+                    ? Styles.primaryColor500
+                    : Styles.inactiveNavItem,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
