@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
+import 'package:jak_sie_masz/UI/Home/emojis_container_widget.dart';
 import 'package:jak_sie_masz/UI/Home/rate_slider_item_widget.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -122,10 +123,7 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
             },
           ),
         ),
-        Text(
-          "Emojis",
-          style: TextStyle(fontSize: 8, color: Colors.black),
-        ),
+        EmojisContainerWidget(),
       ],
     );
   }
