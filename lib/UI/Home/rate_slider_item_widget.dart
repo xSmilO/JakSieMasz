@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 
 class RateSliderItemWidget extends StatelessWidget {
   final String label;
@@ -21,7 +22,7 @@ class RateSliderItemWidget extends StatelessWidget {
         onTap: () => {callback(id)},
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: active == true ? Styles.primaryColor500 : Colors.transparent,
           ),
           child: Center(
             child: Text(
