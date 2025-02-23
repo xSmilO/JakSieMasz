@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/timespans_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_widget.dart';
+import 'package:provider/provider.dart';
 
 class RateChartContainerWidget extends StatelessWidget {
   const RateChartContainerWidget({super.key});
@@ -19,7 +20,9 @@ class RateChartContainerWidget extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TimespansWidget(),
+            TimespansWidget(
+              viewmodel: context.read(),
+            ),
             Expanded(child: RateChartWidget()),
           ],
         ),
