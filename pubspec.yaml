@@ -81,6 +81,10 @@ flutter:
         - "assets/navigation_icons/forum.svg"
         - "assets/navigation_icons/home.svg"
         - "assets/navigation_icons/profile.svg"
+
+        - "assets/images/article-1.jpg"
+
+        - "assets/icons/arrow-solid.svg"
     # To add assets to your application, add an assets section, like this:
     # assets:
     #   - images/a_dot_burr.jpeg

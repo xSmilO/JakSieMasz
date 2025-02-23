@@ -11,4 +11,5 @@ abstract final class Styles {
   static String fontFamily = "Lexend Deca";
   static double fontSizeH2 = 20;
   static double fontSizeH3 = 16;
+  static double sectionSpacing = 48;
 }

@@ -25,7 +25,7 @@ class TimespansWidget extends StatelessWidget {
                 id: 1,
                 selectedId: value.activeTimespanId,
                 setId: value.setTimespan,
-                label: '2 tyg',
+                label: '2 tyg.',
               ),
               TimespanButtonWidget(
                 id: 2,

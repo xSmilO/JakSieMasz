@@ -11,7 +11,7 @@ class RateContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 48),
+      margin: EdgeInsets.only(top: Styles.sectionSpacing),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(8)),
