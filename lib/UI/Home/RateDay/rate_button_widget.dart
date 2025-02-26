@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Home/viewmodels/rate_button_viewmodel.dart';
 
 class RateButtonWidget extends StatelessWidget {
-  const RateButtonWidget({super.key});
+  final RateButtonViewmodel viewmodel;
+
+  const RateButtonWidget({super.key, required this.viewmodel});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () {
-          print("rate day");
+          viewmodel.rateDay(context);
         },
         style: ButtonStyle(
             alignment: Alignment.center,

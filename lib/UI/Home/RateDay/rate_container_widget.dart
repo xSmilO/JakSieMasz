@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/rate_button_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/rate_slider_widget.dart';
+import 'package:jak_sie_masz/UI/Home/viewmodels/rate_button_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -69,7 +71,7 @@ class RateContainerWidget extends StatelessWidget {
                   RateSliderViewmodel(rateSliderRepository: context.read()),
               rateSliderRepository: context.read(),
             ),
-            RateButtonWidget(),
+            RateButtonWidget(viewmodel: RateButtonViewmodel(rateSliderRepository: context.read(), dayRatingRepository: DayRatingRepository())),
           ],
         ),
       ),
