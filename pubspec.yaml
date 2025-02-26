@@ -75,11 +75,20 @@ flutter:
         - "assets/emojis/emoji_slightly_smiling_face.svg"
         - "assets/emojis/emoji_star_struck.svg"
 
-        - "assets/navigation_icons/excercise.svg"
+        - "assets/navigation_icons/exercises.svg"
         - "assets/navigation_icons/aichat.svg"
         - "assets/navigation_icons/forum.svg"
         - "assets/navigation_icons/home.svg"
         - "assets/navigation_icons/profile.svg"
+
+        - "assets/exercises_images/breathe_example.png"
+        - "assets/exercises_images/climbing_example.png"
+        - "assets/exercises_images/meditation_example.png"
+        - "assets/exercises_images/pull_up_example.png"
+        - "assets/exercises_images/relaxation_example.png"
+        - "assets/exercises_images/running_example.png"
+        
+        - "lib/UI/Exercises/data/exercises_data.json"
     # To add assets to your application, add an assets section, like this:
     # assets:
     #   - images/a_dot_burr.jpeg
