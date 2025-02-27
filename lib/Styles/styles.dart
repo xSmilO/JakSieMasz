@@ -8,7 +8,12 @@ abstract final class Styles {
   static Color inactiveNavItem = Color(0xFF999999);
   static Color fontColorDark = Color(0xFF2A2222);
   static Color horizontalRateChartColor = Color(0x66252525);
+  static Color profileOptionsHeaderColor = Color(0xFFB3B3B3);
+  static Color profileOptoinsBorderColor = Color(0xFFCCCCCC);
+  static Color profileOptionBgColor = Color(0xFFF2F2F2);
+  static Color redColor = Color(0xFFDE4343);
   static String fontFamily = "Lexend Deca";
+  static double fontSizeH1 = 32;
   static double fontSizeH2 = 20;
   static double fontSizeH3 = 16;
   static double sectionSpacing = 48;
