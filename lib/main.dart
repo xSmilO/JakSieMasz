@@ -3,6 +3,7 @@ import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Excercises/viewmodels/excercises_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
@@ -33,6 +34,9 @@ void main() {
         ChangeNotifierProvider(
           create: (context) =>
               RateSliderViewmodel(rateSliderRepository: context.read()),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ExcercisesViewModel(),
         ),
       ],
       child: MainApp(),

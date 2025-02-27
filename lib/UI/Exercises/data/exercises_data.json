@@ -1,0 +1,38 @@
+{
+  "1": {
+    "title": "Oddychanie",
+    "description": "Ćwiczenie oddechowe poprawiające koncentrację i redukujące stres",
+    "image": "assets/exercises_images/breathe_example.png",
+    "link": "herewillbethelinktothepage.com"
+  },
+  "2": {
+    "title": "Bieganie",
+    "description": "Bieganie to świetny sposób na poprawę kondycji fizycznej i wytrzymałości",
+    "image": "assets/exercises_images/running_example.png",
+    "link": "herewillbethelinktothepage.com"
+  },
+  "3": {
+    "title": "Podciąganie",
+    "description": "Podciąganie to doskonałe ćwiczenie na wzmocnienie mięśni pleców i ramion",
+    "image": "assets/exercises_images/pull_up_example.png",
+    "link": "herewillbethelinktothepage.com"
+  },
+  "4": {
+    "title": "Medytacja",
+    "description": "Medytacja pomaga w redukcji stresu i poprawia ogólne samopoczucie",
+    "image": "assets/exercises_images/meditation_example.png",
+    "link": "herewillbethelinktothepage.com"
+  },
+  "5": {
+    "title": "Wspinaczka",
+    "description": "Wspinanie poprawia kondycje i zdrowie",
+    "image": "assets/exercises_images/climbing_example.png",
+    "link": "herewillbethelinktothepage.com"
+  },
+  "6": {
+    "title": "Odprężenie",
+    "description": "Ćwiczenie relaksacyjne, które pomaga w złagodzeniu napięcia i stresu",
+    "image": "assets/exercises_images/relaxation_example.png",
+    "link": "herewillbethelinktothepage.com"
+  }
+}
