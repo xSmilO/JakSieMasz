@@ -35,8 +35,9 @@ void main() {
           create: (context) =>
               RateSliderViewmodel(rateSliderRepository: context.read()),
         ),
+        ChangeNotifierProvider(create: (context) => RateChartViewmodel()),
         ChangeNotifierProvider(
-          create: (context) => ExcercisesViewModel(),
+          create: (context) => ExercisesViewModel(),
         ),
       ],
       child: MainApp(),
