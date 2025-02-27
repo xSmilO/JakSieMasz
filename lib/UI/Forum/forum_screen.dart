@@ -33,7 +33,7 @@ class ForumScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 48),
+                  margin: EdgeInsets.only(top: Styles.sectionSpacing),
                   child: Text(
                     "Witaj siema",
                     style: TextStyle(
