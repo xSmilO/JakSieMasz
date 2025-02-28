@@ -8,16 +8,18 @@ class ProfileOptionButtonWidget extends StatelessWidget {
       required this.title,
       this.border,
       required this.buttonIcon,
-      this.titleIcon});
+      this.titleIcon,
+      required this.onTap});
   final String title;
   final String buttonIcon;
   final String? titleIcon;
   final bool? border;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => print("tapped option"),
+      onTap: () => {onTap()},
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(

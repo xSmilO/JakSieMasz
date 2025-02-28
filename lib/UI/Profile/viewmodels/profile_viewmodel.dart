@@ -6,6 +6,10 @@ class ProfileViewModel extends ChangeNotifier {
   UserRepository userRepository;
   ProfileViewModel(UserRepository repo) : userRepository = repo {
     _username = repo.username;
+    repo.onUsernameChange = (String newUsername) {
+      _username = newUsername;
+      notifyListeners();
+    };
   }
 
   String get username {
@@ -13,6 +17,7 @@ class ProfileViewModel extends ChangeNotifier {
   }
 
   void changeName(String newName) {
+    if (newName == "") return;
     userRepository.setUsername(newName);
     _username = userRepository.username;
     notifyListeners();
