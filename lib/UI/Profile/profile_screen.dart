@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/username_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_delete_button_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_option_button_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_options_section_widget.dart';
@@ -14,29 +15,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String usernameInput = "";
     Future changeUsernameDialog() => showDialog(
           context: context,
-          builder: (context) => AlertDialog(
-            title: Text("Zmień nazwe"),
-            content: TextField(
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: viewModel.username,
-              ),
-              onChanged: (value) => usernameInput = value,
-            ),
-            actions: [
-              TextButton(
-                child: Text("zmień"),
-                onPressed: () {
-                  viewModel.changeName(usernameInput);
-                  context.pop();
-                },
-              )
-            ],
+          builder: (context) => UsernameDialogWidget(
+            currentUserName: viewModel.username,
+            onSubmit: viewModel.changeName,
           ),
         );
+
+    // changeUsernameDialog();
 
     return Container(
       color: Styles.primaryColor500,

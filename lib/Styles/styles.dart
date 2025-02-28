@@ -13,7 +13,7 @@ abstract final class Styles {
   static Color profileOptionBgColor = Color(0xFFF2F2F2);
   static Color redColor = Color(0xFFDE4343);
   static String fontFamily = "Lexend Deca";
-  static double fontSizeH1 = 32;
+  static double fontSizeH1 = 24;
   static double fontSizeH2 = 20;
   static double fontSizeH3 = 16;
   static double sectionSpacing = 48;
