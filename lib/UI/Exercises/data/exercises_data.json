@@ -3,36 +3,83 @@
     "title": "Oddychanie",
     "description": "Ćwiczenie oddechowe poprawiające koncentrację i redukujące stres",
     "image": "assets/exercises_images/breathe_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Weź głęboki wdech, wstrzymaj na 4 sekundy",
+      "Oddychaj przeponą przez 2 minuty",
+      "Zrób 5 wdechów i wydechów, zamknij oczy.",
+      "Oddychaj nosem, wydłużając każdy wydech",
+      "Zrób 10 oddechów, licząc do czterech"
+    ]
   },
   "2": {
     "title": "Bieganie",
     "description": "Bieganie to świetny sposób na poprawę kondycji fizycznej i wytrzymałości",
     "image": "assets/exercises_images/running_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Rozgrzej się marszem przez 5 minut.",
+      "Przebiegnij 200 metrów szybkim tempem.",
+      "Wykonaj interwały: 30 sekund i 2 minuty",
+      "Zmień tempo co 2 minuty.",
+      "Zakończ bieg spokojnym 5-minutowym truchtem.",
+      "Rozciągnij łydki i uda przez 3 minuty."
+    ]
   },
   "3": {
     "title": "Podciąganie",
     "description": "Podciąganie to doskonałe ćwiczenie na wzmocnienie mięśni pleców i ramion",
     "image": "assets/exercises_images/pull_up_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Zrób 5 podciągnięć nachwytem.",
+      "Podciągnij się 3 razy podchwytem.",
+      "Zatrzymaj się na 3 sekundy w górnej pozycji.",
+      "Wykonaj negatywne podciągnięcia",
+      "Spróbuj podciągnąć się na jednej ręce"
+    ]
   },
   "4": {
     "title": "Medytacja",
     "description": "Medytacja pomaga w redukcji stresu i poprawia ogólne samopoczucie",
     "image": "assets/exercises_images/meditation_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Skup się na oddechu przez 2 minuty.",
+      "Powtarzaj w myślach 'spokój'",
+      "Zwróć uwagę na dźwięki wokół przez minutę.",
+      "Skup się na uczuciach w ciele",
+      "Oddychaj głęboko, licząc od 10 do 1 w myślach.",
+      "Wyobraź sobie spokojne miejsce, np. plażę lub las."
+    ]
   },
   "5": {
     "title": "Wspinaczka",
     "description": "Wspinanie poprawia kondycje i zdrowie",
     "image": "assets/exercises_images/climbing_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Zrób 5 podciągnięć na drążku.",
+      "Przytrzymaj uchwyt przez 10 sekund",
+      "Zawieś się na jednej ręce przez 5 sekund.",
+      "Wspięcia na palce – 15 powtórzeń na każdą nogę.",
+      "Przysiady na jednej nodze, 10 powtórzeń",
+      "Rozciągnij nadgarstki i przedramiona po treningu."
+    ]
   },
   "6": {
     "title": "Odprężenie",
     "description": "Ćwiczenie relaksacyjne, które pomaga w złagodzeniu napięcia i stresu",
     "image": "assets/exercises_images/relaxation_example.png",
-    "link": "herewillbethelinktothepage.com"
+    "link": "herewillbethelinktothepage.com",
+    "tasks": [
+      "Połóż się na plecach, zamknij oczy i oddychaj",
+      "Napnij wszystkie mięśnie na 5 sekund",
+      "Słuchaj spokojnej muzyki, skup się na dźwiękach.",
+      "Zrób ćwiczenie 'skanowanie ciała'",
+      "Wizualizuj ciepłe światło",
+      "Oddychaj powoli, licząc do czterech",
+      "Delikatnie rozciągnij szyję, ramiona i plecy."
+    ]
   }
 }
