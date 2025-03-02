@@ -5,7 +5,7 @@ import 'package:jak_sie_masz/UI/Exercises/data/exercises_data_setup.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   List<ExercisesDataSetup> _exercises = [];
-  ExercisesDataSetup _selectedExercise = ExercisesDataSetup(title: "", description: "", image: "", link: "", tasks: []);
+  ExercisesDataSetup _selectedExercise = ExercisesDataSetup(title: "", image: "", description: "", task_text: "", tasks: [], link_text: "", link_1: "", link_2: "");
 
   bool _isLoading = true;
   bool _isEmpty = false;
@@ -54,7 +54,7 @@ class ExercisesViewModel extends ChangeNotifier {
         return;
       }
     }
-    _selectedExercise = ExercisesDataSetup(title: "Not found", description: "Not found", image: "Not found", link: "Not found", tasks: []);
+    _selectedExercise = ExercisesDataSetup(title: "Not found", image: "Not found", description: "Not found", task_text: "Not found", tasks: [], link_text: "Not found", link_1: "Not found", link_2: "Not found");
     notifyListeners();
   }
 }
