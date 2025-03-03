@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Profile/Dialogs/username_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_delete_button_widget.dart';
@@ -110,7 +109,18 @@ class ProfileScreen extends StatelessWidget {
                       title: "Przypomnienia",
                       buttons: [
                         ProfileOptionButtonWidget(
-                          onTap: () => print("siema"),
+                          onTap: () async {
+                            TimeOfDay? picked = await showTimePicker(
+                              helpText: "Godzina przypomnienia",
+                              context: context,
+                              initialTime: viewModel.selectedTime ??
+                                  TimeOfDay(hour: 14, minute: 0),
+                            );
+
+                            if (picked != null) {
+                              viewModel.setNotificaion(picked);
+                            }
+                          },
                           title: "Godzina oceny dnia",
                           buttonIcon: "assets/icons/arrow-right.svg",
                           titleIcon: "assets/icons/clock.svg",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
 import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
@@ -10,9 +11,28 @@ import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
+import "package:timezone/data/latest_all.dart" as tz;
 import 'routing/router.dart';
 
-void main() {
+final FlutterLocalNotificationsPlugin notificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
+
+  final InitializationSettings settings = InitializationSettings(
+    android: AndroidInitializationSettings("@mipmap/ic_launcher"),
+    iOS: DarwinInitializationSettings(),
+  );
+
+  await notificationsPlugin.initialize(settings);
+
+  await notificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestNotificationsPermission();
+
   runApp(
     MultiProvider(
       providers: [
