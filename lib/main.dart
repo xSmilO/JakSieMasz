@@ -77,6 +77,25 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
         fontFamily: Styles.fontFamily,
+        timePickerTheme: TimePickerThemeData(
+          backgroundColor: Colors.white,
+          hourMinuteColor: Styles.primaryColor500,
+          dialTextColor: Colors.white,
+          dialBackgroundColor: Styles.primaryColor500,
+          dialTextStyle: TextStyle(
+            fontFamily: Styles.fontFamily,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+          hourMinuteTextColor: Colors.white,
+          dialHandColor: Styles.primaryColor300,
+          confirmButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(Styles.primaryColor500),
+          ),
+          cancelButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(Styles.secondaryColor300),
+          ),
+        ),
       ),
       routerConfig: router(),
     );
