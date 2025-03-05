@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Data/notification_service.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
@@ -41,6 +42,7 @@ void main() async {
         Provider(
           create: (context) => RateSliderRepository(),
         ),
+        Provider(create: (context) => DayRatingRepository()),
         Provider(
           create: (context) => UserRepository(context.read()),
         ),
