@@ -1,5 +1,4 @@
-import 'package:jak_sie_masz/Data/day_rating_repository.dart';
-import 'package:jak_sie_masz/Data/rate_day_model.dart';
+import 'package:jak_sie_masz/Data/day_rating_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -27,6 +26,7 @@ class DatabaseHelperService {
         CREATE TABLE day_ratings (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           date TEXT NOT NULL,
+          fullDate TEXT NOT NULL,
           rating INTEGER NOT NULL
         )
        ''');
@@ -34,7 +34,14 @@ class DatabaseHelperService {
     );
   }
 
-  Future<List<RateDayModel>> getRatings({int range = 7}) async {
+  Future<void> removeDatabase() async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, 'jak_sie_masz.db');
+
+    await deleteDatabase(path);
+  }
+
+  Future<List<DayRatingModel>> getRatings({int range = 7}) async {
     final db = await database;
 
     final List<Map<String, Object?>> ratingsMaps =
@@ -44,21 +51,22 @@ class DatabaseHelperService {
       for (final {
             'id': id as int,
             'date': date as String,
+            'fullDate': fullDate as String,
             'rating': rating as int
           } in ratingsMaps)
-        RateDayModel(id: id, date: date, rating: rating)
+        DayRatingModel(id: id, date: date, fullDate: fullDate, rating: rating)
     ];
   }
 
-  Future<int> insertRating(RateDayModel value) async {
+  Future<int> insertRating(DayRatingModel value) async {
     final db = await database;
     return await db.insert(
       'day_ratings',
-      {'date': value.date, 'rating': value.rating},
+      {'date': value.date, 'rating': value.rating, 'fullDate': value.fullDate},
     );
   }
 
-  Future<void> updateRating(RateDayModel value) async {
+  Future<void> updateRating(DayRatingModel value) async {
     final db = await database;
     await db.update(
       'day_ratings',
@@ -68,7 +76,7 @@ class DatabaseHelperService {
     );
   }
 
-  Future<RateDayModel?> findRatingByDate(String date) async {
+  Future<DayRatingModel?> findRatingByDate(String date) async {
     final db = await database;
     final List<Map<String, Object?>> ratesMaps =
         await db.query('day_ratings', where: "date = ?", whereArgs: [date]);
@@ -76,9 +84,10 @@ class DatabaseHelperService {
 
     Map<String, Object?> first = ratesMaps.first;
 
-    return RateDayModel(
+    return DayRatingModel(
         id: first['id'] as int,
         date: first['date'] as String,
+        fullDate: first['fullDate'] as String,
         rating: first['rating'] as int);
   }
 
