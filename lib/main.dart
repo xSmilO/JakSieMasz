@@ -44,7 +44,7 @@ void main() async {
           create: (context) => NavigationViewmodel(context.read()),
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfileViewModel(context.read()),
+          create: (context) => ProfileViewModel(context.read(), context.read()),
         ),
         ChangeNotifierProvider(
           create: (context) =>

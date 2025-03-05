@@ -16,5 +16,6 @@ abstract final class Styles {
   static double fontSizeH1 = 24;
   static double fontSizeH2 = 20;
   static double fontSizeH3 = 16;
+  static double fontSizeP = 12;
   static double sectionSpacing = 48;
 }

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:jak_sie_masz/Data/notification_service.dart';
+import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
 
 class ProfileViewModel extends ChangeNotifier {
-  //todo save hour and minute on notification in device
+  //todo add toast notifcation when user selects notification time
   String _username = "";
   TimeOfDay? _selectedTime;
   final UserRepository _userRepository;
-  ProfileViewModel(UserRepository repo) : _userRepository = repo {
+  final SharedPreferencesService spService;
+  ProfileViewModel(UserRepository repo, this.spService)
+      : _userRepository = repo {
     _username = repo.username;
     repo.onUsernameChange = (String newUsername) {
       _username = newUsername;
@@ -31,7 +33,21 @@ class ProfileViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _loadSavedTime() async {}
+  Future<void> _loadSavedTime() async {
+    String? savedTime = await spService.fetchString("notification_time");
+
+    if (savedTime == null) return;
+
+    List<String> timeElements = savedTime.split(":");
+    _selectedTime = TimeOfDay(
+      hour: int.parse(timeElements[0]),
+      minute: int.parse(
+        timeElements[1],
+      ),
+    );
+
+    notifyListeners();
+  }
 
   Future<void> setNotificaion(TimeOfDay time) async {
     _selectedTime = time;
@@ -39,17 +55,14 @@ class ProfileViewModel extends ChangeNotifier {
     NotificationService().cancelAllNotifications();
     NotificationService().scheduleNotification(
       title: "Jak ci leci dzień ?",
-      body: "Nie krępuj się i oceń swój dzień",
+      body: "Nie krępuj się i oceń swój dzień 🤗",
       hour: time.hour,
       minute: time.minute,
     );
+
+    String timeValueToSave = "${time.hour}:${time.minute}";
+
+    await spService.saveString("notification_time", timeValueToSave);
     notifyListeners();
   }
-
-  void showNotification() {
-    NotificationService().showNotification(title: "Siema", body: "wypiedalaj");
-  }
-
-  final FlutterLocalNotificationsPlugin _notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 }

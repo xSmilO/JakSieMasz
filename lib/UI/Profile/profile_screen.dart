@@ -7,6 +7,7 @@ import 'package:jak_sie_masz/UI/Profile/profile_options_section_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_server_input_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:toastification/toastification.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
@@ -117,9 +118,26 @@ class ProfileScreen extends StatelessWidget {
                                   TimeOfDay(hour: 14, minute: 0),
                             );
 
-                            if (picked != null) {
-                              viewModel.setNotificaion(picked);
+                            if (picked == null) {
+                              return;
                             }
+
+                            await viewModel.setNotificaion(picked);
+
+                            if (context.mounted == true)
+                              toastification.show(
+                                context: context,
+                                title: Text(
+                                  "Ustawiono nową godzine przypomnienia",
+                                  style: TextStyle(
+                                    color: Styles.fontColorDark,
+                                    fontFamily: Styles.fontFamily,
+                                    fontSize: Styles.fontSizeP,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                autoCloseDuration: Duration(seconds: 3),
+                              );
                           },
                           title: "Godzina oceny dnia",
                           buttonIcon: "assets/icons/arrow-right.svg",
