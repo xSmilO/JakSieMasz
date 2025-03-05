@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'exercise_details_screen.dart';
@@ -10,7 +11,7 @@ class ExercisesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ćwiczenia"),
+        title: const Text("Ćwiczenia poprawiające samopoczucie oraz nastrój"),
       ),
       body: Consumer<ExercisesViewModel>(
         builder: (context, viewModel, child) {
@@ -49,7 +50,7 @@ class ExercisesScreen extends StatelessWidget {
                     );
                   },
                   child: Card(
-                    color: Colors.greenAccent,
+                    color: Styles.primaryColor500,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
