@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:jak_sie_masz/Data/database_helper_service.dart';
 import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Data/notification_service.dart';
@@ -33,9 +34,16 @@ void main() async {
       providers: [
         Provider(create: (context) => SharedPreferencesService()),
         Provider(
+          create: (context) => DatabaseHelperService(),
+        ),
+        Provider(
           create: (context) => RateSliderRepository(),
         ),
-        Provider(create: (context) => DayRatingRepository()),
+        Provider(
+          create: (context) => DayRatingRepository(
+            context.read(),
+          ),
+        ),
         Provider(
           create: (context) => UserRepository(context.read()),
         ),
@@ -52,7 +60,8 @@ void main() async {
           create: (context) =>
               RateSliderViewmodel(rateSliderRepository: context.read()),
         ),
-        ChangeNotifierProvider(create: (context) => RateChartViewmodel()),
+        ChangeNotifierProvider(
+            create: (context) => RateChartViewmodel(context.read())),
         ChangeNotifierProvider(
           create: (context) => ExercisesViewModel(),
         ),

@@ -3,14 +3,11 @@ import 'package:jak_sie_masz/Data/database_helper_service.dart';
 import 'package:jak_sie_masz/Data/day_rating_model.dart';
 
 class RateChartViewmodel extends ChangeNotifier {
-  DatabaseHelperService _databaseHelperService = DatabaseHelperService.instance;
+  List<DayRatingModel> ratings = [];
+  final DatabaseHelperService _databaseHelperService;
 
-  RateChartViewmodel() {
-    _databaseHelperService
-        .getRatingsByNewest(_timespans[_activeTimespanId])
-        .then((data) {
-      print("data $data");
-    });
+  RateChartViewmodel(this._databaseHelperService) {
+    _loadDayRatings();
   }
 
   final List<int> _timespans = [7, 14, 30];
@@ -21,10 +18,24 @@ class RateChartViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<DayRatingModel>> fetchRates() async {
-    return await _databaseHelperService
+  Future<void> fetchRates() async {
+    // for testing purposes
+
+    // await _databaseHelperService.insertRatingsForTest();
+
+    ratings = await _databaseHelperService
         .getRatingsByNewest(_timespans[_activeTimespanId]);
+    // ratings = await _databaseHelperService.getRatingsByNewest(3);
+    notifyListeners();
+  }
+
+  Future<void> _loadDayRatings() async {
+    ratings = await _databaseHelperService
+        .getRatingsByNewest(_timespans[_activeTimespanId]);
+
+    notifyListeners();
   }
 
   int get activeTimespanId => _activeTimespanId;
+  List<int> get timespans => _timespans;
 }
