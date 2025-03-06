@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/UI/AIChat/aichat_screen.dart';
-import 'package:jak_sie_masz/UI/Excercises/excercises_screen.dart';
+import 'package:jak_sie_masz/UI/Exercises/exercises_screen.dart';
 import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
@@ -36,8 +36,8 @@ GoRouter router() => GoRouter(
                   ),
                 ),
                 GoRoute(
-                  path: Routes.excercises,
-                  builder: (context, state) => ExcercisesScreen(),
+                  path: Routes.exercises,
+                  builder: (context, state) => ExercisesScreen(),
                 ),
                 GoRoute(
                   path: Routes.forum,
