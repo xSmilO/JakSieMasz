@@ -12,9 +12,7 @@ import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
-import 'package:path/path.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
 import 'routing/router.dart';
 
 final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -29,11 +27,6 @@ void main() async {
       ?.requestNotificationsPermission();
 
   NotificationService().initNotification();
-
-  // open database
-  deleteDatabase(
-    join(await getDatabasesPath(), 'day_ratings.db'),
-  );
 
   runApp(
     MultiProvider(
