@@ -1,13 +1,18 @@
+import 'dart:ui';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/line_title.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class RateChartWidget extends StatefulWidget {
-  const RateChartWidget({super.key, required this.viewmodel});
+  const RateChartWidget(
+      {super.key, required this.viewmodel, required this.dayRatingRepository});
   final RateChartViewmodel viewmodel;
+  final DayRatingRepository dayRatingRepository;
 
   @override
   State<RateChartWidget> createState() => _RateChartWidgetState();
@@ -24,6 +29,8 @@ class _RateChartWidgetState extends State<RateChartWidget> {
     super.initState();
     // fetch day rates and limit them that you have in what category
     widget.viewmodel.fetchRates();
+    widget.dayRatingRepository.onRateDay = widget.viewmodel.fetchRates;
+    // widget.viewmodel.setTestRateData();
   }
 
   @override
@@ -32,7 +39,7 @@ class _RateChartWidgetState extends State<RateChartWidget> {
 
     return Consumer<RateChartViewmodel>(
       builder: (context, value, child) {
-        int maxX = value.timespans[value.activeTimespanId];
+        int maxX = value.timespans[value.activeTimespanId] - 1;
         DateTime currentDate = DateTime.now();
         dataSpots = [];
         for (int idx = 0; idx < value.ratings.length; ++idx) {
@@ -41,9 +48,9 @@ class _RateChartWidgetState extends State<RateChartWidget> {
           int x = value.timespans[value.activeTimespanId] -
               currentDate
                   .difference(DateTime.parse(value.ratings[idx].fullDate))
-                  .inDays;
+                  .inDays -
+              1;
 
-          print(x);
           dataSpots.add(
             FlSpot(
               x.toDouble(),
@@ -84,8 +91,7 @@ class _RateChartWidgetState extends State<RateChartWidget> {
             ),
             lineBarsData: [
               LineChartBarData(
-                isCurved: true,
-                curveSmoothness: 0.3,
+                isCurved: false,
                 gradient: LinearGradient(
                   colors: gradient,
                 ),

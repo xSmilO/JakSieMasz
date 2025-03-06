@@ -61,7 +61,9 @@ void main() async {
               RateSliderViewmodel(rateSliderRepository: context.read()),
         ),
         ChangeNotifierProvider(
-            create: (context) => RateChartViewmodel(context.read())),
+            create: (context) => RateChartViewmodel(
+                databaseHelperService: context.read(),
+                dayRatingRepository: context.read())),
         ChangeNotifierProvider(
           create: (context) => ExercisesViewModel(),
         ),

@@ -114,13 +114,13 @@ class DatabaseHelperService {
   }
 
   Future<void> insertRatingsForTest() async {
-    int daysToGenerate = 6;
+    int daysToGenerate = 30;
     DateTime now = DateTime.now();
     Random rng = Random();
     for (int i = 0; i < daysToGenerate; ++i) {
       DateTime date = now.subtract(Duration(days: i));
       int rating = rng.nextInt(9) + 1;
-      rating = i + 1;
+      // rating = i + 1;
 
       String dateStr = "${date.day}.${date.month}.${date.year}";
       DayRatingModel model = DayRatingModel(

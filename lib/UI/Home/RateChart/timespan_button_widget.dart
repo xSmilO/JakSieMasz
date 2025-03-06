@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 
 class TimespanButtonWidget extends StatelessWidget {
-  const TimespanButtonWidget(
-      {super.key,
-      required this.id,
-      required this.label,
-      required this.setId,
-      required this.selectedId});
+  const TimespanButtonWidget({
+    super.key,
+    required this.id,
+    required this.label,
+    required this.setId,
+    required this.selectedId,
+  });
   final int id;
   final int selectedId;
   final String label;

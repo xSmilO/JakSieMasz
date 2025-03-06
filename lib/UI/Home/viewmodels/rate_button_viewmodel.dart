@@ -14,7 +14,9 @@ class RateButtonViewmodel {
   void rateDay(BuildContext context) async {
     int currentRating = rateSliderRepository.index + 1;
 
-    dayRatingRepository.rateDay(currentRating);
+    await dayRatingRepository.rateDay(currentRating);
+
+    // callback this shit
 
     if (context.mounted) {
       int messageIndex = (currentRating / 3).toInt();

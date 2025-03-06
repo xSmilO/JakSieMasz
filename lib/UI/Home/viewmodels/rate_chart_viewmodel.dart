@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/database_helper_service.dart';
 import 'package:jak_sie_masz/Data/day_rating_model.dart';
+import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 
 class RateChartViewmodel extends ChangeNotifier {
   List<DayRatingModel> ratings = [];
-  final DatabaseHelperService _databaseHelperService;
+  final DatabaseHelperService databaseHelperService;
+  final DayRatingRepository dayRatingRepository;
 
-  RateChartViewmodel(this._databaseHelperService) {
+  RateChartViewmodel(
+      {required this.databaseHelperService,
+      required this.dayRatingRepository}) {
     _loadDayRatings();
   }
 
@@ -15,25 +19,28 @@ class RateChartViewmodel extends ChangeNotifier {
 
   void setTimespan(int id) {
     _activeTimespanId = id;
-    notifyListeners();
+    fetchRates();
+    // notifyListeners();
   }
 
   Future<void> fetchRates() async {
-    // for testing purposes
-
-    // await _databaseHelperService.insertRatingsForTest();
-
-    ratings = await _databaseHelperService
+    ratings = await databaseHelperService
         .getRatingsByNewest(_timespans[_activeTimespanId]);
     // ratings = await _databaseHelperService.getRatingsByNewest(3);
     notifyListeners();
   }
 
   Future<void> _loadDayRatings() async {
-    ratings = await _databaseHelperService
+    ratings = await databaseHelperService
         .getRatingsByNewest(_timespans[_activeTimespanId]);
 
     notifyListeners();
+  }
+
+  Future<void> setTestRateData() async {
+    // for testing purposes
+
+    await databaseHelperService.insertRatingsForTest();
   }
 
   int get activeTimespanId => _activeTimespanId;
