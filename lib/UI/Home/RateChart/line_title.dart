@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 
 class LineTitle {
-  static List<String> labels = ["pon", "wt", "śrd", "czw", "pt", "sb", "ndz"];
-  static getTitleData() => FlTitlesData(
+  // static List<String> labels = ["pon", "wt", "śrd", "czw", "pt", "sb", "ndz"];
+  static getTitleData(int maxX) => FlTitlesData(
         show: true,
         topTitles: AxisTitles(
           sideTitles: SideTitles(
@@ -22,6 +22,7 @@ class LineTitle {
               showTitles: true,
               reservedSize: 20,
               getTitlesWidget: (value, TitleMeta meta) {
+                print("Value: $value");
                 return SideTitleWidget(
                   meta: meta,
                   fitInside: SideTitleFitInsideData.fromTitleMeta(
@@ -30,7 +31,11 @@ class LineTitle {
                     distanceFromEdge: 2,
                   ),
                   child: Text(
-                    labels[value.toInt()],
+                    value == maxX.toDouble()
+                        ? "dzisiaj"
+                        : value == 0
+                            ? "Ostatnie dni"
+                            : "",
                     style: TextStyle(
                       fontSize: 10,
                       fontFamily: Styles.fontFamily,
