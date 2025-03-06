@@ -40,8 +40,8 @@ class NavigationWidget extends StatelessWidget {
                 callback: viewModel.setPageIdx,
                 service: context.read(),
                 title: "Ćwiczenia",
-                route: Routes.excercises,
-                iconUrl: "assets/navigation_icons/excercise.svg",
+                route: Routes.exercises,
+                iconUrl: "assets/navigation_icons/exercises.svg",
               ),
               NavigationItem(
                 pageIdx: 1,

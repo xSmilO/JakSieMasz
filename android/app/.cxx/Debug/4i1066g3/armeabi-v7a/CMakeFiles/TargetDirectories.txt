@@ -1,0 +1,2 @@
+C:/Users/maygr/Desktop/Programowanie/ProjektyWszelakie/JakSieMasz/android/app/.cxx/Debug/4i1066g3/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/maygr/Desktop/Programowanie/ProjektyWszelakie/JakSieMasz/android/app/.cxx/Debug/4i1066g3/armeabi-v7a/CMakeFiles/rebuild_cache.dir
