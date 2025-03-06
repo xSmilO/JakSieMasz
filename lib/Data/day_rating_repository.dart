@@ -1,39 +1,42 @@
-import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
-
-import 'package:path_provider/path_provider.dart';
+import 'package:jak_sie_masz/Data/database_helper_service.dart';
+import 'package:jak_sie_masz/Data/day_rating_model.dart';
 
 class DayRatingRepository {
-  Future<String> get localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
+  late DatabaseHelperService databaseHelperService;
+
+  DayRatingRepository() {
+    databaseHelperService = DatabaseHelperService.instance;
   }
 
-  Future<File> get ratedDaysFile async {
-    final path = await localPath;
-    var file = File('$path/rated_days.json');
+  String currentDateWithoutTime() {
+    DateTime currentDate = DateTime.now();
+    print(currentDate.toIso8601String());
+    return "${currentDate.day}.${currentDate.month}.${currentDate.year}";
+  }
 
-    if(!await file.exists()) {
-      file = await file.create();
+  Future<void> rateDay(int rating) async {
+    String currentDate = currentDateWithoutTime();
+    DateTime currentTimestamp = DateTime.now();
+
+    print("updated " + currentDate + " rating to " + rating.toString());
+    DayRatingModel dayRate = DayRatingModel(
+        date: currentDate,
+        rating: rating,
+        fullDate: currentTimestamp.toIso8601String());
+
+    DayRatingModel? todaysRating =
+        await databaseHelperService.findRatingByDate(currentDate);
+
+    print(todaysRating?.toMap());
+    if (todaysRating == null)
+      databaseHelperService.insertRating(dayRate);
+    else {
+      DayRatingModel newRating = DayRatingModel(
+          id: todaysRating.id,
+          date: todaysRating.date,
+          rating: rating,
+          fullDate: currentTimestamp.toIso8601String());
+      await databaseHelperService.updateRating(newRating);
     }
-
-    return file;
-  }
-
-  dynamic get ratedDaysParsed async {
-    final file = await ratedDaysFile;
-    final contents = await file.readAsString();
-
-    try {
-      return json.decode(contents);
-    } catch(exception) {
-      return json.decode("{}");
-    }
-  }
-
-  void updateRatedDays(Map ratedDays) async {
-    final file = await ratedDaysFile;
-    file.writeAsString(json.encode(ratedDays));
   }
 }

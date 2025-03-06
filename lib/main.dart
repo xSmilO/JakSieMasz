@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:jak_sie_masz/Data/navigation_service.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
@@ -7,17 +8,33 @@ import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
-
+import 'package:sqflite/sqflite.dart';
 import 'routing/router.dart';
 
-void main() {
+final FlutterLocalNotificationsPlugin notificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await notificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestNotificationsPermission();
+
+  NotificationService().initNotification();
+
+  // open database
+
   runApp(
     MultiProvider(
       providers: [
         Provider(
           create: (context) => RateSliderRepository(),
         ),
+        Provider(create: (context) => DayRatingRepository()),
         Provider(
           create: (context) => UserRepository(),
         ),
@@ -51,6 +68,25 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
         fontFamily: Styles.fontFamily,
+        timePickerTheme: TimePickerThemeData(
+          backgroundColor: Colors.white,
+          hourMinuteColor: Styles.primaryColor500,
+          dialTextColor: Colors.white,
+          dialBackgroundColor: Styles.primaryColor500,
+          dialTextStyle: TextStyle(
+            fontFamily: Styles.fontFamily,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+          hourMinuteTextColor: Colors.white,
+          dialHandColor: Styles.primaryColor300,
+          confirmButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(Styles.primaryColor500),
+          ),
+          cancelButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(Styles.secondaryColor300),
+          ),
+        ),
       ),
       routerConfig: router(),
     );
