@@ -23,7 +23,11 @@ class RateChartContainerWidget extends StatelessWidget {
             TimespansWidget(
               viewmodel: context.read(),
             ),
-            Expanded(child: RateChartWidget()),
+            Expanded(
+              child: RateChartWidget(
+                viewmodel: context.read(),
+              ),
+            ),
           ],
         ),
       ),

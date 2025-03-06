@@ -20,6 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     username = widget.userRepository.getUsername();
+    widget.userRepository.onUsernameChange = this.loadUserName;
+  }
+
+  void loadUserName(String newUsername) {
+    setState(() {
+      username = widget.userRepository.getUsername();
+    });
   }
 
   @override
@@ -57,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: FutureBuilder(
                     builder: (context, snapshot) {
                       return Text(
-                        "Witaj ${snapshot.data}!",
+                        snapshot.connectionState == ConnectionState.waiting
+                            ? "Witaj User"
+                            : "Witaj ${snapshot.data}!",
                         style: TextStyle(
                           fontFamily: Styles.fontFamily,
                           color: Colors.white,

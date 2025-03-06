@@ -91,6 +91,23 @@ class DatabaseHelperService {
         rating: first['rating'] as int);
   }
 
+  Future<List<DayRatingModel>> getRatingsByNewest(int range) async {
+    final db = await database;
+
+    final List<Map<String, Object?>> ratingsMaps =
+        await db.query('day_ratings', orderBy: 'fullDate DESC', limit: range);
+
+    return [
+      for (final {
+            'id': id as int,
+            'date': date as String,
+            'fullDate': fullDate as String,
+            'rating': rating as int
+          } in ratingsMaps)
+        DayRatingModel(id: id, date: date, fullDate: fullDate, rating: rating)
+    ];
+  }
+
   Future<void> deleteData() async {
     final db = await database;
     db.delete("day_ratings");
