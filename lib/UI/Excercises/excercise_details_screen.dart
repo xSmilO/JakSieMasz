@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/UI/Excercises/viewmodels/excercises_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'viewmodels/excercises_viewmodel.dart';
 
 class ExcerciseDetailsScreen extends StatelessWidget {
   const ExcerciseDetailsScreen({super.key});
