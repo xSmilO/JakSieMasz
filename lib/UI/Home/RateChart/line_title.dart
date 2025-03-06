@@ -22,7 +22,6 @@ class LineTitle {
               showTitles: true,
               reservedSize: 20,
               getTitlesWidget: (value, TitleMeta meta) {
-                print("Value: $value");
                 return SideTitleWidget(
                   meta: meta,
                   fitInside: SideTitleFitInsideData.fromTitleMeta(

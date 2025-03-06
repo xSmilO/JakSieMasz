@@ -4,7 +4,10 @@ import 'package:jak_sie_masz/Data/day_rating_model.dart';
 class DayRatingRepository {
   final DatabaseHelperService databaseHelperService;
 
-  DayRatingRepository(this.databaseHelperService);
+  Function()? onRateDay;
+  DayRatingRepository(
+    this.databaseHelperService,
+  ) {}
 
   String currentDateWithoutTime() {
     DateTime currentDate = DateTime.now();
@@ -35,10 +38,7 @@ class DayRatingRepository {
           fullDate: currentTimestamp.toIso8601String());
 
       await databaseHelperService.updateRating(newRating);
-
-      List<DayRatingModel> list =
-          await databaseHelperService.getRatingsByNewest(7);
-      print(list[0].toMap());
     }
+    onRateDay?.call();
   }
 }
