@@ -17,15 +17,14 @@ class ExercisesScreen extends StatelessWidget {
         builder: (context, viewModel, child) {
           if (viewModel.isLoading == true) {
             return const Center(
-              child: CircularProgressIndicator()
+              child: CircularProgressIndicator(),
             );
           }
           if (viewModel.isEmpty == true) {
             return const Center(
-              child: Text("Brak ćwiczeń do wyświetlenia")
+              child: Text("Brak ćwiczeń do wyświetlenia"),
             );
           }
-
           return Padding(
             padding: const EdgeInsets.all(7.5),
             child: GridView.builder(
@@ -38,14 +37,13 @@ class ExercisesScreen extends StatelessWidget {
               itemCount: viewModel.exercisesList.length,
               itemBuilder: (context, index) {
                 var exercise = viewModel.exercisesList[index];
-
                 return GestureDetector(
                   onTap: () {
                     viewModel.selectExercise(exercise.title);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ExercisesDetailsScreen()
+                        builder: (context) => const ExercisesDetailsScreen(),
                       ),
                     );
                   },
@@ -54,15 +52,41 @@ class ExercisesScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Center(
-                      child: Text(
-                        exercise.title,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            exercise.title,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20.0, bottom: 5.0, left: 5.0, right: 5.0),
+                          child: Container(
+                            width: 200.0,
+                            height: 160.0,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 10),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.network(
+                                exercise.image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 );

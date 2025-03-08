@@ -88,12 +88,6 @@ flutter:
         - "assets/exercises_images/meditacion.png"
         - "assets/exercises_images/physical_activity.png"
         - "assets/exercises_images/support_resources.png"
-        - "assets/exercises_images/biohacking_title.png"
-        - "assets/exercises_images/breathing_exercise_title.png"
-        - "assets/exercises_images/emotion_regulation_title.png"
-        - "assets/exercises_images/meditacion_title.png"
-        - "assets/exercises_images/physical_activity_title.png"
-        - "assets/exercises_images/support_resources_title.png"
         
         - "lib/UI/Exercises/data/exercises_data.json"
     # To add assets to your application, add an assets section, like this:
