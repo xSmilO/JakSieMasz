@@ -53,7 +53,5 @@ class ExercisesViewModel extends ChangeNotifier {
       tasksCompletion[title] = List.filled(selectedExercise.tasks.length, false);
       notifyListeners();
     }
-    //_selectedExercise = ExercisesDataSetup(title: "Not found", image: "Not found", description: "Not found", task_text: "Not found", tasks: [], link_text: "Not found", link_1: "Not found", link_2: "Not found");
-    //notifyListeners();
   }
 }

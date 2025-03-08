@@ -2,7 +2,7 @@
   "1": {
     "title": "Ćwiczenia Oddechowe",
     "image": "assets/exercises_images/breathe_example.png",
-    "description": "Ćwiczenie oddechowe poprawiają koncentrację i redukują stres. Powolne i świadome oddychanie aktywuje nerw błędny, co obniża poziom kortyzolu. Techniki oddechowe, takie jak box breathing, pomagają wyciszyć umysł i zmniejszyć objawy lęku. Ćwiczenia takie jak te są stosowane nie tylko przez zwykłych ludzi ale i sportowców jak i żołnierzy, chociażby Navy SEALs",
+    "description": "Ćwiczenie oddechowe poprawiają koncentrację i redukują stres. Powolne i świadome oddychanie aktywuje nerw błędny, co obniża poziom kortyzolu. Techniki oddechowe, takie jak box breathing, pomagają wyciszyć umysł i zmniejszyć objawy lęku. Ćwiczenia takie jak te są stosowane nie tylko przez zwykłych ludzi ale i sportowców jak i żołnierzy, chociażby Navy SEALs.",
     "task_text": "Zadania do wykonania każdego dnia",
     "tasks": [
       "Wdychaj powietrze przez nos przez 4 sekundy",
@@ -11,14 +11,14 @@
       "Wstrzymaj oddech na 4 sekundy",
       "Powtórz ćwiczenie całkowitą ilość 5 razy"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://www.psychiatriapolska.pl/pdf-146824-88959?filename=Uzytecznosc+technik.pdf",
+    "link_2": "https://yadda.icm.edu.pl/baztech/element/bwmeta1.element.baztech-52eda719-e357-4d69-8cc7-0900b16f62f7"
   },
   "2": {
     "title": "Biohacking",
     "image": "assets/exercises_images/running_example.png",
-    "description": "Używnie światła ma spory wpływ na samopoczucie oraz stan zdrowia. Ekspozycja na naturalne światło rano pomaga regulować rytm dobowy, poprawiając produkcję melatoniny i jakość snu. Unikanie sztucznego niebieskiego światła wieczorem redukuje zakłócenia w produkcji hormonów i wspiera regenerację organizmu. Sezonowe jedzenie dostosowane do pory roku wpływa na metabolizm – latem więcej węglowodanów wspiera aktywność, zimą tłuszcze pomagają w adaptacji do chłodu. To wszystko ma wpływ na to jak się czujesz oraz na to jak funkcjonujesz na codzień",
+    "description": "Używnie światła ma spory wpływ na samopoczucie oraz stan zdrowia. Ekspozycja na naturalne światło rano pomaga regulować rytm dobowy, poprawiając produkcję melatoniny i jakość snu. Unikanie sztucznego niebieskiego światła wieczorem redukuje zakłócenia w produkcji hormonów i wspiera regenerację organizmu. Sezonowe jedzenie dostosowane do pory roku wpływa na metabolizm – latem więcej węglowodanów wspiera aktywność, zimą tłuszcze pomagają w adaptacji do chłodu. To wszystko ma wpływ na to jak się czujesz oraz na to jak funkcjonujesz na codzień.",
     "task_text": "Zadania do wykonania trzy razy w tygodniu",
     "tasks": [
       "Wstań koło godziny 7:00 a następnie obmyj twarz zimną wodą",
@@ -27,9 +27,9 @@
       "W trakcie kożystania z telefonu lub będąc wystawionym na inne światło niebieskie korzystaj z okularów ograniczających to światło",
       "Wieczorem weź zimny prysznic korzystająć ze świateł produkujących podczerwień"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://www.environmed.pl/pdf-172890-94624?filename=Zaburzenia+snu+u+mlodych.pdf",
+    "link_2": "https://www.wbc.poznan.pl/Content/383002/index.pdf"
   },
   "3": {
     "title": "Aktywność fizyczna",
@@ -42,9 +42,9 @@
       "Chwile poskacz w miejscu by pobudzić ogranizm do działania jeszcze bardziej",
       "Po zakończonej rozgrzewce zjedz pożywny posiłek"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://wsparciepsychologiczne.psrp.org.pl/wplyw-aktywnosci-fizycznej-na-zdrowie-psychiczne",
+    "link_2": "https://paderewski.lublin.pl/edukacja-i-inspiracje/pl/jak-aktywnosc-fizyczna-pomaga-w-nauce"
   },
   "4": {
     "title": "Medytacja",
@@ -57,9 +57,9 @@
       "Oddychaj głęboko i naturalnie. Skoncentruj się na wdechu i wydechu, czując, jak powietrze wchodzi i wychodzi przez nos",
       "Na koniec pomyśl o czymś, za co jesteś wdzięczny, lub wyobraź sobie pozytywny scenariusz przyszłości"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://www.cochrane.org/pl/CD013358/VASC_czy-medytacja-pomaga-zapobiegac-rozwojowi-chorob-sercowo-naczyniowych-lub-ich-pogorszeniu",
+    "link_2": "https://medytuje.pl/medytacja-a-neuronauka-czyli-jak-przebudowac-swoj-mozg"
   },
   "5": {
     "title": "Zasoby wspierające",
@@ -72,9 +72,9 @@
       "Znajdź czas by wykonać czynność która wyszła z wcześniejszego zadania przynajmniej raz w ciągu dnia",
       "Zastanów się nad drogą w której chcesz się rozwijać. Niezależnie czy jest to praca czy hobby"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://vita-nova.pl/blog/rola-rodziny-w-procesie-leczenia-uzaleznien-jak-wspierac-bliskich",
+    "link_2": "https://psych.waw.pl/co-to-zdrowie-psychiczne-zrozumienie-znaczenie-i-jego-wplyw-na-zycie"
   },
   "6": {
     "title": "Regulacja emocji",
@@ -87,8 +87,8 @@
       "Wykonaj czynność która sprawia ci radość",
       "Po odczekaniu 30min ponownie oceń swoje samopoczucie w naszej aplikacji"
     ],
-    "link_text": "Link do badań na ten temat",
-    "link_1": "herewillbethelinktothepage.com",
-    "link_2": "herewillbethelinktothepage.com"
+    "link_text": "Link do artykułów oraz badań na ten temat",
+    "link_1": "https://sferazycia.pl/muzyka-solfezowa",
+    "link_2": "https://e-konferencje.pl/artykuly/kamertony-dzwiek-ktory-leczy"
   }
 }
