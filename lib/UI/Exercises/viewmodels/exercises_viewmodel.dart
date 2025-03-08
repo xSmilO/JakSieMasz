@@ -5,7 +5,8 @@ import 'package:jak_sie_masz/UI/Exercises/data/exercises_data_setup.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   List<ExercisesDataSetup> _exercises = [];
-  ExercisesDataSetup _selectedExercise = ExercisesDataSetup(title: "", description: "", image: "", link: "");
+  ExercisesDataSetup _selectedExercise = ExercisesDataSetup(title: "", image: "", description: "", task_text: "", tasks: [], link_text: "", link_1: "", link_2: "");
+  Map<String, List<bool>> tasksCompletion = {};
 
   bool _isLoading = true;
   bool _isEmpty = false;
@@ -48,13 +49,11 @@ class ExercisesViewModel extends ChangeNotifier {
 
   void selectExercise(String title) {
     for (var exercise in _exercises) {
-      if (exercise.title == title) {
-        _selectedExercise = exercise;
-        notifyListeners();
-        return;
-      }
+      _selectedExercise = exercisesList.firstWhere((e) => e.title == title);
+      tasksCompletion[title] = List.filled(selectedExercise.tasks.length, false);
+      notifyListeners();
     }
-    _selectedExercise = ExercisesDataSetup(title: "Not found", description: "Not found", image: "Not found", link: "Not found");
-    notifyListeners();
+    //_selectedExercise = ExercisesDataSetup(title: "Not found", image: "Not found", description: "Not found", task_text: "Not found", tasks: [], link_text: "Not found", link_1: "Not found", link_2: "Not found");
+    //notifyListeners();
   }
 }
