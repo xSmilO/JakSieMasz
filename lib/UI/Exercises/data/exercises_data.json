@@ -1,7 +1,7 @@
 {
   "1": {
     "title": "Ćwiczenia Oddechowe",
-    "image": "assets/exercises_images/breathe_example.png",
+    "image": "assets/exercises_images/breathing_exercise.png",
     "description": "Ćwiczenie oddechowe poprawiają koncentrację i redukują stres. Powolne i świadome oddychanie aktywuje nerw błędny, co obniża poziom kortyzolu. Techniki oddechowe, takie jak box breathing, pomagają wyciszyć umysł i zmniejszyć objawy lęku. Ćwiczenia takie jak te są stosowane nie tylko przez zwykłych ludzi ale i sportowców jak i żołnierzy, chociażby Navy SEALs.",
     "task_text": "Zadania do wykonania każdego dnia",
     "tasks": [
@@ -17,7 +17,7 @@
   },
   "2": {
     "title": "Biohacking",
-    "image": "assets/exercises_images/running_example.png",
+    "image": "assets/exercises_images/biohacking.png",
     "description": "Używnie światła ma spory wpływ na samopoczucie oraz stan zdrowia. Ekspozycja na naturalne światło rano pomaga regulować rytm dobowy, poprawiając produkcję melatoniny i jakość snu. Unikanie sztucznego niebieskiego światła wieczorem redukuje zakłócenia w produkcji hormonów i wspiera regenerację organizmu. Sezonowe jedzenie dostosowane do pory roku wpływa na metabolizm – latem więcej węglowodanów wspiera aktywność, zimą tłuszcze pomagają w adaptacji do chłodu. To wszystko ma wpływ na to jak się czujesz oraz na to jak funkcjonujesz na codzień.",
     "task_text": "Zadania do wykonania trzy razy w tygodniu",
     "tasks": [
@@ -33,7 +33,7 @@
   },
   "3": {
     "title": "Aktywność fizyczna",
-    "image": "assets/exercises_images/pull_up_example.png",
+    "image": "assets/exercises_images/physical_activity.png",
     "description": "Ćwiczenia fizyczne mają ogromny wpływ na poprawę samopoczucia – zarówno fizycznego, jak i psychicznego. Pobudzają wydzielanie endorfin, które poprawiają nastrój i redukują poziom kortyzolu – hormonu stresu. Regularna aktywność fizyczna zwiększa wydolność organizmu, co przekłada się na większą energię w ciągu dnia i mniejsze uczucie zmęczenia. Ponadto osoby ćwiczące regularnie często zasypiają szybciej i śpią głębiej, co przekłada się na lepszą regenerację organizmu. Badania wskazują, że poprawa sylwetki, kondycji i ogólnego samopoczucia wzmacnia samoocenę i pomaga poczuć się lepiej we własnym ciele. Na dodatek aktywności fizyczne poprawiają krążenie krwi, co zwiększa dopływ tlenu do mózgu, wspierając koncentrację, pamięć i kreatywność.",
     "task_text": "Zadania do wykonania każdego dnia",
     "tasks": [
@@ -48,7 +48,7 @@
   },
   "4": {
     "title": "Medytacja",
-    "image": "assets/exercises_images/meditation_example.png",
+    "image": "assets/exercises_images/meditacion.png",
     "description": "Medytacja pomaga w redukcji stresu i poprawia ogólne samopoczucie. Regularna praktyka obniża poziom kortyzolu, co prowadzi do większego spokoju i lepszego radzenia sobie z codziennymi wyzwaniami. Regularna medytacja może obniżyć ciśnienie krwi i zmniejszyć ryzyko chorób sercowo-naczyniowych. Medytacja wzmacnia odporność psychiczną, pomagając w walce z lękiem i depresją. Pobudza działanie kory przedczołowej, co zwiększa zdolność do podejmowania świadomych decyzji i rozwiązywania problemów.",
     "task_text": "Zadania do wykonania raz w tygodniu",
     "tasks": [
@@ -63,7 +63,7 @@
   },
   "5": {
     "title": "Zasoby wspierające",
-    "image": "assets/exercises_images/climbing_example.png",
+    "image": "assets/exercises_images/support_resources.png",
     "description": "Zasoby, rzeczy, osoby które mają na ciebie pozytywny wpływ lub pomagają ci się spełniać. Rodzina a także profesjonalna pomoc psychologiczna (zajrzyj na nasz profil z psychologami :D) dostarcza narzędzi do radzenia sobie z negatywnymi myślami i emocjami. Zdrowe nawyki, takie jak ruch, odpowiednia dieta czy techniki relaksacyjne, wspierane przez otoczenie, mogą poprawić stan psychiczny. Dostęp do rzetelnych informacji o depresji pomaga lepiej zrozumieć chorobę i skutecznie szukać pomocy.",
     "task_text": "Zadania do wykonania raz w tygodniu",
     "tasks": [
@@ -78,7 +78,7 @@
   },
   "6": {
     "title": "Regulacja emocji",
-    "image": "assets/exercises_images/relaxation_example.png",
+    "image": "assets/exercises_images/emotion_regulation.png",
     "description": "Ćwiczenia pomagają redukować negatywne emocje oraz poprawić samopoczucie. Pozytywny wpływ ma również muzykoterapia. Słuchanie muzyki o częstotliwości 528hz poprawia się rozluźnić a co za tym idzie również pomaga w utrzymaniu pozytywanego nastawienia do życia. Znaleźienie czynności która sprawia ci przyjemność oraz częste wykonywanie jej także ma wpływ na to jak twój organizm reaguje na inne bodźce.",
     "task_text": "Zadania do wykonania każdego dnia",
     "tasks": [

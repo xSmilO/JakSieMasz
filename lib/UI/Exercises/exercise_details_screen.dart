@@ -104,12 +104,12 @@ class ExercisesDetailsScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 2.5), // Odstęp 10px od góry
+                      padding: const EdgeInsets.only(top: 2.5),
                       child: InkWell(
                         onTap: () async {
                           final Uri url = Uri.parse(exercise.link_1);
                           if (await canLaunchUrl(url)) {
-                            await launchUrl(url); // Otwórz link
+                            await launchUrl(url);
                           } else {
                             throw 'Could not launch $url';
                           }
@@ -120,18 +120,18 @@ class ExercisesDetailsScreen extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 15,
                             color: Colors.blue,
-                            decoration: TextDecoration.underline, // Używamy podkreślenia, aby zaznaczyć link
+                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 2.5), // Odstęp 10px od góry
+                      padding: const EdgeInsets.only(top: 2.5),
                       child: InkWell(
                         onTap: () async {
                           final Uri url = Uri.parse(exercise.link_2);
                           if (await canLaunchUrl(url)) {
-                            await launchUrl(url); // Otwórz link
+                            await launchUrl(url);
                           } else {
                             throw 'Could not launch $url';
                           }
@@ -142,7 +142,7 @@ class ExercisesDetailsScreen extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 15,
                             color: Colors.blue,
-                            decoration: TextDecoration.underline, // Używamy podkreślenia, aby zaznaczyć link
+                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
