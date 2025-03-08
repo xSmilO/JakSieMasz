@@ -6,12 +6,12 @@ class NavigationViewmodel extends ChangeNotifier {
       : _navigationService = navigationService;
 
   int selectedPageIdx = 2;
-  NavigationService _navigationService;
+  final NavigationService _navigationService;
 
   void setPageIdx(int idx) {
     _navigationService.setPage(idx);
     selectedPageIdx = _navigationService.selectedPageIdx;
-    print("page idx ${idx}");
+    print("page idx $idx");
     notifyListeners();
   }
 }

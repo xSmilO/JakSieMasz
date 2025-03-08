@@ -1,13 +1,13 @@
+import 'dart:math';
+
 import 'package:jak_sie_masz/Data/day_rating_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelperService {
-  static final DatabaseHelperService instance =
-      DatabaseHelperService._internal();
-  static Database? _database;
+  Database? _database;
 
-  DatabaseHelperService._internal();
+  DatabaseHelperService();
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initDatabase();
@@ -93,8 +93,54 @@ class DatabaseHelperService {
         rating: first['rating'] as int);
   }
 
+  Future<List<DayRatingModel>> getRatingsByNewest(int range) async {
+    final db = await database;
+
+    final List<Map<String, Object?>> ratingsMaps =
+        await db.query('day_ratings', orderBy: 'fullDate DESC', limit: range);
+
+    return [
+      for (final {
+            'id': id as int,
+            'date': date as String,
+            'fullDate': fullDate as String,
+            'rating': rating as int
+          } in ratingsMaps)
+        DayRatingModel(id: id, date: date, fullDate: fullDate, rating: rating)
+    ];
+  }
+
   Future<void> deleteData() async {
     final db = await database;
     db.delete("day_ratings");
+  }
+
+  Future<void> insertRatingsForTest() async {
+    int daysToGenerate = 30;
+    DateTime now = DateTime.now();
+    Random rng = Random();
+    for (int i = 0; i < daysToGenerate; ++i) {
+      DateTime date = now.subtract(Duration(days: i));
+      int rating = rng.nextInt(9) + 1;
+      // rating = i + 1;
+
+      String dateStr = "${date.day}.${date.month}.${date.year}";
+      DayRatingModel model = DayRatingModel(
+          date: dateStr, fullDate: date.toIso8601String(), rating: rating);
+
+      DayRatingModel? todaysRating = await findRatingByDate(dateStr);
+
+      if (todaysRating == null) {
+        insertRating(model);
+      } else {
+        DayRatingModel newRating = DayRatingModel(
+            id: todaysRating.id,
+            date: todaysRating.date,
+            rating: rating,
+            fullDate: date.toIso8601String());
+
+        await updateRating(newRating);
+      }
+    }
   }
 }
