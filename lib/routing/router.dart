@@ -20,8 +20,7 @@ GoRouter router() => GoRouter(
       redirect: (context, state) async {
         String? username =
             await SharedPreferencesService().fetchString("username");
-        print(username);
-        return username == null ? Routes.welcome : Routes.home;
+        return username == null ? Routes.welcome : null;
       },
       routes: [
         StatefulShellRoute.indexedStack(
@@ -61,7 +60,9 @@ GoRouter router() => GoRouter(
         ),
         GoRoute(
           path: Routes.welcome,
-          builder: (context, state) => WelcomeScreen(),
+          builder: (context, state) => WelcomeScreen(
+            userRepository: context.read(),
+          ),
         )
       ],
     );
