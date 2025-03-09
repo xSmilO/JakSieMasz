@@ -26,7 +26,7 @@ class ChatDrawerWidget extends StatelessWidget {
                 child: GestureDetector(
                   onTap: viewModel.toggleDrawer,
                   child: Container(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withValues(alpha: 0.5),
                   ),
                 ),
               ),

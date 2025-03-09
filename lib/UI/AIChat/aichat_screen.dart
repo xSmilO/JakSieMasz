@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'viewmodels/aichat_viewmodel.dart';
 import 'widgets/chat_drawer_widget.dart';
 import 'widgets/chat_message_list_widget.dart';
-import 'widgets/topics_list_widget.dart';
 
 class AIChatScreen extends StatefulWidget {
   const AIChatScreen({super.key});
