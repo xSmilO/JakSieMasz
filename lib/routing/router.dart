@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
 import 'package:jak_sie_masz/UI/AIChat/aichat_screen.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercises_screen.dart';
 import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
 import 'package:jak_sie_masz/UI/Shared/Layout_widget.dart';
+import 'package:jak_sie_masz/UI/Welcome/welcome_screen.dart';
 import 'package:jak_sie_masz/routing/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +17,12 @@ GoRouter router() => GoRouter(
       initialLocation: Routes.home,
       debugLogDiagnostics: true,
       navigatorKey: _rootNavigatorKey,
+      redirect: (context, state) async {
+        String? username =
+            await SharedPreferencesService().fetchString("username");
+        print(username);
+        return username == null ? Routes.welcome : Routes.home;
+      },
       routes: [
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => LayoutWidget(
@@ -50,6 +58,10 @@ GoRouter router() => GoRouter(
               ],
             )
           ],
+        ),
+        GoRoute(
+          path: Routes.welcome,
+          builder: (context, state) => WelcomeScreen(),
         )
       ],
     );
