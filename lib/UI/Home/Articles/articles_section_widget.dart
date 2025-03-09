@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/Articles/article_widget.dart';
+import 'package:jak_sie_masz/UI/Home/viewmodels/articles_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-class ArticlesSectionWidget extends StatelessWidget {
-  const ArticlesSectionWidget({super.key});
+class ArticlesSectionWidget extends StatefulWidget {
+  const ArticlesSectionWidget({super.key, required this.viewmodel});
+  final ArticlesViewmodel viewmodel;
+
+  @override
+  State<ArticlesSectionWidget> createState() => _ArticlesSectionWidgetState();
+}
+
+class _ArticlesSectionWidgetState extends State<ArticlesSectionWidget> {
+  @override
+  void initState() {
+    super.initState();
+    widget.viewmodel.loadData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,25 +83,33 @@ class ArticlesSectionWidget extends StatelessWidget {
             constraints: BoxConstraints(
               maxHeight: 240,
             ),
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              clipBehavior: Clip.none,
-              children: [
-                ArticleWidget(
-                  title: "Problem ze stresem ?",
-                  description:
-                      "Naukowcy z Ameryki prkeprowadzili badania na temat radzenia sobie ze stresem.",
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                ArticleWidget(
-                  title: "Problem ze stresem ?",
-                  description:
-                      "Naukowcy z Ameryki prkeprowadzili badania na temat radzenia sobie ze stresem.",
-                ),
-              ],
+            child: Consumer<ArticlesViewmodel>(
+              builder: (context, value, child) {
+                print(value.articles.isEmpty);
+                List<Widget> children = [];
+
+                for (int i = 0; i < value.articles.length; ++i) {
+                  children.add(
+                    ArticleWidget(
+                      title: value.articles[i].title,
+                      description: value.articles[i].description,
+                      imgUrl: value.articles[i].imgUrl,
+                      url: value.articles[i].url,
+                    ),
+                  );
+
+                  children.add(SizedBox(
+                    width: 16,
+                  ));
+                }
+
+                return ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  clipBehavior: Clip.none,
+                  children: children,
+                );
+              },
             ),
           ),
         ],

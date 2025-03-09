@@ -3,13 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 
 class ArticleButtonWidget extends StatelessWidget {
-  const ArticleButtonWidget({super.key});
+  const ArticleButtonWidget({super.key, required this.callback});
+
+  final Function callback;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () {
-          print("rate day");
+          callback();
         },
         style: ButtonStyle(
             alignment: Alignment.center,

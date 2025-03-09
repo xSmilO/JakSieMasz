@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/Articles/article_button_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ArticleWidget extends StatelessWidget {
   const ArticleWidget({
     super.key,
     required this.title,
     required this.description,
+    required this.imgUrl,
+    required this.url,
   });
 
   final String title;
   final String description;
+  final String imgUrl;
+  final String url;
+
+  Future<void> _launchUrl() async {
+    final Uri _url = Uri.parse(url);
+    await launchUrl(_url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +62,7 @@ class ArticleWidget extends StatelessWidget {
               ),
               clipBehavior: Clip.hardEdge,
               child: Image.asset(
-                "assets/images/article-1.jpg",
+                imgUrl,
                 fit: BoxFit.fill,
                 color: Styles.primaryColor500.withAlpha(178),
                 colorBlendMode: BlendMode.srcOver,
@@ -83,15 +93,19 @@ class ArticleWidget extends StatelessWidget {
                       description,
                       style: TextStyle(
                         color: Styles.fontColorDark,
+                        overflow: TextOverflow.ellipsis,
                         fontFamily: Styles.fontFamily,
                         fontSize: 10,
                         fontWeight: FontWeight.w300,
                         decoration: TextDecoration.none,
                       ),
+                      maxLines: 4,
                     ),
                   ],
                 ),
-                ArticleButtonWidget(),
+                ArticleButtonWidget(
+                  callback: _launchUrl,
+                ),
               ],
             ),
           ),
