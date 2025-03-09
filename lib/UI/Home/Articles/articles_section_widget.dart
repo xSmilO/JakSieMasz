@@ -85,7 +85,6 @@ class _ArticlesSectionWidgetState extends State<ArticlesSectionWidget> {
             ),
             child: Consumer<ArticlesViewmodel>(
               builder: (context, value, child) {
-                print(value.articles.isEmpty);
                 List<Widget> children = [];
 
                 for (int i = 0; i < value.articles.length; ++i) {

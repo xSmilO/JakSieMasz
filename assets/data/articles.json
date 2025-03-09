@@ -6,9 +6,27 @@
         "url": "https://zawadablog.pl/?p=70"
     },
     {
-        "title": "Pizda gola i wesola",
-        "description": "W tym  dowiesz się, dlaczego picie wodki powieksza kutasa",
-        "img_url": "assets/articles/article-1.jpg",
-        "url": "https://zawadablog.pl/?p=70"
+        "title": "Dieta a samopoczucie. Jak jedzenie wpływa na nastrój?",
+        "description": "Masz gorszy dzień? Z pomocą przychodzi odpowiednia dieta! To, co jesz, ma niebagatelny wpływ na nastrój i zdrowie psychiczne, zdecydowanie warto więc poznać dietę na dobre samopoczucie. Sprawdź, jakie produkty mogą Ci w tym pomóc! ",
+        "img_url": "assets/articles/article-2.jpg",
+        "url": "https://centrumrespo.pl/zdrowie/dieta-a-samopoczucie/"
+    },
+    {
+        "title": "Zdrowie psychiczne jest równie ważne jak fizyczne",
+        "description": "Aż 89 proc. Europejczyków uważa, że zdrowie psychiczne jest równie ważne jak zdrowie fizyczne. Jednocześnie około połowy respondentów jest zdania, że osoby z problemami psychicznymi mają taki sam dostęp do opieki jak ludzie cierpiący na inne choroby",
+        "img_url": "assets/articles/article-4.jpg",
+        "url": "https://pulsmedycyny.pl/medycyna/psychologia-i-psychiatria/zdrowie-psychiczne-jest-rownie-wazne-jak-fizyczne-raport/"
+    },
+    {
+        "title": "Aktywność fizyczna: Istotne korzyści dla zdrowia",
+        "description": "Aktywność fizyczna jest fundamentalnym elementem zdrowego stylu życia. Badania naukowe nieustannie dowodzą, że regularne ćwiczenia fizyczne przynoszą wielorakie korzyści dla zdrowia, wpływając na poprawę jakości życia i zwiększając długowieczność. ",
+        "img_url": "assets/articles/article-5.jpg",
+        "url": "https://osteomedic.com.pl/blog/aktywnosc-fizyczna-zalety"
+    },
+    {
+        "title": "Odpoczynek dla zdrowia i dobrostanu",
+        "description": "Odpoczynek jest integralnym elementem zdrowego stylu życia, równie ważnym jak odpowiednia dieta i regularna aktywność fizyczna. O tym jak odpoczywać i ile czasu powinniśmy poświęcić na relaks mówi Franciszek Ostaszewski, psycholog z Uniwersytetu SWPS.",
+        "img_url": "assets/articles/article-3.jpg",
+        "url": "https://swps.pl/centrum-prasowe/informacje-prasowe/34029-odpoczynek-dla-zdrowia-i-dobrostanu"
     }
 ]

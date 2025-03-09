@@ -18,8 +18,8 @@ class ArticleWidget extends StatelessWidget {
   final String url;
 
   Future<void> _launchUrl() async {
-    final Uri _url = Uri.parse(url);
-    await launchUrl(_url);
+    final Uri uri = Uri.parse(url);
+    await launchUrl(uri);
   }
 
   @override
@@ -49,6 +49,7 @@ class ArticleWidget extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(bottom: 60),
               height: 112,
+              width: 168,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
