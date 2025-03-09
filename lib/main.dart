@@ -8,6 +8,7 @@ import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
 import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Home/viewmodels/articles_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
@@ -67,6 +68,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (context) => ExercisesViewModel(),
         ),
+        ChangeNotifierProvider(create: (context) => ArticlesViewmodel())
       ],
       child: MainApp(),
     ),
