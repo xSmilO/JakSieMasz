@@ -22,6 +22,7 @@ class DatabaseHelperService {
       path,
       version: 1,
       onCreate: (db, version) async {
+        // create day_ratings
         await db.execute('''
         CREATE TABLE day_ratings (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,6 +31,7 @@ class DatabaseHelperService {
           rating INTEGER NOT NULL
         )
        ''');
+        // create chat messages table
       },
     );
   }
