@@ -51,6 +51,8 @@ class _RateChartWidgetState extends State<RateChartWidget> {
                   .inDays -
               1;
 
+          if (x < 0) continue;
+
           dataSpots.add(
             FlSpot(
               x.toDouble(),

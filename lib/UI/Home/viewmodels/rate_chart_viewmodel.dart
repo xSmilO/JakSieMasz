@@ -26,7 +26,6 @@ class RateChartViewmodel extends ChangeNotifier {
   Future<void> fetchRates() async {
     ratings = await databaseHelperService
         .getRatingsByNewest(_timespans[_activeTimespanId]);
-    // ratings = await _databaseHelperService.getRatingsByNewest(3);
     notifyListeners();
   }
 
