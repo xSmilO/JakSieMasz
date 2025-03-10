@@ -7,10 +7,20 @@ class ExercisesDataSetup {
   final String link_text;
   final String link_1;
   final String link_2;
+  final int id;
+  ExercisesDataSetup({
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.description,
+    required this.task_text,
+    required this.tasks,
+    required this.link_text,
+    required this.link_1,
+    required this.link_2,
+  });
 
-  ExercisesDataSetup({required this.title, required this.image, required this.description, required this.task_text, required this.tasks, required this.link_text, required this.link_1, required this.link_2});
-
-  factory ExercisesDataSetup.fromJson(Map<String, dynamic> json) {
+  factory ExercisesDataSetup.fromJson(String _id, Map<String, dynamic> json) {
     String title = "";
     String image = "";
     String description = "";
@@ -19,6 +29,7 @@ class ExercisesDataSetup {
     String link_text = "";
     String link_1 = "";
     String link_2 = "";
+    int id = int.parse(_id);
 
     if (json.containsKey('title') && json['title'] is String) {
       title = json['title'];
@@ -46,6 +57,7 @@ class ExercisesDataSetup {
     }
 
     return ExercisesDataSetup(
+      id: id,
       title: title,
       image: image,
       description: description,
@@ -53,7 +65,7 @@ class ExercisesDataSetup {
       tasks: tasks,
       link_text: link_text,
       link_1: link_1,
-      link_2: link_2
+      link_2: link_2,
     );
   }
 }

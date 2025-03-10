@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Exercises/exercise_task_checkbox.dart';
+import 'package:jak_sie_masz/UI/Exercises/reset_exercise_buttton_widget.dart';
+import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercise_task_checkbox_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
+import 'package:jak_sie_masz/UI/Exercises/viewmodels/reset_exercise_button_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ExercisesDetailsScreen extends StatelessWidget {
-  const ExercisesDetailsScreen({super.key});
+  final ExerciseProgressRepository repository;
+  final List<ExerciseTaskCheckbox> checkboxes = [];
+  ExercisesDetailsScreen({super.key, required this.repository});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +23,7 @@ class ExercisesDetailsScreen extends StatelessWidget {
       body: Consumer<ExercisesViewModel>(
         builder: (context, viewModel, child) {
           final exercise = viewModel.selectedExercise;
+          repository.reserveSpace(exercise.id, exercise.tasks.length);
 
           return SingleChildScrollView(
             child: Padding(
@@ -46,54 +53,42 @@ class ExercisesDetailsScreen extends StatelessWidget {
                       exercise.description,
                       style: const TextStyle(fontSize: 18),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        exercise.task_text,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                        ),
+                    Text(
+                      textAlign: TextAlign.center,
+                      exercise.task_text,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
                     ),
                     Column(
                       children: List.generate(
                         exercise.tasks.length,
                         (index) {
-                        bool isChecked = viewModel.tasksCompletion[exercise.title]?[index] ?? false;
+                          ExerciseTaskCheckbox checkbox = ExerciseTaskCheckbox(viewmodel: ExerciseTaskCheckboxViewmodel(repository: repository, exerciseID: exercise.id, taskID: index));
+
+                          checkboxes.add(checkbox);
+
                           return Padding(
-                            padding: const EdgeInsets.only(left: 25.0, right: 11.5),
+                            padding:
+                                const EdgeInsets.only(left: 25.0, right: 11.5),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Checkbox(
-                                  value: isChecked,
-                                  onChanged: (bool? value) {
-                                    viewModel.tasksCompletion[exercise.title]![index] = value!;
-                                    viewModel.notifyListeners();
-                                  },
-                                  activeColor: Colors.green,
-                                  checkColor: Colors.white,
-                                ),
                                 Expanded(
                                   child: Text(
                                     exercise.tasks[index],
-                                    style: TextStyle(
-                                    fontSize: 12,
-                                    color: isChecked ? Colors.black : Colors.grey,
-                                    fontWeight: isChecked ? FontWeight.bold : FontWeight.normal,
-                                    ),
-                                  softWrap: true,
-                                  overflow: TextOverflow.visible,
-                                   ),
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
                                 ),
+                                checkbox
                               ],
                             ),
                           );
                         },
                       ),
                     ),
+                    ResetExerciseButtton(viewmodel: ResetExerciseButtonViewmodel(repository: repository, checkboxes: checkboxes), exerciseID: exercise.id, tasksCount: exercise.tasks.length),
                     const SizedBox(height: 20),
                     Text(
                       textAlign: TextAlign.center,
@@ -103,48 +98,20 @@ class ExercisesDetailsScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.5),
-                      child: InkWell(
-                        onTap: () async {
-                          final Uri url = Uri.parse(exercise.link_1);
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          exercise.link_1,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
+                    Text(
+                      textAlign: TextAlign.center,
+                      exercise.link_1,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.blue,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.5),
-                      child: InkWell(
-                        onTap: () async {
-                          final Uri url = Uri.parse(exercise.link_2);
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          exercise.link_2,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
+                    Text(
+                      textAlign: TextAlign.center,
+                      exercise.link_2,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.blue,
                       ),
                     ),
                   ],

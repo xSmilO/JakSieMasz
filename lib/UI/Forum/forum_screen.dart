@@ -6,49 +6,17 @@ class ForumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Stack(
-        children: [
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-                color: Styles.primaryColor500,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFF7CE9B4),
-                    offset: Offset(0, 4),
-                    blurRadius: 12,
-                    spreadRadius: -1,
-                  ),
-                ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-            child: Flex(
-              direction: Axis.vertical,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 48),
-                  child: Text(
-                    "Witaj siema",
-                    style: TextStyle(
-                      fontFamily: Styles.fontFamily,
-                      color: Colors.white,
-                      decoration: TextDecoration.none,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 24,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+    return Center(
+      child: Text(
+        "Niestety musimy ciebie zasmucić, ale forum jest w budowli 👷‍♀️",
+        style: TextStyle(
+          fontFamily: Styles.fontFamily,
+          fontWeight: FontWeight.normal,
+          fontSize: Styles.fontSizeH2,
+          decoration: TextDecoration.none,
+          color: Styles.fontColorDark,
+        ),
+        textAlign: TextAlign.center,
       ),
     );
   }

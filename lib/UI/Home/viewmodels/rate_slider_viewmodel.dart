@@ -9,7 +9,7 @@ class RateSliderViewmodel extends ChangeNotifier {
 
   void setCurrentIndex(int index) {
     if (index != rateSliderRepository.index) {
-      print("new index ${index}");
+      print("new index $index");
       rateSliderRepository.setIndex(index);
       currentIndex = index;
       calculatePointerPosition();

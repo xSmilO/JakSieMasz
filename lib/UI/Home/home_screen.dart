@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
-import 'package:jak_sie_masz/UI/Home/rate_container_widget.dart';
+import 'package:jak_sie_masz/UI/Home/Articles/articles_section_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_section_widget.dart';
+import 'package:jak_sie_masz/UI/Home/RateDay/rate_container_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.userRepository});
@@ -18,14 +21,23 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     username = widget.userRepository.getUsername();
+    widget.userRepository.onUsernameChange = this.loadUserName;
+  }
+
+  void loadUserName(String newUsername) {
+    setState(() {
+      username = widget.userRepository.getUsername();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Container(
+            key: Key("green decoration box"),
             height: 200,
             decoration: BoxDecoration(
                 color: Styles.primaryColor500,
@@ -49,11 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 48),
+                  margin: EdgeInsets.only(top: 16),
                   child: FutureBuilder(
                     builder: (context, snapshot) {
                       return Text(
-                        "Witaj ${snapshot.data}!",
+                        snapshot.connectionState == ConnectionState.waiting
+                            ? "Witaj User"
+                            : "Witaj ${snapshot.data}!",
                         style: TextStyle(
                           fontFamily: Styles.fontFamily,
                           color: Colors.white,
@@ -67,6 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 RateContainerWidget(),
+                RateChartSectionWidget(),
+                ArticlesSectionWidget(
+                  viewmodel: context.read(),
+                ),
+                SizedBox(
+                  height: 32,
+                )
               ],
             ),
           ),

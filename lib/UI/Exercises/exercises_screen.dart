@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,9 @@ class ExercisesScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ExercisesDetailsScreen(),
+                        builder: (context) => ExercisesDetailsScreen(
+                          repository: ExerciseProgressRepository(),
+                        ),
                       ),
                     );
                   },
@@ -69,17 +72,19 @@ class ExercisesScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20.0, bottom: 5.0, left: 5.0, right: 5.0),
+                          padding: const EdgeInsets.only(
+                              top: 20.0, bottom: 5.0, left: 5.0, right: 5.0),
                           child: Container(
                             width: 200.0,
                             height: 160.0,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 10),
+                              border:
+                                  Border.all(color: Colors.black, width: 10),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5),
-                              child: Image.network(
+                              child: Image.asset(
                                 exercise.image,
                                 fit: BoxFit.cover,
                               ),
