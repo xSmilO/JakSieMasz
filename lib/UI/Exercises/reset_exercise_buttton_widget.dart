@@ -7,48 +7,49 @@ class ResetExerciseButtton extends StatelessWidget {
   final int exerciseID;
   final int tasksCount;
 
-  const ResetExerciseButtton({super.key, required this.viewmodel, required this.exerciseID, required this.tasksCount});
+  const ResetExerciseButtton(
+      {super.key,
+      required this.viewmodel,
+      required this.exerciseID,
+      required this.tasksCount});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () async {
-        await viewmodel.uncheckCheckboxes(exerciseID, tasksCount);
-      },
-      style: ButtonStyle(
-        alignment: Alignment.center,
-        backgroundColor: WidgetStatePropertyAll(Styles.primaryColor100),
-        padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(
-          RoundedRectangleBorder(
-            side: BorderSide(
-              color: Styles.primaryColor500,
-              width: 1,
+        onPressed: () async {
+          await viewmodel.uncheckCheckboxes(exerciseID, tasksCount);
+        },
+        style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Styles.secondaryColor100),
+            padding: WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Styles.secondaryColor500,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32),
+                ),
+              ),
             ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(12),
+            minimumSize: WidgetStatePropertyAll(
+              Size(10, 10),
+            )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 12,
+          ),
+          child: Text(
+            "zacznij od nowa",
+            style: TextStyle(
+              fontFamily: Styles.fontFamily,
+              color: Styles.secondaryColor500,
+              fontSize: Styles.fontSizeP,
+              fontWeight: FontWeight.w500,
             ),
           ),
-        ),
-        minimumSize: WidgetStatePropertyAll(
-          Size(20, 20),
-        )
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 32,
-          vertical: 4,
-        ),
-        child: Text(
-          "zacznij od nowa",
-          style: TextStyle(
-            fontFamily: Styles.fontFamily,
-            color: Styles.primaryColor500,
-            fontSize: 16,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-      ) 
-    );
+        ));
   }
 }

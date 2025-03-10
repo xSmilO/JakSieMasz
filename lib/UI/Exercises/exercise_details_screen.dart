@@ -1,3 +1,7 @@
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jak_sie_masz/UI/Exercises/exercise_details_header_widget.dart';
+import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
@@ -15,112 +19,181 @@ class ExercisesDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Szczegóły ćwiczenia"),
-        backgroundColor: Styles.primaryColor500,
-      ),
-      body: Consumer<ExercisesViewModel>(
-        builder: (context, viewModel, child) {
-          final exercise = viewModel.selectedExercise;
-          repository.reserveSpace(exercise.id, exercise.tasks.length);
-
-          return SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30.0),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+    return Consumer<ExercisesViewModel>(
+      builder: (context, viewModel, child) {
+        final exercise = viewModel.selectedExercise;
+        repository.reserveSpace(exercise.id, exercise.tasks.length);
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                key: Key("title"),
+                height: 300,
+                child: Stack(
+                  fit: StackFit.expand,
                   children: [
-                    Text(
-                      exercise.title,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    Image.asset(
+                      exercise.image,
+                      fit: BoxFit.cover,
+                      color: Styles.primaryColor500.withAlpha(178),
+                      colorBlendMode: BlendMode.srcOver,
+                    ),
+                    Center(
+                      child: Text(
+                        exercise.title,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: Styles.fontFamily,
+                          fontSize: Styles.fontSizeH1,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 200,
-                      height: 200,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Image.asset(exercise.image),
-                      ),
-                    ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      exercise.description,
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      exercise.task_text,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Column(
-                      children: List.generate(
-                        exercise.tasks.length,
-                        (index) {
-                          ExerciseTaskCheckbox checkbox = ExerciseTaskCheckbox(viewmodel: ExerciseTaskCheckboxViewmodel(repository: repository, exerciseID: exercise.id, taskID: index));
-
-                          checkboxes.add(checkbox);
-
-                          return Padding(
-                            padding:
-                                const EdgeInsets.only(left: 25.0, right: 11.5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    exercise.tasks[index],
-                                    style: const TextStyle(fontSize: 12),
-                                  ),
-                                ),
-                                checkbox
-                              ],
-                            ),
-                          );
+                    Positioned(
+                      top: 32,
+                      left: 20,
+                      child: GestureDetector(
+                        onTap: () {
+                          context.pop();
                         },
-                      ),
-                    ),
-                    ResetExerciseButtton(viewmodel: ResetExerciseButtonViewmodel(repository: repository, checkboxes: checkboxes), exerciseID: exercise.id, tasksCount: exercise.tasks.length),
-                    const SizedBox(height: 20),
-                    Text(
-                      textAlign: TextAlign.center,
-                      exercise.link_text,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      exercise.link_1,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      exercise.link_2,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.blue,
+                        child: SvgPicture.asset(
+                          "assets/icons/arrow-left.svg",
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          );
-        },
-      ),
+              Container(
+                color: Styles.exerciseDetailsBgColor,
+                child: Container(
+                  transform: Matrix4.translation(math.Vector3(0, -32, 0)),
+                  decoration: BoxDecoration(
+                      color: Styles.exerciseDetailsBgColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Styles.fontColorDark.withAlpha(64),
+                          blurRadius: 32,
+                          offset: Offset(0, -24),
+                          spreadRadius: 0,
+                        )
+                      ]),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    spacing: 16,
+                    children: [
+                      ExerciseDetailsHeaderWidget(title: "Opis"),
+                      Text(
+                        exercise.description,
+                        style: TextStyle(
+                          fontFamily: Styles.fontFamily,
+                          fontWeight: FontWeight.w300,
+                          color: Styles.fontColorDark,
+                          fontSize: Styles.fontSizeP,
+                          decoration: TextDecoration.none,
+                          letterSpacing: 0.2,
+                          height: 1.25,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      ExerciseDetailsHeaderWidget(title: "Zadania"),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 4,
+                        children: List.generate(exercise.tasks.length, (index) {
+                          ExerciseTaskCheckbox checkbox = ExerciseTaskCheckbox(
+                            viewmodel: ExerciseTaskCheckboxViewmodel(
+                                repository: repository,
+                                exerciseID: exercise.id,
+                                taskID: index),
+                          );
+
+                          checkboxes.add(checkbox);
+
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  exercise.tasks[index],
+                                  style: TextStyle(
+                                    fontFamily: Styles.fontFamily,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: Styles.fontSizeP,
+                                    color: Styles.fontColorDark,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ),
+                              Material(
+                                color: Colors.transparent,
+                                child: checkbox,
+                              ),
+                            ],
+                          );
+                        }),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 16),
+                        alignment: Alignment.center,
+                        child: ResetExerciseButtton(
+                            viewmodel: ResetExerciseButtonViewmodel(
+                                repository: repository, checkboxes: checkboxes),
+                            exerciseID: exercise.id,
+                            tasksCount: exercise.tasks.length),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      ExerciseDetailsHeaderWidget(
+                          title: "Dla zainteresowanych"),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  exercise.link_1,
+                                  style: TextStyle(
+                                    fontFamily: Styles.fontFamily,
+                                    fontSize: Styles.fontSizeP,
+                                    fontWeight: FontWeight.normal,
+                                    color: Styles.fontColorDark,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16),
+                                child:
+                                    SvgPicture.asset("assets/icons/link.svg"),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
