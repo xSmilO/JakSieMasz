@@ -31,7 +31,8 @@ class ExerciseProgressRepository {
     }
   }
 
-  Map<String, dynamic> _resolveEmptyExerciseStructure(int exerciseID, int tasksCount) {
+  Map<String, dynamic> _resolveEmptyExerciseStructure(
+      int exerciseID, int tasksCount) {
     return {
       "id": exerciseID,
       "tasks": [
@@ -41,18 +42,21 @@ class ExerciseProgressRepository {
     };
   }
 
-  Future<void> _reserveSpace(List<dynamic> exercisesProgress, int exerciseID, int tasksCount) async {
+  Future<void> _reserveSpace(
+      List<dynamic> exercisesProgress, int exerciseID, int tasksCount) async {
     File exercisesProgressFile = await _exercisesProgressFile;
 
-    exercisesProgress.add(_resolveEmptyExerciseStructure(exerciseID, tasksCount));
+    exercisesProgress
+        .add(_resolveEmptyExerciseStructure(exerciseID, tasksCount));
     exercisesProgressFile.writeAsString(json.encode(exercisesProgress));
   }
 
-  Future<Map<String, dynamic>> _resolveRecordedCheckboxValues(List<dynamic> exercisesProgress, int exerciseID, int taskID) async {
-    for(Map<String, dynamic> exercise in exercisesProgress) {
-      if(exercise["id"] == exerciseID) {
-        for(Map<String, dynamic> task in exercise["tasks"]) {
-          if(task["id"] == taskID) {
+  Future<Map<String, dynamic>> _resolveRecordedCheckboxValues(
+      List<dynamic> exercisesProgress, int exerciseID, int taskID) async {
+    for (Map<String, dynamic> exercise in exercisesProgress) {
+      if (exercise["id"] == exerciseID) {
+        for (Map<String, dynamic> task in exercise["tasks"]) {
+          if (task["id"] == taskID) {
             return task["recorded_checkbox_values"];
           }
         }
@@ -65,19 +69,19 @@ class ExerciseProgressRepository {
   void reserveSpace(int exerciseID, int tasksCount) async {
     List<dynamic> exercisesProgress = await _exercisesProgress;
 
-    if(exercisesProgress.isEmpty) {
+    if (exercisesProgress.isEmpty) {
       await _reserveSpace(exercisesProgress, exerciseID, tasksCount);
     } else {
       bool found = false;
 
-      for(Map<String, dynamic> exercise in exercisesProgress) {
-        if(exercise["id"] == exerciseID) {
+      for (Map<String, dynamic> exercise in exercisesProgress) {
+        if (exercise["id"] == exerciseID) {
           found = true;
           break;
         }
       }
 
-      if(!found) {
+      if (!found) {
         await _reserveSpace(exercisesProgress, exerciseID, tasksCount);
       }
     }
@@ -85,9 +89,11 @@ class ExerciseProgressRepository {
 
   Future<bool?> getCheckboxState(int exerciseID, int taskID) async {
     String currentDate = Utility.currentDateWithoutTime();
-    Map<String, dynamic> recordedCheckboxValues = await _resolveRecordedCheckboxValues(await _exercisesProgress, exerciseID, taskID);
+    Map<String, dynamic> recordedCheckboxValues =
+        await _resolveRecordedCheckboxValues(
+            await _exercisesProgress, exerciseID, taskID);
 
-    if(recordedCheckboxValues.keys.contains(currentDate)) {
+    if (recordedCheckboxValues.keys.contains(currentDate)) {
       return recordedCheckboxValues[currentDate];
     }
 
@@ -98,7 +104,9 @@ class ExerciseProgressRepository {
     String currentDate = Utility.currentDateWithoutTime();
     File exercisesProgressFile = await _exercisesProgressFile;
     List<dynamic> exercisesProgress = await _exercisesProgress;
-    Map<String, dynamic> recordedCheckboxValues = await _resolveRecordedCheckboxValues(exercisesProgress, exerciseID, taskID);
+    Map<String, dynamic> recordedCheckboxValues =
+        await _resolveRecordedCheckboxValues(
+            exercisesProgress, exerciseID, taskID);
     recordedCheckboxValues[currentDate] = state == null ? false : state;
 
     exercisesProgressFile.writeAsString(json.encode(exercisesProgress));
@@ -108,10 +116,11 @@ class ExerciseProgressRepository {
     File exercisesProgressFile = await _exercisesProgressFile;
     List<dynamic> exercisesProgress = await _exercisesProgress;
 
-    for(Map<String, dynamic> exercise in exercisesProgress) {
+    for(int i = 0; i < exercisesProgress.length; i++) {
+      Map<String, dynamic> exercise = exercisesProgress[i];
+
       if(exercise["id"] == exerciseID) {
-        print("resetting for exercise: " + exerciseID.toString());
-        exercise = _resolveEmptyExerciseStructure(exerciseID, tasksCount);
+        exercisesProgress[i] = _resolveEmptyExerciseStructure(exerciseID, tasksCount);
       }
     }
 

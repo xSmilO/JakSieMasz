@@ -1,94 +1,100 @@
-{
-    "1": {
-        "title": "Ćwiczenia oddechowe",
-        "image": "assets/exercises_images/breathing.jpg",
-        "description": "Ćwiczenie oddechowe poprawiają koncentrację i redukują stres. Powolne i świadome oddychanie aktywuje nerw błędny, co obniża poziom kortyzolu. Techniki oddechowe, takie jak box breathing, pomagają wyciszyć umysł i zmniejszyć objawy lęku. Ćwiczenia takie jak te są stosowane nie tylko przez zwykłych ludzi ale i sportowców jak i żołnierzy, chociażby Navy SEALs",
-        "task_text": "Zadania do wykonania każdego dnia",
-        "tasks": [
-            "Wdychaj powietrze przez nos przez 4 sekundy",
-            "Wstrzymaj oddech na 4 sekundy",
-            "Wydychaj powoli przez 4 sekundy",
-            "Wstrzymaj oddech na 4 sekundy",
-            "Powtórz ćwiczenie całkowitą ilość 5 razy"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "https://www.psychiatriapolska.pl/pdf-146824-88959?filename=Uzytecznosc+technik.pdf",
-        "link_2": "herewillbethelinktothepage.com"
-    },
-    "2": {
-        "title": "Biohacking",
-        "image": "assets/exercises_images/biohacking.jpg",
-        "description": "Używnie światła ma spory wpływ na samopoczucie oraz stan zdrowia. Ekspozycja na naturalne światło rano pomaga regulować rytm dobowy, poprawiając produkcję melatoniny i jakość snu. Unikanie sztucznego niebieskiego światła wieczorem redukuje zakłócenia w produkcji hormonów i wspiera regenerację organizmu. Sezonowe jedzenie dostosowane do pory roku wpływa na metabolizm – latem więcej węglowodanów wspiera aktywność, zimą tłuszcze pomagają w adaptacji do chłodu. To wszystko ma wpływ na to jak się czujesz oraz na to jak funkcjonujesz na codzień",
-        "task_text": "Zadania do wykonania trzy razy w tygodniu",
-        "tasks": [
-            "Wstań koło godziny 7:00 a następnie obmyj twarz zimną wodą",
-            "Wyjdz na zewnątrz i przez 30min zrób spacer po okolicy będąc wystawionym na słońce. W trakcie spaceru pamiętaj o głębokim oddechu",
-            "Zjedz posiłek dostosowany kalorycznie do twojego zapotrzebowania oraz zależny od pory roku",
-            "W trakcie kożystania z telefonu lub będąc wystawionym na inne światło niebieskie korzystaj z okularów ograniczających to światło",
-            "Wieczorem weź zimny prysznic korzystająć ze świateł produkujących podczerwień"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "https://www.psychiatriapolska.pl/pdf-146824-88959?filename=Uzytecznosc+technik.pdf",
-        "link_2": "herewillbethelinktothepage.com"
-    },
-    "3": {
-        "title": "Aktywność fizyczna",
-        "image": "assets/exercises_images/physical_activity.jpg",
-        "description": "Ćwiczenia fizyczne mają ogromny wpływ na poprawę samopoczucia – zarówno fizycznego, jak i psychicznego. Pobudzają wydzielanie endorfin, które poprawiają nastrój i redukują poziom kortyzolu – hormonu stresu. Regularna aktywność fizyczna zwiększa wydolność organizmu, co przekłada się na większą energię w ciągu dnia i mniejsze uczucie zmęczenia. Ponadto osoby ćwiczące regularnie często zasypiają szybciej i śpią głębiej, co przekłada się na lepszą regenerację organizmu. Badania wskazują, że poprawa sylwetki, kondycji i ogólnego samopoczucia wzmacnia samoocenę i pomaga poczuć się lepiej we własnym ciele. Na dodatek aktywności fizyczne poprawiają krążenie krwi, co zwiększa dopływ tlenu do mózgu, wspierając koncentrację, pamięć i kreatywność.",
-        "task_text": "Zadania do wykonania każdego dnia",
-        "tasks": [
-            "Obmyj twarz zimną wodą po wstaniu rano",
-            "Zrób 10 pompek, 10 brzuszków oraz 10 przysiadów",
-            "Chwile poskacz w miejscu by pobudzić ogranizm do działania jeszcze bardziej",
-            "Po zakończonej rozgrzewce zjedz pożywny posiłek"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "herewillbethelinktothepage.com",
-        "link_2": "herewillbethelinktothepage.com"
-    },
-    "4": {
-        "title": "Medytacja",
-        "image": "assets/exercises_images/meditation.jpg",
-        "description": "Medytacja pomaga w redukcji stresu i poprawia ogólne samopoczucie. Regularna praktyka obniża poziom kortyzolu, co prowadzi do większego spokoju i lepszego radzenia sobie z codziennymi wyzwaniami. Regularna medytacja może obniżyć ciśnienie krwi i zmniejszyć ryzyko chorób sercowo-naczyniowych. Medytacja wzmacnia odporność psychiczną, pomagając w walce z lękiem i depresją. Pobudza działanie kory przedczołowej, co zwiększa zdolność do podejmowania świadomych decyzji i rozwiązywania problemów.",
-        "task_text": "Zadania do wykonania raz w tygodniu",
-        "tasks": [
-            "Znajdź ciche, komfortowe miejsce, gdzie nikt Ci nie przeszkodzi. Możesz usiąść na podłodze, poduszce lub krześle, utrzymując wyprostowaną, ale rozluźnioną postawę",
-            "Ustal najbardziej odpowiadający ci czas trwania medytacji(5-30min)",
-            "Oddychaj głęboko i naturalnie. Skoncentruj się na wdechu i wydechu, czując, jak powietrze wchodzi i wychodzi przez nos",
-            "Na koniec pomyśl o czymś, za co jesteś wdzięczny, lub wyobraź sobie pozytywny scenariusz przyszłości"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "herewillbethelinktothepage.com",
-        "link_2": "herewillbethelinktothepage.com"
-    },
-    "5": {
-        "title": "Zasoby wspierające",
-        "image": "assets/exercises_images/psychologist.jpg",
-        "description": "Zasoby, rzeczy, osoby które mają na ciebie pozytywny wpływ lub pomagają ci się spełniać. Rodzina a także profesjonalna pomoc psychologiczna (zajrzyj na nasz profil z psychologami :D) dostarcza narzędzi do radzenia sobie z negatywnymi myślami i emocjami. Zdrowe nawyki, takie jak ruch, odpowiednia dieta czy techniki relaksacyjne, wspierane przez otoczenie, mogą poprawić stan psychiczny. Dostęp do rzetelnych informacji o depresji pomaga lepiej zrozumieć chorobę i skutecznie szukać pomocy.",
-        "task_text": "Zadania do wykonania raz w tygodniu",
-        "tasks": [
-            "Pomyśl o osobach które cię zawsze wspierają i na które zawsze możesz liczyć",
-            "Poświęc 10min na zdanie sobie sprawy z tego co najbardziej sprwia że czujesz szczęście",
-            "Znajdź czas by wykonać czynność która wyszła z wcześniejszego zadania przynajmniej raz w ciągu dnia",
-            "Zastanów się nad drogą w której chcesz się rozwijać. Niezależnie czy jest to praca czy hobby"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "herewillbethelinktothepage.com",
-        "link_2": "herewillbethelinktothepage.com"
-    },
-    "6": {
-        "title": "Regulacja emocji",
-        "image": "assets/exercises_images/relax.jpg",
-        "description": "Ćwiczenia pomagają redukować negatywne emocje oraz poprawić samopoczucie. Pozytywny wpływ ma również muzykoterapia. Słuchanie muzyki o częstotliwości 528hz poprawia się rozluźnić a co za tym idzie również pomaga w utrzymaniu pozytywanego nastawienia do życia. Znaleźienie czynności która sprawia ci przyjemność oraz częste wykonywanie jej także ma wpływ na to jak twój organizm reaguje na inne bodźce.",
-        "task_text": "Zadania do wykonania każdego dnia",
-        "tasks": [
-            "Połóż się na łóżku na plecach",
-            "Znajdź muzykę w częstotliwości 528hz, załóż słuchawki, zamknij oczy oraz spróbuj się odrężyć. Wykonuj to zadanie przez 15min",
-            "Wykonaj czynność która sprawia ci radość",
-            "Po odczekaniu 30min ponownie oceń swoje samopoczucie w naszej aplikacji"
-        ],
-        "link_text": "Link do badań na ten temat",
-        "link_1": "herewillbethelinktothepage.com",
-        "link_2": "herewillbethelinktothepage.com"
-    }
-}
+[
+  {
+    "id": 0,
+    "title": "Ćwiczenia oddechowe",
+    "path_to_image": "assets/exercises_images/breathing.jpg",
+    "description": "Ćwiczenie oddechowe poprawiają koncentrację i redukują stres. Powolne i świadome oddychanie aktywuje nerw błędny, co obniża poziom kortyzolu. Techniki oddechowe, takie jak box breathing, pomagają wyciszyć umysł i zmniejszyć objawy lęku. Ćwiczenia takie jak te są stosowane nie tylko przez zwykłych ludzi ale i sportowców jak i żołnierzy, chociażby Navy SEALs",
+    "tasks": [
+      "Wdychaj powietrze przez nos przez 4 sekundy",
+      "Wstrzymaj oddech na 4 sekundy",
+      "Wydychaj powoli przez 4 sekundy",
+      "Wstrzymaj oddech na 4 sekundy",
+      "Powtórz ćwiczenie całkowitą ilość 5 razy"
+    ],
+    "links": [
+      "https://www.psychiatriapolska.pl/pdf-146824-88959?filename=Uzytecznosc+technik.pdf",
+      "herewillbethelinktothepage.com"
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Biohacking",
+    "path_to_image": "assets/exercises_images/biohacking.jpg",
+    "description": "Używnie światła ma spory wpływ na samopoczucie oraz stan zdrowia. Ekspozycja na naturalne światło rano pomaga regulować rytm dobowy, poprawiając produkcję melatoniny i jakość snu. Unikanie sztucznego niebieskiego światła wieczorem redukuje zakłócenia w produkcji hormonów i wspiera regenerację organizmu. Sezonowe jedzenie dostosowane do pory roku wpływa na metabolizm – latem więcej węglowodanów wspiera aktywność, zimą tłuszcze pomagają w adaptacji do chłodu. To wszystko ma wpływ na to jak się czujesz oraz na to jak funkcjonujesz na codzień",
+    "tasks": [
+      "Wstań koło godziny 7:00 a następnie obmyj twarz zimną wodą",
+      "Wyjdz na zewnątrz i przez 30min zrób spacer po okolicy będąc wystawionym na słońce. W trakcie spaceru pamiętaj o głębokim oddechu",
+      "Zjedz posiłek dostosowany kalorycznie do twojego zapotrzebowania oraz zależny od pory roku",
+      "W trakcie kożystania z telefonu lub będąc wystawionym na inne światło niebieskie korzystaj z okularów ograniczających to światło",
+      "Wieczorem weź zimny prysznic korzystająć ze świateł produkujących podczerwień"
+    ],
+    "links": [
+      "https://www.psychiatriapolska.pl/pdf-146824-88959?filename=Uzytecznosc+technik.pdf",
+      "herewillbethelinktothepage.com"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Aktywność fizyczna",
+    "path_to_image": "assets/exercises_images/physical_activity.jpg",
+    "description": "Ćwiczenia fizyczne mają ogromny wpływ na poprawę samopoczucia – zarówno fizycznego, jak i psychicznego. Pobudzają wydzielanie endorfin, które poprawiają nastrój i redukują poziom kortyzolu – hormonu stresu. Regularna aktywność fizyczna zwiększa wydolność organizmu, co przekłada się na większą energię w ciągu dnia i mniejsze uczucie zmęczenia. Ponadto osoby ćwiczące regularnie często zasypiają szybciej i śpią głębiej, co przekłada się na lepszą regenerację organizmu. Badania wskazują, że poprawa sylwetki, kondycji i ogólnego samopoczucia wzmacnia samoocenę i pomaga poczuć się lepiej we własnym ciele. Na dodatek aktywności fizyczne poprawiają krążenie krwi, co zwiększa dopływ tlenu do mózgu, wspierając koncentrację, pamięć i kreatywność.",
+    "tasks": [
+      "Obmyj twarz zimną wodą po wstaniu rano",
+      "Zrób 10 pompek, 10 brzuszków oraz 10 przysiadów",
+      "Chwile poskacz w miejscu by pobudzić ogranizm do działania jeszcze bardziej",
+      "Po zakończonej rozgrzewce zjedz pożywny posiłek"
+    ],
+    "links": [
+      "herewillbethelinktothepage.com",
+      "herewillbethelinktothepage.com"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Medytacja",
+    "path_to_image": "assets/exercises_images/meditation.jpg",
+    "description": "Medytacja pomaga w redukcji stresu i poprawia ogólne samopoczucie. Regularna praktyka obniża poziom kortyzolu, co prowadzi do większego spokoju i lepszego radzenia sobie z codziennymi wyzwaniami. Regularna medytacja może obniżyć ciśnienie krwi i zmniejszyć ryzyko chorób sercowo-naczyniowych. Medytacja wzmacnia odporność psychiczną, pomagając w walce z lękiem i depresją. Pobudza działanie kory przedczołowej, co zwiększa zdolność do podejmowania świadomych decyzji i rozwiązywania problemów.",
+    "tasks": [
+      "Znajdź ciche, komfortowe miejsce, gdzie nikt Ci nie przeszkodzi. Możesz usiąść na podłodze, poduszce lub krześle, utrzymując wyprostowaną, ale rozluźnioną postawę",
+      "Ustal najbardziej odpowiadający ci czas trwania medytacji(5-30min)",
+      "Oddychaj głęboko i naturalnie. Skoncentruj się na wdechu i wydechu, czując, jak powietrze wchodzi i wychodzi przez nos",
+      "Na koniec pomyśl o czymś, za co jesteś wdzięczny, lub wyobraź sobie pozytywny scenariusz przyszłości"
+    ],
+    "links": [
+      "herewillbethelinktothepage.com",
+      "herewillbethelinktothepage.com"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Zasoby wspierające",
+    "path_to_image": "assets/exercises_images/psychologist.jpg",
+    "description": "Zasoby, rzeczy, osoby które mają na ciebie pozytywny wpływ lub pomagają ci się spełniać. Rodzina a także profesjonalna pomoc psychologiczna (zajrzyj na nasz profil z psychologami :D) dostarcza narzędzi do radzenia sobie z negatywnymi myślami i emocjami. Zdrowe nawyki, takie jak ruch, odpowiednia dieta czy techniki relaksacyjne, wspierane przez otoczenie, mogą poprawić stan psychiczny. Dostęp do rzetelnych informacji o depresji pomaga lepiej zrozumieć chorobę i skutecznie szukać pomocy.",
+    "tasks": [
+      "Pomyśl o osobach które cię zawsze wspierają i na które zawsze możesz liczyć",
+      "Poświęc 10min na zdanie sobie sprawy z tego co najbardziej sprwia że czujesz szczęście",
+      "Znajdź czas by wykonać czynność która wyszła z wcześniejszego zadania przynajmniej raz w ciągu dnia",
+      "Zastanów się nad drogą w której chcesz się rozwijać. Niezależnie czy jest to praca czy hobby"
+    ],
+    "links": [
+      "herewillbethelinktothepage.com",
+      "herewillbethelinktothepage.com"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Regulacja emocji",
+    "path_to_image": "assets/exercises_images/relax.jpg",
+    "description": "Ćwiczenia pomagają redukować negatywne emocje oraz poprawić samopoczucie. Pozytywny wpływ ma również muzykoterapia. Słuchanie muzyki o częstotliwości 528hz poprawia się rozluźnić a co za tym idzie również pomaga w utrzymaniu pozytywanego nastawienia do życia. Znaleźienie czynności która sprawia ci przyjemność oraz częste wykonywanie jej także ma wpływ na to jak twój organizm reaguje na inne bodźce.",
+    "tasks": [
+      "Połóż się na łóżku na plecach",
+      "Znajdź muzykę w częstotliwości 528hz, załóż słuchawki, zamknij oczy oraz spróbuj się odrężyć. Wykonuj to zadanie przez 15min",
+      "Wykonaj czynność która sprawia ci radość",
+      "Po odczekaniu 30min ponownie oceń swoje samopoczucie w naszej aplikacji"
+    ],
+    "links": [
+      "herewillbethelinktothepage.com",
+      "herewillbethelinktothepage.com"
+    ]
+  }
+]

@@ -33,7 +33,7 @@ class ExercisesDetailsScreen extends StatelessWidget {
                   fit: StackFit.expand,
                   children: [
                     Image.asset(
-                      exercise.image,
+                      exercise.pathToImage,
                       fit: BoxFit.cover,
                       color: Styles.primaryColor500.withAlpha(178),
                       colorBlendMode: BlendMode.srcOver,
@@ -160,13 +160,13 @@ class ExercisesDetailsScreen extends StatelessWidget {
                           title: "Dla zainteresowanych"),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+                        children: List.generate(exercise.links.length, (index) {
+                          return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
                                 child: Text(
-                                  exercise.link_1,
+                                  exercise.links[index],
                                   style: TextStyle(
                                     fontFamily: Styles.fontFamily,
                                     fontSize: Styles.fontSizeP,
@@ -183,8 +183,8 @@ class ExercisesDetailsScreen extends StatelessWidget {
                                     SvgPicture.asset("assets/icons/link.svg"),
                               ),
                             ],
-                          )
-                        ],
+                          );
+                        }),
                       ),
                     ],
                   ),

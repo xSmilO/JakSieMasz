@@ -16,12 +16,12 @@ class ExercisesScreen extends StatelessWidget {
       ),
       body: Consumer<ExercisesViewModel>(
         builder: (context, viewModel, child) {
-          if (viewModel.isLoading == true) {
+          if(viewModel.isLoading == true) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
-          if (viewModel.isEmpty == true) {
+          if(viewModel.isEmpty == true) {
             return const Center(
               child: Text("Brak ćwiczeń do wyświetlenia"),
             );
@@ -85,7 +85,7 @@ class ExercisesScreen extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5),
                               child: Image.asset(
-                                exercise.image,
+                                exercise.pathToImage,
                                 fit: BoxFit.cover,
                               ),
                             ),
