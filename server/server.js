@@ -11,10 +11,30 @@ const io = require("socket.io")(http, {
 io.on("connection", (socket) => {
   console.log("User connected");
 
-  socket.on("sendMessage", async (message) => {
-    console.log("Received message:", message);
+  socket.on("sendMessage", async (data) => {
+    console.log("Received message:", data);
     try {
       socket.emit("botStartedTyping");
+
+      const messages = [];
+
+      if (data.context) {
+        const contextMessages = data.context.split("\n");
+        for (const msg of contextMessages) {
+          const [role, content] = msg.split(": ");
+          const correctRole =
+            role.toLowerCase() === "user" ? "user" : "assistant";
+          messages.push({
+            role: correctRole,
+            content: content,
+          });
+        }
+      }
+
+      messages.push({
+        role: "user",
+        content: data.message,
+      });
 
       const response = await fetch(
         "https://api.mistral.ai/v1/chat/completions",
@@ -26,31 +46,25 @@ io.on("connection", (socket) => {
           },
           body: JSON.stringify({
             model: "mistral-small-latest",
-            messages: [
-              {
-                role: "user",
-                content: message,
-              },
-            ],
+            messages: messages,
           }),
         }
       );
 
-      const data = await response.json();
-      console.log("Mistral response:", data);
+      const responseData = await response.json();
+      console.log("Mistral response:", responseData);
 
-      // Sprawdź czy odpowiedź jest prawidłowa
       if (!response.ok) {
-        throw new Error(data.message || "API error");
+        throw new Error(responseData.message || "API error");
       }
 
-      if (!data.choices || !data.choices[0]) {
+      if (!responseData.choices || !responseData.choices[0]) {
         throw new Error("Invalid response format");
       }
 
       socket.emit("botStoppedTyping");
 
-      const botResponse = data.choices[0].message.content;
+      const botResponse = responseData.choices[0].message.content;
       socket.emit("receiveMessage", {
         text: botResponse,
         isBot: true,

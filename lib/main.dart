@@ -16,6 +16,9 @@ import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'routing/router.dart';
+import 'package:jak_sie_masz/UI/AIChat/services/chat_service.dart';
+import 'package:jak_sie_masz/UI/AIChat/services/chat_database_service.dart';
+import 'package:jak_sie_masz/UI/AIChat/viewmodels/aichat_viewmodel.dart';
 
 final FlutterLocalNotificationsPlugin notificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -68,7 +71,21 @@ void main() async {
         ChangeNotifierProvider(
           create: (context) => ExercisesViewModel(),
         ),
-        ChangeNotifierProvider(create: (context) => ArticlesViewmodel())
+        ChangeNotifierProvider(create: (context) => ArticlesViewmodel()),
+        Provider(
+          create: (context) => ChatService(),
+        ),
+        Provider(
+          create: (context) => ChatDatabaseService(
+            context.read<DatabaseHelperService>(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AIChatViewModel(
+            context.read<ChatService>(),
+            context.read<ChatDatabaseService>(),
+          )..initialize(),
+        ),
       ],
       child: MainApp(),
     ),

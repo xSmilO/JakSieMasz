@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../viewmodels/aichat_viewmodel.dart';
+import '../models/message.dart';
 
-class ChatMessageListWidget extends StatelessWidget {
+class ChatMessageListWidget extends StatefulWidget {
   final AIChatViewModel viewModel;
   final ScrollController scrollController;
   final List<Animation<double>> dotsAnimations;
@@ -14,8 +15,35 @@ class ChatMessageListWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ChatMessageListWidget> createState() => _ChatMessageListWidgetState();
+}
+
+class _ChatMessageListWidgetState extends State<ChatMessageListWidget> {
+  void _scrollToBottom() {
+    if (widget.scrollController.hasClients) {
+      widget.scrollController.animateTo(
+        widget.scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
+  }
+
+  @override
+  void didUpdateWidget(ChatMessageListWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.viewModel.messages.length >
+            oldWidget.viewModel.messages.length ||
+        widget.viewModel.isTyping != oldWidget.viewModel.isTyping) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollToBottom();
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return viewModel.messages.isEmpty && !viewModel.isTyping
+    return widget.viewModel.messages.isEmpty && !widget.viewModel.isTyping
         ? const Center(
             child: Text(
               "W czym ci pomóc?",
@@ -26,13 +54,15 @@ class ChatMessageListWidget extends StatelessWidget {
             ),
           )
         : ListView.builder(
-            controller: scrollController,
-            itemCount: viewModel.messages.length + (viewModel.isTyping ? 1 : 0),
+            controller: widget.scrollController,
+            itemCount: widget.viewModel.messages.length +
+                (widget.viewModel.isTyping ? 1 : 0),
             itemBuilder: (context, index) {
-              if (index == viewModel.messages.length && viewModel.isTyping) {
+              if (index == widget.viewModel.messages.length &&
+                  widget.viewModel.isTyping) {
                 return _buildTypingIndicator();
               }
-              return _buildMessageBubble(viewModel.messages[index]);
+              return _buildMessageBubble(widget.viewModel.messages[index]);
             },
           );
   }
@@ -54,14 +84,12 @@ class ChatMessageListWidget extends StatelessWidget {
           children: [
             const Text(
               "Andrzej Bugała pisze",
-              style: TextStyle(
-                fontSize: 14,
-              ),
+              style: TextStyle(fontSize: 14),
             ),
             Row(
               children: List.generate(3, (dotIndex) {
                 return FadeTransition(
-                  opacity: dotsAnimations[dotIndex],
+                  opacity: widget.dotsAnimations[dotIndex],
                   child: const Text(
                     ".",
                     style: TextStyle(

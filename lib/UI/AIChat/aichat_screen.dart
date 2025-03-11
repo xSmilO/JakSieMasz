@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/UI/AIChat/widgets/drawer_icon.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/aichat_viewmodel.dart';
 import 'widgets/chat_drawer_widget.dart';
@@ -19,13 +20,10 @@ class _AIChatScreenState extends State<AIChatScreen>
   late Animation<double> _drawerAnimation;
   late AnimationController _dotsController;
   late List<Animation<double>> _dotsAnimations;
-  late AIChatViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = AIChatViewModel();
-    _viewModel.connectToServer();
 
     _drawerController = AnimationController(
       vsync: this,
@@ -72,94 +70,89 @@ class _AIChatScreenState extends State<AIChatScreen>
     _dotsController.dispose();
     _messageController.dispose();
     _scrollController.dispose();
-    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: _viewModel,
-      child: Consumer<AIChatViewModel>(
-        builder: (context, viewModel, child) {
-          return Stack(
-            children: [
-              Scaffold(
-                resizeToAvoidBottomInset: false,
-                appBar: AppBar(
-                  title: const Text("AI Chat"),
-                  leading: IconButton(
-                    icon: const DrawerIcon(),
-                    onPressed: () {
-                      viewModel.toggleDrawer();
-                      if (viewModel.isDrawerOpen) {
-                        _drawerController.forward();
-                      } else {
-                        _drawerController.reverse();
-                      }
-                    },
-                  ),
+    return Consumer<AIChatViewModel>(
+      builder: (context, viewModel, child) {
+        return Stack(
+          children: [
+            Scaffold(
+              resizeToAvoidBottomInset: false,
+              appBar: AppBar(
+                title: const Text("AI Chat"),
+                leading: IconButton(
+                  icon: const DrawerIcon(),
+                  onPressed: () {
+                    viewModel.toggleDrawer();
+                    if (viewModel.isDrawerOpen) {
+                      _drawerController.forward();
+                    } else {
+                      _drawerController.reverse();
+                    }
+                  },
                 ),
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: ChatMessageListWidget(
-                        viewModel: viewModel,
-                        scrollController: _scrollController,
-                        dotsAnimations: _dotsAnimations,
-                      ),
+              ),
+              body: Column(
+                children: [
+                  Expanded(
+                    child: ChatMessageListWidget(
+                      viewModel: viewModel,
+                      scrollController: _scrollController,
+                      dotsAnimations: _dotsAnimations,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(color: Colors.grey.shade300),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                controller: _messageController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Zapytaj o cokolwiek',
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 20),
-                                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _messageController,
+                              decoration: const InputDecoration(
+                                hintText: 'Zapytaj o cokolwiek',
+                                border: InputBorder.none,
+                                contentPadding:
+                                    EdgeInsets.symmetric(horizontal: 20),
                               ),
                             ),
-                            Container(
-                              margin: const EdgeInsets.only(right: 8),
-                              child: IconButton(
-                                icon:
-                                    const Icon(Icons.send, color: Colors.grey),
-                                onPressed: () {
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 8),
+                            child: IconButton(
+                              icon: const Icon(Icons.send, color: Colors.grey),
+                              onPressed: () {
+                                if (_messageController.text.isNotEmpty) {
                                   viewModel
                                       .sendMessage(_messageController.text);
                                   _messageController.clear();
-                                  WidgetsBinding.instance.addPostFrameCallback(
-                                      (_) => _scrollToBottom());
-                                },
-                              ),
+                                }
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              ChatDrawerWidget(
-                viewModel: viewModel,
-                drawerController: _drawerController,
-                drawerAnimation: _drawerAnimation,
-              ),
-            ],
-          );
-        },
-      ),
+            ),
+            ChatDrawerWidget(
+              viewModel: viewModel,
+              drawerController: _drawerController,
+              drawerAnimation: _drawerAnimation,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../viewmodels/aichat_viewmodel.dart';
+import '../models/topic.dart';
 
 class TopicsListWidget extends StatelessWidget {
   final List<Topic> todayTopics;
   final List<Topic> lastWeekTopics;
   final List<Topic> lastMonthTopics;
-  final VoidCallback onTopicTap;
+  final Function(int) onTopicTap;
 
   const TopicsListWidget({
     Key? key,
@@ -61,7 +61,7 @@ class TopicsListWidget extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-              onTap: onTopicTap,
+              onTap: () => onTopicTap(topic.id),
             )),
       ],
     );

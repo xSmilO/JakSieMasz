@@ -20,7 +20,7 @@ class DatabaseHelperService {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         // create day_ratings
         await db.execute('''
@@ -31,7 +31,50 @@ class DatabaseHelperService {
           rating INTEGER NOT NULL
         )
        ''');
-        // create chat messages table
+        // Create chat topics table
+        await db.execute('''
+        CREATE TABLE chat_topics (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          title TEXT NOT NULL,
+          created_at TEXT NOT NULL
+        )
+        ''');
+
+        // Create chat messages table
+        await db.execute('''
+        CREATE TABLE chat_messages (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          topic_id INTEGER NOT NULL,
+          message TEXT NOT NULL,
+          is_bot INTEGER NOT NULL,
+          timestamp TEXT NOT NULL,
+          FOREIGN KEY (topic_id) REFERENCES chat_topics (id)
+        )
+        ''');
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        // Handle upgrade from version 1 to 2
+        if (oldVersion == 1) {
+          // Create new tables for chat
+          await db.execute('''
+            CREATE TABLE chat_topics (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              title TEXT NOT NULL,
+              created_at TEXT NOT NULL
+            )
+          ''');
+
+          await db.execute('''
+            CREATE TABLE chat_messages (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              topic_id INTEGER NOT NULL,
+              message TEXT NOT NULL,
+              is_bot INTEGER NOT NULL,
+              timestamp TEXT NOT NULL,
+              FOREIGN KEY (topic_id) REFERENCES chat_topics (id)
+            )
+          ''');
+        }
       },
     );
   }
@@ -142,5 +185,38 @@ class DatabaseHelperService {
         await updateRating(newRating);
       }
     }
+  }
+
+  Future<int> createChatTopic(String title) async {
+    final db = await database;
+    return await db.insert('chat_topics', {
+      'title': title,
+      'created_at': DateTime.now().toIso8601String(),
+    });
+  }
+
+  Future<void> saveChatMessage(int topicId, String message, bool isBot) async {
+    final db = await database;
+    await db.insert('chat_messages', {
+      'topic_id': topicId,
+      'message': message,
+      'is_bot': isBot ? 1 : 0,
+      'timestamp': DateTime.now().toIso8601String(),
+    });
+  }
+
+  Future<List<Map<String, dynamic>>> getTopics() async {
+    final db = await database;
+    return await db.query('chat_topics', orderBy: 'created_at DESC');
+  }
+
+  Future<List<Map<String, dynamic>>> getMessagesForTopic(int topicId) async {
+    final db = await database;
+    return await db.query(
+      'chat_messages',
+      where: 'topic_id = ?',
+      whereArgs: [topicId],
+      orderBy: 'timestamp ASC',
+    );
   }
 }
