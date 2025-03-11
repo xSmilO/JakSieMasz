@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 GoRouter router() => GoRouter(
-      initialLocation: Routes.exercises,
+      initialLocation: Routes.home,
       debugLogDiagnostics: true,
       navigatorKey: _rootNavigatorKey,
       routes: [
