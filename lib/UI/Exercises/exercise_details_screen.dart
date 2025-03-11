@@ -120,9 +120,10 @@ class ExercisesDetailsScreen extends StatelessWidget {
                         children: List.generate(exercise.tasks.length, (index) {
                           ExerciseTaskCheckbox checkbox = ExerciseTaskCheckbox(
                             viewmodel: ExerciseTaskCheckboxViewmodel(
-                                repository: repository,
-                                exerciseID: exercise.id,
-                                taskID: index),
+                              repository: repository,
+                              exerciseID: exercise.id,
+                              taskID: index
+                            ),
                           );
 
                           checkboxes.add(checkbox);
@@ -154,10 +155,13 @@ class ExercisesDetailsScreen extends StatelessWidget {
                         margin: EdgeInsets.only(top: 16),
                         alignment: Alignment.center,
                         child: ResetExerciseButtton(
-                            viewmodel: ResetExerciseButtonViewmodel(
-                                repository: repository, checkboxes: checkboxes),
-                            exerciseID: exercise.id,
-                            tasksCount: exercise.tasks.length),
+                          viewmodel: ResetExerciseButtonViewmodel(
+                            repository: repository,
+                            checkboxes: checkboxes
+                          ),
+                          exerciseID: exercise.id,
+                          tasksCount: exercise.tasks.length
+                        ),
                       ),
                       SizedBox(
                         height: 16,

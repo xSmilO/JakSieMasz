@@ -7,7 +7,6 @@ class ExercisesViewModel extends ChangeNotifier {
 
   List<ExerciseDataModel> _exercises = [];
   ExerciseDataModel _selectedExercise = ExerciseDataModel.empty;
-
   bool _isLoading = true;
 
   List<ExerciseDataModel> get exercisesList => _exercises;
@@ -19,11 +18,13 @@ class ExercisesViewModel extends ChangeNotifier {
     repository.getExercisesData().then((exercises) {
       _exercises = exercises;
       _isLoading = false;
+      
+      notifyListeners();
     });
   }
 
-  void selectExercise(String title) {
-    _selectedExercise = exercisesList.firstWhere((e) => e.title == title);
+  void selectExercise(int id) {
+    _selectedExercise = exercisesList.firstWhere((e) => e.id == id);
     notifyListeners();
   }
 }
