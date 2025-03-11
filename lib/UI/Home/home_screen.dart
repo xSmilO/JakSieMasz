@@ -21,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     username = widget.userRepository.getUsername();
-    widget.userRepository.onUsernameChange = this.loadUserName;
+    widget.userRepository.onUsernameChange = this.loadUsername;
   }
 
-  void loadUserName(String newUsername) {
+  void loadUsername(String newUsername) {
     setState(() {
       username = widget.userRepository.getUsername();
     });
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 16),
+                  margin: EdgeInsets.only(top: 32),
                   child: FutureBuilder(
                     builder: (context, snapshot) {
                       return Text(

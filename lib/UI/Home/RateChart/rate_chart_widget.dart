@@ -61,7 +61,6 @@ class _RateChartWidgetState extends State<RateChartWidget> {
         if (dataSpots.isEmpty) {
           dataSpots.add(FlSpot(0, 1));
         }
-        print(dataSpots.last);
         return LineChart(
           LineChartData(
             minY: 1,
