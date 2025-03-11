@@ -19,6 +19,8 @@ class ExercisesViewModel extends ChangeNotifier {
     repository.getExercisesData().then((exercises) {
       _exercises = exercises;
       _isLoading = false;
+      
+      notifyListeners();
     });
   }
 

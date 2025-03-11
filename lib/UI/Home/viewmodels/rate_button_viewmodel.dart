@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/day_rating_repository.dart';
 import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:jak_sie_masz/UI/Shared/utility.dart';
 
 class RateButtonViewmodel {
   final RateSliderRepository rateSliderRepository;
@@ -34,13 +34,7 @@ class RateButtonViewmodel {
           message = "Sigma! 😎";
       }
 
-      Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Color.fromARGB(255, 28, 30, 36),
-          textColor: Color.fromARGB(255, 235, 238, 245),
-          fontSize: 16.0);
+      Utility.showSimpleOutput(message);
     }
   }
 }
