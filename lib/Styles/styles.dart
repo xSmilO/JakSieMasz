@@ -6,10 +6,7 @@ abstract final class Styles {
   static Color primaryColor200 = Color(0xFFA7F1CD);
   static Color primaryColor300 = Color(0xFF7CE9B4);
   static Color primaryColor500 = Color(0xFF24DB82);
-<<<<<<< HEAD
   static Color secondaryColor100 = Color(0xFFFEE9CD);
-=======
->>>>>>> starting_screen
   static Color secondaryColor300 = Color(0xFFFBBE6A);
   static Color secondaryColor500 = Color(0xFFF99206);
   static Color inactiveNavItem = Color(0xFF999999);
