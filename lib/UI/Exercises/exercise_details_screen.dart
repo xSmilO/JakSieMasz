@@ -1,6 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercise_details_header_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
@@ -16,6 +17,11 @@ class ExercisesDetailsScreen extends StatelessWidget {
   final ExerciseProgressRepository repository;
   final List<ExerciseTaskCheckbox> checkboxes = [];
   ExercisesDetailsScreen({super.key, required this.repository});
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    await launchUrl(uri);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,29 +166,35 @@ class ExercisesDetailsScreen extends StatelessWidget {
                           title: "Dla zainteresowanych"),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 16,
                         children: List.generate(exercise.links.length, (index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  exercise.links[index],
-                                  style: TextStyle(
-                                    fontFamily: Styles.fontFamily,
-                                    fontSize: Styles.fontSizeP,
-                                    fontWeight: FontWeight.normal,
-                                    color: Styles.fontColorDark,
-                                    decoration: TextDecoration.none,
+                          return GestureDetector(
+                            onTap: () {
+                              _launchUrl(exercise.links[index]);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    exercise.links[index],
+                                    style: TextStyle(
+                                      fontFamily: Styles.fontFamily,
+                                      fontSize: Styles.fontSizeP,
+                                      fontWeight: FontWeight.normal,
+                                      color: Styles.fontColorDark,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child:
-                                    SvgPicture.asset("assets/icons/link.svg"),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child:
+                                      SvgPicture.asset("assets/icons/link.svg"),
+                                ),
+                              ],
+                            ),
                           );
                         }),
                       ),
