@@ -19,19 +19,20 @@ class RateButtonViewmodel {
     // callback this shit
 
     if (context.mounted) {
-      int messageIndex = (currentRating / 3).toInt();
+      int messageIndex = (currentRating / 3).round();
       String message;
 
       switch (messageIndex) {
         case 0:
-          message = "Nie załamuj się!";
-          break;
         case 1:
-          message = "To chyba całkiem git, co?";
+          message = "Nie zapomnij o codziennych ćwiczeniach! 😄";
           break;
         case 2:
+          message = "Świeże powietrze to nie trucizna! 😉";
+          break;
+        case 3:
         default:
-          message = "Sigma! 😎";
+          message = "Tak trzymaj! 🤩";
       }
 
       Utility.showSimpleOutput(message);
