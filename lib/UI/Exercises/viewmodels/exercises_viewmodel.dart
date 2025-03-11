@@ -23,8 +23,8 @@ class ExercisesViewModel extends ChangeNotifier {
     });
   }
 
-  void selectExercise(String title) {
-    _selectedExercise = exercisesList.firstWhere((e) => e.title == title);
+  void selectExercise(int id) {
+    _selectedExercise = exercisesList.firstWhere((e) => e.id == id);
     notifyListeners();
   }
 }

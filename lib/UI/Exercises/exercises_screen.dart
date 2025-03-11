@@ -40,12 +40,12 @@ class ExercisesScreen extends StatelessWidget {
                 var exercise = viewModel.exercisesList[index];
                 return GestureDetector(
                   onTap: () {
-                    viewModel.selectExercise(exercise.title);
+                    viewModel.selectExercise(exercise.id);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ExercisesDetailsScreen(
-                          repository: ExerciseProgressRepository(),
+                          repository: ExerciseProgressRepository()
                         ),
                       ),
                     );
