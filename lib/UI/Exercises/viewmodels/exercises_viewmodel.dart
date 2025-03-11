@@ -7,7 +7,6 @@ class ExercisesViewModel extends ChangeNotifier {
 
   List<ExerciseDataModel> _exercises = [];
   ExerciseDataModel _selectedExercise = ExerciseDataModel.empty;
-
   bool _isLoading = true;
 
   List<ExerciseDataModel> get exercisesList => _exercises;
