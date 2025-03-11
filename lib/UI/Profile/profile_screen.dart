@@ -9,6 +9,7 @@ import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
+//todo create delete popup
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
   final ProfileViewModel viewModel;
