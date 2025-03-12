@@ -7,8 +7,13 @@ class SharedPreferencesService {
     return sharedPreferences.getString(token);
   }
 
-  Future saveString(String token, String value) async {
+  Future<void> saveString(String token, String value) async {
     final sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString(token, value);
+  }
+
+  Future<void> deleteData() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
   }
 }
