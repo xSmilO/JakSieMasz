@@ -107,7 +107,9 @@ flutter:
         - "assets/icons/trash.svg"
         - "assets/icons/link.svg"
 
-        - "assets/avatars/default.jpg"
+        - "assets/avatars/dog.jpg"
+        - "assets/avatars/penguin.png"
+        - "assets/avatars/cow.png"
 
         # articles data
         - "assets/data/articles.json"

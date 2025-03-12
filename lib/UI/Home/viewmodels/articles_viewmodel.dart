@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:jak_sie_masz/Data/article_model.dart';
+import 'package:jak_sie_masz/Data/models/article_model.dart';
 
 class ArticlesViewmodel extends ChangeNotifier {
   List<ArticleModel> articles = [];

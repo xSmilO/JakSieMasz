@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/exercise_data_model.dart';
-import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
+import 'package:jak_sie_masz/Data/models/exercise_data_model.dart';
+import 'package:jak_sie_masz/Data/repositories/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercise_card_widget.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';

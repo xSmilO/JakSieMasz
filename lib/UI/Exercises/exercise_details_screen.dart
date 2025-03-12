@@ -4,7 +4,7 @@ import 'package:jak_sie_masz/UI/Exercises/exercise_details_header_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/exercise_progress_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercise_task_checkbox.dart';
 import 'package:jak_sie_masz/UI/Exercises/reset_exercise_buttton_widget.dart';
@@ -120,10 +120,9 @@ class ExercisesDetailsScreen extends StatelessWidget {
                         children: List.generate(exercise.tasks.length, (index) {
                           ExerciseTaskCheckbox checkbox = ExerciseTaskCheckbox(
                             viewmodel: ExerciseTaskCheckboxViewmodel(
-                              repository: repository,
-                              exerciseID: exercise.id,
-                              taskID: index
-                            ),
+                                repository: repository,
+                                exerciseID: exercise.id,
+                                taskID: index),
                           );
 
                           checkboxes.add(checkbox);
@@ -155,13 +154,10 @@ class ExercisesDetailsScreen extends StatelessWidget {
                         margin: EdgeInsets.only(top: 16),
                         alignment: Alignment.center,
                         child: ResetExerciseButtton(
-                          viewmodel: ResetExerciseButtonViewmodel(
-                            repository: repository,
-                            checkboxes: checkboxes
-                          ),
-                          exerciseID: exercise.id,
-                          tasksCount: exercise.tasks.length
-                        ),
+                            viewmodel: ResetExerciseButtonViewmodel(
+                                repository: repository, checkboxes: checkboxes),
+                            exerciseID: exercise.id,
+                            tasksCount: exercise.tasks.length),
                       ),
                       SizedBox(
                         height: 16,

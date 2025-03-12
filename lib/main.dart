@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:jak_sie_masz/Data/database_helper_service.dart';
-import 'package:jak_sie_masz/Data/day_rating_repository.dart';
-import 'package:jak_sie_masz/Data/exercise_data_repository.dart';
-import 'package:jak_sie_masz/Data/navigation_service.dart';
-import 'package:jak_sie_masz/Data/notification_service.dart';
-import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
-import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
-import 'package:jak_sie_masz/Data/user_repository.dart';
+import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
+import 'package:jak_sie_masz/Data/repositories/day_rating_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/exercise_data_repository.dart';
+import 'package:jak_sie_masz/Data/services/navigation_service.dart';
+import 'package:jak_sie_masz/Data/services/notification_service.dart';
+import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/articles_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
+import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_picture_dialog_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -67,9 +68,16 @@ void main() async {
                 databaseHelperService: context.read(),
                 dayRatingRepository: context.read())),
         ChangeNotifierProvider(
-          create: (context) => ExercisesViewModel(repository: ExerciseDataRepository()),
+          create: (context) => ExercisesViewModel(
+            repository: ExerciseDataRepository(),
+          ),
         ),
-        ChangeNotifierProvider(create: (context) => ArticlesViewmodel())
+        ChangeNotifierProvider(
+          create: (context) => ArticlesViewmodel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProfilePictureDialogViewmodel(),
+        )
       ],
       child: MainApp(),
     ),

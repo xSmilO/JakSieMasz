@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/user_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/Articles/articles_section_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_section_widget.dart';

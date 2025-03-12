@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/profile_picture_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/Dialogs/username_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_delete_button_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_option_button_widget.dart';
@@ -9,13 +10,13 @@ import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-//todo create delete popup
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
   final ProfileViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
+    viewModel.loadUserData();
     Future changeUsernameDialog() => showDialog(
           context: context,
           builder: (context) => UsernameDialogWidget(
@@ -23,8 +24,6 @@ class ProfileScreen extends StatelessWidget {
             onSubmit: viewModel.changeName,
           ),
         );
-
-    // changeUsernameDialog();
 
     return Container(
       color: Styles.primaryColor500,
@@ -46,7 +45,8 @@ class ProfileScreen extends StatelessWidget {
                       width: 96,
                       height: 96,
                       child: Image.asset(
-                        "assets/avatars/default.jpg",
+                        //todo change to selected
+                        "assets/avatars/dog.jpg",
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -103,7 +103,14 @@ class ProfileScreen extends StatelessWidget {
                           title: "Zmień awatar",
                           buttonIcon: "assets/icons/arrow-right.svg",
                           titleIcon: "assets/icons/edit.svg",
-                          onTap: () => print("witam"),
+                          onTap: () => {
+                            showDialog(
+                              context: context,
+                              builder: (context) => ProfilePictureDialogWidget(
+                                viewmodel: context.read(),
+                              ),
+                            )
+                          },
                         ),
                       ],
                     ),

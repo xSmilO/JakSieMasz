@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/notification_service.dart';
-import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
-import 'package:jak_sie_masz/Data/user_repository.dart';
+import 'package:jak_sie_masz/Data/services/notification_service.dart';
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 
 class ProfileViewModel extends ChangeNotifier {
   //todo add toast notifcation when user selects notification time
@@ -26,11 +26,8 @@ class ProfileViewModel extends ChangeNotifier {
 
   TimeOfDay? get selectedTime => _selectedTime;
 
-  void changeName(String newName) {
-    if (newName == "") return;
-    _userRepository.setUsername(newName);
+  Future<void> loadUserData() async {
     _username = _userRepository.username;
-    notifyListeners();
   }
 
   Future<void> _loadSavedTime() async {
@@ -46,6 +43,13 @@ class ProfileViewModel extends ChangeNotifier {
       ),
     );
 
+    notifyListeners();
+  }
+
+  void changeName(String newName) {
+    if (newName == "") return;
+    _userRepository.setUsername(newName);
+    _username = _userRepository.username;
     notifyListeners();
   }
 

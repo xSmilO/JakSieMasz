@@ -1,5 +1,5 @@
-import 'package:jak_sie_masz/Data/database_helper_service.dart';
-import 'package:jak_sie_masz/Data/day_rating_model.dart';
+import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
+import 'package:jak_sie_masz/Data/models/day_rating_model.dart';
 
 class DayRatingRepository {
   final DatabaseHelperService databaseHelperService;

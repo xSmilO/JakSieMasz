@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
 
 class RateSliderViewmodel extends ChangeNotifier {
   final RateSliderRepository rateSliderRepository;

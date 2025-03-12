@@ -1,4 +1,4 @@
-import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 
 class UserRepository {
   late String _username = "";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/day_rating_repository.dart';
-import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/day_rating_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
 import 'package:jak_sie_masz/UI/Shared/utility.dart';
 
 class RateButtonViewmodel {

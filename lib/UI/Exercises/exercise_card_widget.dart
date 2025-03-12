@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/exercise_data_model.dart';
+import 'package:jak_sie_masz/Data/models/exercise_data_model.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 
 class ExerciseCardWidget extends StatelessWidget {

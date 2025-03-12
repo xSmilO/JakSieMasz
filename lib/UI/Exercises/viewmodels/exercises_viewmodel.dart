@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/exercise_data_model.dart';
-import 'package:jak_sie_masz/Data/exercise_data_repository.dart';
+import 'package:jak_sie_masz/Data/models/exercise_data_model.dart';
+import 'package:jak_sie_masz/Data/repositories/exercise_data_repository.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   final ExerciseDataRepository repository;
@@ -18,7 +18,7 @@ class ExercisesViewModel extends ChangeNotifier {
     repository.getExercisesData().then((exercises) {
       _exercises = exercises;
       _isLoading = false;
-      
+
       notifyListeners();
     });
   }

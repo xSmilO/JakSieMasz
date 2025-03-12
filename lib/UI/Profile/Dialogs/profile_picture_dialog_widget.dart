@@ -1,54 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
-import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
-import 'package:jak_sie_masz/routing/routes.dart';
+import 'package:jak_sie_masz/UI/Profile/profile_picture_widget.dart';
+import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_picture_dialog_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-class DeleteDialogWidget extends StatelessWidget {
-  const DeleteDialogWidget(
-      {super.key,
-      required this.sharedPreferencesService,
-      required this.databaseHelperService});
-  final SharedPreferencesService sharedPreferencesService;
-  final DatabaseHelperService databaseHelperService;
+class ProfilePictureDialogWidget extends StatelessWidget {
+  ProfilePictureDialogWidget({super.key, required this.viewmodel});
+  final ProfilePictureDialogViewmodel viewmodel;
+  final List<String> avatars = [
+    'assets/avatars/dog.jpg',
+    'assets/avatars/cow.png',
+    'assets/avatars/penguin.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
         ),
+        padding: EdgeInsets.all(16),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 16,
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8,
           children: [
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                text: "Czy na pewno chcesz ",
-                style: TextStyle(
-                  color: Styles.fontColorDark,
-                  fontFamily: Styles.fontFamily,
-                  fontWeight: FontWeight.w500,
-                  fontSize: Styles.fontSizeH3,
+            Text(
+              "Wybierz zdjęcie profilowe",
+              style: TextStyle(
+                fontFamily: Styles.fontFamily,
+                fontWeight: FontWeight.w500,
+                fontSize: Styles.fontSizeH3,
+                color: Styles.primaryColor500,
+              ),
+            ),
+            Container(
+              height: 2,
+              color: Color(0xFFD9D9D9),
+            ),
+            Consumer<ProfilePictureDialogViewmodel>(
+              builder: (context, value, child) => Wrap(
+                direction: Axis.horizontal,
+                spacing: 4,
+                runSpacing: 4,
+                // crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.center,
+                children: List.generate(
+                  avatars.length,
+                  (index) => ProfilePictureWidget(
+                    imgUrl: avatars[index],
+                    id: index,
+                    selectedId: value.selectedIdx,
+                    onTap: viewmodel.setSelectedIdx,
+                  ),
                 ),
-                children: [
-                  TextSpan(
-                    text: "usunąć wszystkie dane ",
-                    style: TextStyle(
-                      color: Styles.primaryColor500,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "?",
-                  ),
-                ],
               ),
             ),
             Row(
@@ -80,7 +88,7 @@ class DeleteDialogWidget extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    "NIE",
+                    "cofnij",
                     style: TextStyle(
                       fontFamily: Styles.fontFamily,
                       fontWeight: FontWeight.normal,
@@ -91,9 +99,7 @@ class DeleteDialogWidget extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    sharedPreferencesService.deleteData();
-                    databaseHelperService.deleteData();
-                    context.go(Routes.welcome);
+                    print("pick avatar");
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
@@ -112,11 +118,11 @@ class DeleteDialogWidget extends StatelessWidget {
                       Size(10, 10),
                     ),
                     padding: WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                      EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
                   ),
                   child: Text(
-                    "TAK",
+                    "wybierz",
                     style: TextStyle(
                       fontFamily: Styles.fontFamily,
                       fontWeight: FontWeight.normal,
@@ -126,7 +132,7 @@ class DeleteDialogWidget extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
