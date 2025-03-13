@@ -34,6 +34,7 @@ GoRouter router() => GoRouter(
                   path: Routes.home,
                   builder: (context, state) => HomeScreen(
                     userRepository: context.read(),
+                    navViewmodel: context.read(),
                   ),
                 ),
                 GoRoute(

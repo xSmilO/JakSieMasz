@@ -13,6 +13,7 @@ class ProfileViewmodel extends ChangeNotifier {
   ProfileViewmodel(UserRepository repo, this.spService)
       : _userRepository = repo {
     _username = repo.username;
+    _avatarPath = repo.avatarPath;
     repo.onUsernameChange = (String newUsername) {
       _username = newUsername;
       notifyListeners();

@@ -4,11 +4,14 @@ import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/Articles/articles_section_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_section_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/rate_container_widget.dart';
+import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.userRepository});
+  const HomeScreen(
+      {super.key, required this.userRepository, required this.navViewmodel});
   final UserRepository userRepository;
+  final NavigationViewmodel navViewmodel;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     username = widget.userRepository.getUsername();
     widget.userRepository.onUsernameChange = this.loadUsername;
+    widget.navViewmodel.setPageIdx(2);
   }
 
   void loadUsername(String newUsername) {
