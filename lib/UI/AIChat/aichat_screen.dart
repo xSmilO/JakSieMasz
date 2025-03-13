@@ -76,6 +76,7 @@ class _AIChatScreenState extends State<AIChatScreen>
 
   @override
   Widget build(BuildContext context) {
+    double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     return Consumer<AIChatViewModel>(
       builder: (context, viewModel, child) {
         return Stack(
@@ -146,6 +147,10 @@ class _AIChatScreenState extends State<AIChatScreen>
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(25),
                         border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      margin: EdgeInsets.only(
+                        bottom:
+                            (keyboardHeight - 64) > 0 ? keyboardHeight - 64 : 0,
                       ),
                       child: Row(
                         children: [
