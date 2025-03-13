@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:jak_sie_masz/Data/models/day_rating_model.dart';
 import 'package:path/path.dart';
-import 'package:restart_app/restart_app.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelperService {
