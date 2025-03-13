@@ -54,19 +54,27 @@ void main() async {
           create: (context) => NavigationService(),
         ),
         ChangeNotifierProvider(
-          create: (context) => NavigationViewmodel(context.read()),
+          create: (context) => NavigationViewmodel(
+            context.read(),
+          ),
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfileViewmodel(context.read(), context.read()),
+          create: (context) => ProfileViewmodel(
+            context.read(),
+            context.read(),
+          ),
         ),
         ChangeNotifierProvider(
-          create: (context) =>
-              RateSliderViewmodel(rateSliderRepository: context.read()),
+          create: (context) => RateSliderViewmodel(
+            rateSliderRepository: context.read(),
+          ),
         ),
         ChangeNotifierProvider(
-            create: (context) => RateChartViewmodel(
-                databaseHelperService: context.read(),
-                dayRatingRepository: context.read())),
+          create: (context) => RateChartViewmodel(
+            databaseHelperService: context.read(),
+            dayRatingRepository: context.read(),
+          ),
+        ),
         ChangeNotifierProvider(
           create: (context) => ExercisesViewModel(
             repository: ExerciseDataRepository(),
@@ -76,8 +84,9 @@ void main() async {
           create: (context) => ArticlesViewmodel(),
         ),
         ChangeNotifierProvider(
-          create: (context) =>
-              ProfilePictureDialogViewmodel(userRepository: context.read()),
+          create: (context) => ProfilePictureDialogViewmodel(
+            userRepository: context.read(),
+          ),
         )
       ],
       child: MainApp(),

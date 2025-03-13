@@ -34,35 +34,39 @@ class ProfileScreen extends StatelessWidget {
             height: 300,
             child: Center(
               child: Consumer<ProfileViewmodel>(
-                builder: (context, value, child) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
+                builder: (context, value, child) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100)),
+                        width: 96,
+                        height: 96,
+                        child: Image.asset(
+                          //todo change to selected
+                          // "assets/avatars/dog.jpg",
+                          value.avatarPath == ""
+                              ? "assets/avatars/dog.jpg"
+                              : value.avatarPath,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      Text(
+                        viewModel.username,
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: Styles.fontFamily,
+                          fontWeight: FontWeight.w500,
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(100)),
-                      width: 96,
-                      height: 96,
-                      child: Image.asset(
-                        //todo change to selected
-                        // "assets/avatars/dog.jpg",
-                        value.avatarPath,
-                        fit: BoxFit.fill,
+                          fontSize: Styles.fontSizeH1,
+                        ),
                       ),
-                    ),
-                    Text(
-                      viewModel.username,
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
-                        fontFamily: Styles.fontFamily,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        fontSize: Styles.fontSizeH1,
-                      ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
@@ -155,7 +159,9 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                     ProfileDeleteButtonWidget(),
-                    ProfileServerInputWidget()
+                    ProfileServerInputWidget(
+                      viewmodel: viewModel,
+                    )
                   ],
                 ),
               ),

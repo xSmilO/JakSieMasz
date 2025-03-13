@@ -6,6 +6,7 @@ import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 class ProfileViewmodel extends ChangeNotifier {
   String _username = "";
   String _avatarPath = "";
+  String _ipAddr = "";
   TimeOfDay? _selectedTime;
   final UserRepository _userRepository;
   final SharedPreferencesService spService;
@@ -25,11 +26,14 @@ class ProfileViewmodel extends ChangeNotifier {
     };
 
     _loadSavedTime();
+    _loadIpAddr();
   }
 
   String get username => _username;
 
   String get avatarPath => _avatarPath;
+
+  String get ipAddr => _ipAddr;
 
   TimeOfDay? get selectedTime => _selectedTime;
 
@@ -53,10 +57,23 @@ class ProfileViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> _loadIpAddr() async {
+    _ipAddr = await spService.fetchString("ip_addr") as String;
+
+    notifyListeners();
+  }
+
   void changeName(String newName) {
     if (newName == "") return;
     _userRepository.setUsername(newName);
     _username = _userRepository.username;
+    notifyListeners();
+  }
+
+  Future<void> changeIpAddr(String addr) async {
+    print("new addr $addr");
+    await spService.saveString("ip_addr", addr);
+    _ipAddr = addr;
     notifyListeners();
   }
 
