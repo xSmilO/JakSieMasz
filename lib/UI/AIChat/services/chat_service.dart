@@ -7,6 +7,8 @@ class ChatService {
   void Function(Message)? onMessageReceived;
   void Function()? onTypingStarted;
   void Function()? onTypingStopped;
+  void Function()? onConnected;
+  void Function()? onDisconnected;
 
   void connectToServer() {
     try {
@@ -28,8 +30,16 @@ class ChatService {
 
       setupSocketListeners();
 
-      _socket!.onConnect((_) => print('Socket connected'));
-      _socket!.onDisconnect((_) => print('Socket disconnected'));
+      _socket!.onConnect((_) {
+        print('Socket connected');
+        onConnected?.call();
+      });
+      
+      _socket!.onDisconnect((_) {
+        print('Socket disconnected');
+        onDisconnected?.call();
+      });
+      
       _socket!.onConnectError((err) => print('Connect Error: $err'));
       _socket!.onError((err) => print('Socket Error: $err'));
     } catch (e) {

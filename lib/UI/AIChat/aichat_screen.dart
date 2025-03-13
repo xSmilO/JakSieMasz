@@ -83,6 +83,33 @@ class _AIChatScreenState extends State<AIChatScreen>
               resizeToAvoidBottomInset: false,
               appBar: AppBar(
                 title: const Text("AI Chat"),
+                actions: [
+                  Consumer<AIChatViewModel>(
+                    builder: (context, viewModel, _) {
+                      return Row(
+                        children: [
+                          Container(
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: viewModel.isConnected ? Colors.green : Colors.red,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            viewModel.isConnected ? "Online" : "Offline",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: viewModel.isConnected ? Colors.green : Colors.red,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                        ],
+                      );
+                    },
+                  ),
+                ],
                 leading: IconButton(
                   icon: const DrawerIcon(),
                   onPressed: () {

@@ -12,6 +12,7 @@ class AIChatViewModel extends ChangeNotifier {
   List<Topic> recentTopics = [];
   bool isTyping = false;
   bool isDrawerOpen = false;
+  bool isConnected = false;
   int? currentTopicId;
 
   AIChatViewModel(this._chatService, this._dbService) {
@@ -26,6 +27,14 @@ class AIChatViewModel extends ChangeNotifier {
     };
     _chatService.onTypingStopped = () {
       isTyping = false;
+      notifyListeners();
+    };
+    _chatService.onConnected = () {
+      isConnected = true;
+      notifyListeners();
+    };
+    _chatService.onDisconnected = () {
+      isConnected = false;
       notifyListeners();
     };
   }
