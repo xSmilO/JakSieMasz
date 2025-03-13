@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/AIChat/widgets/drawer_icon.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/aichat_viewmodel.dart';
@@ -86,6 +87,7 @@ class _AIChatScreenState extends State<AIChatScreen>
                 actions: [
                   Consumer<AIChatViewModel>(
                     builder: (context, viewModel, _) {
+                      viewModel.changeServer();
                       return Row(
                         children: [
                           Container(
@@ -93,15 +95,21 @@ class _AIChatScreenState extends State<AIChatScreen>
                             height: 10,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: viewModel.isConnected ? Colors.green : Colors.red,
+                              color: viewModel.isConnected
+                                  ? Colors.green
+                                  : Colors.red,
                             ),
                           ),
                           const SizedBox(width: 5),
                           Text(
                             viewModel.isConnected ? "Online" : "Offline",
                             style: TextStyle(
-                              fontSize: 14,
-                              color: viewModel.isConnected ? Colors.green : Colors.red,
+                              fontSize: Styles.fontSizeH3,
+                              fontFamily: Styles.fontFamily,
+                              fontWeight: FontWeight.w500,
+                              color: viewModel.isConnected
+                                  ? Colors.green
+                                  : Colors.red,
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -149,6 +157,12 @@ class _AIChatScreenState extends State<AIChatScreen>
                                 border: InputBorder.none,
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 20),
+                              ),
+                              style: TextStyle(
+                                color: Styles.fontColorDark,
+                                fontSize: Styles.fontSizeH4,
+                                fontFamily: Styles.fontFamily,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
                           ),

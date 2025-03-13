@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import '../viewmodels/aichat_viewmodel.dart';
 import '../models/message.dart';
 
@@ -82,18 +83,24 @@ class _ChatMessageListWidgetState extends State<ChatMessageListWidget> {
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
           children: [
-            const Text(
+            Text(
+              //todo make bot name
               "Andrzej Bugała pisze",
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(
+                fontSize: Styles.fontSizeH4,
+                fontFamily: Styles.fontFamily,
+                color: Styles.fontColorDark,
+                fontWeight: FontWeight.normal,
+              ),
             ),
             Row(
               children: List.generate(3, (dotIndex) {
                 return FadeTransition(
                   opacity: widget.dotsAnimations[dotIndex],
-                  child: const Text(
+                  child: Text(
                     ".",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: Styles.fontSizeH4,
                       height: 1,
                       fontWeight: FontWeight.bold,
                     ),

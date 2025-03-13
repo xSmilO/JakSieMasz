@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import '../viewmodels/aichat_viewmodel.dart';
 import 'topics_list_widget.dart';
 import 'drawer_icon.dart';
@@ -61,7 +62,15 @@ class ChatDrawerWidget extends StatelessWidget {
                               _closeDrawer();
                             },
                             icon: const Icon(Icons.add),
-                            label: const Text('Nowy temat'),
+                            label: Text(
+                              'Nowy temat',
+                              style: TextStyle(
+                                fontFamily: Styles.fontFamily,
+                                color: Styles.primaryColor500,
+                                fontWeight: FontWeight.normal,
+                                fontSize: Styles.fontSizeH3,
+                              ),
+                            ),
                           ),
                         ],
                       ),

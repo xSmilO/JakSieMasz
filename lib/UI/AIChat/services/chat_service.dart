@@ -1,8 +1,11 @@
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../models/message.dart';
 
 class ChatService {
+  SharedPreferencesService sp = SharedPreferencesService();
   static IO.Socket? _socket;
+  String _serverIp = "";
 
   void Function(Message)? onMessageReceived;
   void Function()? onTypingStarted;
@@ -10,7 +13,12 @@ class ChatService {
   void Function()? onConnected;
   void Function()? onDisconnected;
 
-  void connectToServer() {
+  String get serverIp => _serverIp;
+
+  Future<void> connectToServer() async {
+    _serverIp = await sp.fetchString("ip_addr") as String;
+
+    print('Connecting to $_serverIp');
     try {
       if (_socket != null) {
         if (!_socket!.connected) {
@@ -19,8 +27,9 @@ class ChatService {
         setupSocketListeners();
         return;
       }
-
-      _socket = IO.io('http://10.0.2.2:3000', <String, dynamic>{
+      //todo change to use saved address
+      // 'http://10.0.2.2:3000'
+      _socket = IO.io(_serverIp, <String, dynamic>{
         'transports': ['websocket'],
         'autoConnect': true,
         'reconnection': true,
@@ -34,16 +43,35 @@ class ChatService {
         print('Socket connected');
         onConnected?.call();
       });
-      
+
       _socket!.onDisconnect((_) {
         print('Socket disconnected');
         onDisconnected?.call();
       });
-      
-      _socket!.onConnectError((err) => print('Connect Error: $err'));
-      _socket!.onError((err) => print('Socket Error: $err'));
+
+      _socket!.onConnectError((err) {
+        print('Connect Error: $err');
+        onDisconnected?.call();
+      });
+      _socket!.onError(
+        (err) {
+          print('Socket Error: $err');
+          onDisconnected?.call();
+        },
+      );
     } catch (e) {
+      _serverIp = await sp.fetchString("ip_addr") as String;
       print('Error in connectToServer: $e');
+    }
+  }
+
+  Future<void> changeServer() async {
+    if (_serverIp != await sp.fetchString("ip_addr") || _socket == null) {
+      // if server ip is different connect to the new one
+      _socket?.disconnect();
+      _socket?.dispose();
+      _socket = null;
+      connectToServer();
     }
   }
 

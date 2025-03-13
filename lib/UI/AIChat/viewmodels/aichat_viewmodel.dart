@@ -137,6 +137,10 @@ class AIChatViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> changeServer() async {
+    _chatService.changeServer();
+  }
+
   Future<void> loadRecentTopics() async {
     try {
       recentTopics = await _dbService.getTopics();
