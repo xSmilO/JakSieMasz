@@ -5,7 +5,7 @@ import '../models/message.dart';
 class ChatService {
   SharedPreferencesService sp = SharedPreferencesService();
   static IO.Socket? _socket;
-  String _serverIp = "";
+  String? _serverIp = "";
 
   void Function(Message)? onMessageReceived;
   void Function()? onTypingStarted;
@@ -13,10 +13,10 @@ class ChatService {
   void Function()? onConnected;
   void Function()? onDisconnected;
 
-  String get serverIp => _serverIp;
+  String? get serverIp => _serverIp;
 
   Future<void> connectToServer() async {
-    _serverIp = await sp.fetchString("ip_addr") as String;
+    _serverIp = await sp.fetchString("ip_addr");
 
     print('Connecting to $_serverIp');
     try {

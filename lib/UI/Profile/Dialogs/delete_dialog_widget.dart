@@ -4,6 +4,7 @@ import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
 import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/routing/routes.dart';
+import 'package:restart_app/restart_app.dart';
 
 class DeleteDialogWidget extends StatelessWidget {
   const DeleteDialogWidget(
@@ -92,8 +93,11 @@ class DeleteDialogWidget extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     sharedPreferencesService.deleteData();
-                    databaseHelperService.deleteData();
-                    context.go(Routes.welcome);
+                    databaseHelperService.deleteData().then((value) =>
+                        Restart.restartApp(
+                            notificationTitle: "Zacznij wszystko od początku",
+                            notificationBody:
+                                "Prosze kliknij aby zacząć przygodę od nowa"));
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
