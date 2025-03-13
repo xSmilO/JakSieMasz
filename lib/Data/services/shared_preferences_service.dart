@@ -1,6 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
+  SharedPreferencesService() {
+    // set default values
+    saveString("ip_addr", "http://10.0.2.2:3000");
+  }
+
   Future<String?> fetchString(String token) async {
     final sharedPreferences = await SharedPreferences.getInstance();
 
