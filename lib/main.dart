@@ -141,6 +141,14 @@ class MainApp extends StatelessWidget {
         ),
       ),
       routerConfig: router(),
+      builder: (context, child) {
+        return MediaQuery(
+          child: child!,
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.linear(1.0),
+          ),
+        );
+      },
     );
   }
 }
