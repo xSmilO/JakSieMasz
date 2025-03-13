@@ -25,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     username = widget.userRepository.getUsername();
     widget.userRepository.onUsernameChange = this.loadUsername;
-    widget.navViewmodel.setPageIdx(2);
+    if (widget.navViewmodel.selectedPageIdx != 2)
+      widget.navViewmodel.setPageIdx(2);
   }
 
   void loadUsername(String newUsername) {
