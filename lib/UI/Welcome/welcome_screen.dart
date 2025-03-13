@@ -91,6 +91,8 @@ class WelcomeScreen extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             userRepository.setUsername(username);
+                            userRepository
+                                .setAvatarPath("assets/avatars/dog.jpg");
                             context.go(Routes.home);
                           },
                           style: ButtonStyle(

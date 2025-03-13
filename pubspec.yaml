@@ -110,6 +110,9 @@ flutter:
         - "assets/avatars/dog.jpg"
         - "assets/avatars/penguin.png"
         - "assets/avatars/cow.png"
+        - "assets/avatars/fish.png"
+        - "assets/avatars/duck.png"
+        - "assets/avatars/lion.png"
 
         # articles data
         - "assets/data/articles.json"

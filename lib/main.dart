@@ -57,7 +57,7 @@ void main() async {
           create: (context) => NavigationViewmodel(context.read()),
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfileViewModel(context.read(), context.read()),
+          create: (context) => ProfileViewmodel(context.read(), context.read()),
         ),
         ChangeNotifierProvider(
           create: (context) =>
@@ -76,7 +76,8 @@ void main() async {
           create: (context) => ArticlesViewmodel(),
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfilePictureDialogViewmodel(),
+          create: (context) =>
+              ProfilePictureDialogViewmodel(userRepository: context.read()),
         )
       ],
       child: MainApp(),

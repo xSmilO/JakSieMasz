@@ -9,9 +9,12 @@ class ProfilePictureDialogWidget extends StatelessWidget {
   ProfilePictureDialogWidget({super.key, required this.viewmodel});
   final ProfilePictureDialogViewmodel viewmodel;
   final List<String> avatars = [
-    'assets/avatars/dog.jpg',
-    'assets/avatars/cow.png',
-    'assets/avatars/penguin.png',
+    "assets/avatars/dog.jpg",
+    "assets/avatars/penguin.png",
+    "assets/avatars/cow.png",
+    "assets/avatars/fish.png",
+    "assets/avatars/duck.png",
+    "assets/avatars/lion.png",
   ];
 
   @override
@@ -99,7 +102,8 @@ class ProfilePictureDialogWidget extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    print("pick avatar");
+                    viewmodel.setAvatar(avatars[viewmodel.selectedIdx]);
+                    context.pop();
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(

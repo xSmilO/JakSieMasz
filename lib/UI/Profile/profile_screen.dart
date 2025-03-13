@@ -12,7 +12,7 @@ import 'package:toastification/toastification.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
-  final ProfileViewModel viewModel;
+  final ProfileViewmodel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             height: 300,
             child: Center(
-              child: Consumer<ProfileViewModel>(
+              child: Consumer<ProfileViewmodel>(
                 builder: (context, value, child) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -46,7 +46,8 @@ class ProfileScreen extends StatelessWidget {
                       height: 96,
                       child: Image.asset(
                         //todo change to selected
-                        "assets/avatars/dog.jpg",
+                        // "assets/avatars/dog.jpg",
+                        value.avatarPath,
                         fit: BoxFit.fill,
                       ),
                     ),

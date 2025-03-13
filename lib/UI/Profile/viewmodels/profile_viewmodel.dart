@@ -3,13 +3,14 @@ import 'package:jak_sie_masz/Data/services/notification_service.dart';
 import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 
-class ProfileViewModel extends ChangeNotifier {
-  //todo add toast notifcation when user selects notification time
+class ProfileViewmodel extends ChangeNotifier {
   String _username = "";
+  String _avatarPath = "";
   TimeOfDay? _selectedTime;
   final UserRepository _userRepository;
   final SharedPreferencesService spService;
-  ProfileViewModel(UserRepository repo, this.spService)
+
+  ProfileViewmodel(UserRepository repo, this.spService)
       : _userRepository = repo {
     _username = repo.username;
     repo.onUsernameChange = (String newUsername) {
@@ -17,12 +18,17 @@ class ProfileViewModel extends ChangeNotifier {
       notifyListeners();
     };
 
+    repo.onAvatarChange = (String path) {
+      _avatarPath = path;
+      notifyListeners();
+    };
+
     _loadSavedTime();
   }
 
-  String get username {
-    return _username;
-  }
+  String get username => _username;
+
+  String get avatarPath => _avatarPath;
 
   TimeOfDay? get selectedTime => _selectedTime;
 
