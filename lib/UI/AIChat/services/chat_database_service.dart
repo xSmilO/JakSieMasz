@@ -1,4 +1,4 @@
-import 'package:jak_sie_masz/Data/database_helper_service.dart';
+import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
 import '../models/topic.dart';
 import '../models/message.dart';
 

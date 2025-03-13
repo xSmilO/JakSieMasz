@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/day_rating_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/day_rating_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/line_title.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
@@ -49,6 +49,8 @@ class _RateChartWidgetState extends State<RateChartWidget> {
                   .inDays -
               1;
 
+          if (x < 0) continue;
+
           dataSpots.add(
             FlSpot(
               x.toDouble(),
@@ -59,7 +61,6 @@ class _RateChartWidgetState extends State<RateChartWidget> {
         if (dataSpots.isEmpty) {
           dataSpots.add(FlSpot(0, 1));
         }
-        print(dataSpots.last);
         return LineChart(
           LineChartData(
             minY: 1,

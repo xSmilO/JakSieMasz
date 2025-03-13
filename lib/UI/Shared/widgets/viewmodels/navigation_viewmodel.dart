@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/navigation_service.dart';
+import 'package:jak_sie_masz/Data/services/navigation_service.dart';
 
 class NavigationViewmodel extends ChangeNotifier {
   NavigationViewmodel(NavigationService navigationService)

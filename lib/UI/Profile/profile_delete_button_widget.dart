@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/delete_dialog_widget.dart';
+import 'package:provider/provider.dart';
 
 class ProfileDeleteButtonWidget extends StatelessWidget {
   const ProfileDeleteButtonWidget({super.key});
@@ -8,7 +10,13 @@ class ProfileDeleteButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => print("delete user data"),
+      onTap: () => showDialog(
+        context: context,
+        builder: (context) => DeleteDialogWidget(
+          databaseHelperService: context.read(),
+          sharedPreferencesService: context.read(),
+        ),
+      ),
       child: Container(
         margin: EdgeInsets.only(top: 64),
         decoration: BoxDecoration(

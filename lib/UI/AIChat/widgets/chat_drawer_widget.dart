@@ -33,7 +33,7 @@ class ChatDrawerWidget extends StatelessWidget {
                 child: GestureDetector(
                   onTap: _closeDrawer,
                   child: Container(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withAlpha(127),
                   ),
                 ),
               ),

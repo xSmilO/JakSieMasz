@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/database_helper_service.dart';
-import 'package:jak_sie_masz/Data/day_rating_model.dart';
-import 'package:jak_sie_masz/Data/day_rating_repository.dart';
+import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
+import 'package:jak_sie_masz/Data/models/day_rating_model.dart';
+import 'package:jak_sie_masz/Data/repositories/day_rating_repository.dart';
 
 class RateChartViewmodel extends ChangeNotifier {
   List<DayRatingModel> ratings = [];
@@ -26,7 +26,6 @@ class RateChartViewmodel extends ChangeNotifier {
   Future<void> fetchRates() async {
     ratings = await databaseHelperService
         .getRatingsByNewest(_timespans[_activeTimespanId]);
-    // ratings = await _databaseHelperService.getRatingsByNewest(3);
     notifyListeners();
   }
 
