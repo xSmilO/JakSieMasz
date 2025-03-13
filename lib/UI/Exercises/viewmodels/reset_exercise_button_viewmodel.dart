@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/repositories/exercise_progress_repository.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercise_task_checkbox.dart';
 import 'package:jak_sie_masz/UI/Shared/utility.dart';
@@ -9,13 +10,15 @@ class ResetExerciseButtonViewmodel {
   ResetExerciseButtonViewmodel(
       {required this.repository, required this.checkboxes});
 
-  Future<void> uncheckCheckboxes(int exerciseID, int tasksCount) async {
+  Future<void> uncheckCheckboxes(
+      int exerciseID, int tasksCount, BuildContext context) async {
     for (ExerciseTaskCheckbox checkbox in checkboxes) {
       checkbox.viewmodel.uncheck();
     }
 
     await repository.eraseProgress(exerciseID, tasksCount);
 
-    Utility.showSimpleOutput("Możesz zaczynać od początku, powodzenia! 😉");
+    Utility.showSimpleOutput(
+        context, "Możesz zaczynać od początku, powodzenia! 😉");
   }
 }

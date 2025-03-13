@@ -35,7 +35,7 @@ class RateButtonViewmodel {
           message = "Tak trzymaj! 🤩";
       }
 
-      Utility.showSimpleOutput(message);
+      Utility.showSimpleOutput(context, message);
     }
   }
 }

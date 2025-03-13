@@ -17,7 +17,7 @@ class ResetExerciseButtton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () async {
-          await viewmodel.uncheckCheckboxes(exerciseID, tasksCount);
+          await viewmodel.uncheckCheckboxes(exerciseID, tasksCount, context);
         },
         style: ButtonStyle(
             backgroundColor: WidgetStatePropertyAll(Styles.secondaryColor100),

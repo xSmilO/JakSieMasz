@@ -1,16 +1,21 @@
-import 'dart:ui';
-
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:toastification/toastification.dart';
 
 class Utility {
-  static void showSimpleOutput(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.TOP,
-      backgroundColor: Color.fromARGB(255, 28, 30, 36),
-      textColor: Color.fromARGB(255, 235, 238, 245),
-      fontSize: 16.0
+  static void showSimpleOutput(BuildContext context, String message) {
+    toastification.show(
+      context: context,
+      title: Text(
+        message,
+        style: TextStyle(
+          color: Styles.fontColorDark,
+          fontFamily: Styles.fontFamily,
+          fontSize: Styles.fontSizeP,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+      autoCloseDuration: Duration(seconds: 3),
     );
   }
 
