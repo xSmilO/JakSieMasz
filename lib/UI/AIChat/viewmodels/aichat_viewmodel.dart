@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/message.dart';
 import '../models/topic.dart';
 import '../services/chat_service.dart';
@@ -14,8 +15,12 @@ class AIChatViewModel extends ChangeNotifier {
   bool isDrawerOpen = false;
   bool isConnected = false;
   int? currentTopicId;
+  late String botName;
 
-  AIChatViewModel(this._chatService, this._dbService) {
+  AIChatViewModel(
+    this._chatService,
+    this._dbService,
+  ) {
     _setupChatServiceListeners();
   }
 
@@ -165,5 +170,11 @@ class AIChatViewModel extends ChangeNotifier {
   void dispose() {
     _chatService.dispose();
     super.dispose();
+  }
+
+  Future<void> getBotName() async {
+    final sp = await SharedPreferences.getInstance();
+    botName = await sp.getString("ai_name") as String;
+    print("kurwa $botName");
   }
 }

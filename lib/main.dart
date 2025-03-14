@@ -94,9 +94,8 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => AIChatViewModel(
-            context.read<ChatService>(),
-            context.read<ChatDatabaseService>(),
-          )..initialize(),
+              context.read<ChatService>(), context.read<ChatDatabaseService>())
+            ..initialize(),
         ),
         ChangeNotifierProvider(
           create: (context) => ArticlesViewmodel(),

@@ -81,6 +81,8 @@ class ProfileViewmodel extends ChangeNotifier {
   }
 
   Future<void> changeAiName(String name) async {
+    if (name == "") return;
+
     await spService.saveString("ai_name", name);
     _aiName = name;
     notifyListeners();
