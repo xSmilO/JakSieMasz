@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/ai_name_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/Dialogs/profile_picture_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/Dialogs/username_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_delete_button_widget.dart';
@@ -24,6 +25,11 @@ class ProfileScreen extends StatelessWidget {
             onSubmit: viewModel.changeName,
           ),
         );
+
+    Future changeAINameDialog() => showDialog(
+        context: context,
+        builder: (context) => AiNameDialogWidget(
+            currentAIName: viewModel.aiName, onSubmit: viewModel.changeAiName));
 
     return Container(
       color: Styles.primaryColor500,
@@ -155,6 +161,19 @@ class ProfileScreen extends StatelessWidget {
                           title: "Godzina oceny dnia",
                           buttonIcon: "assets/icons/arrow-right.svg",
                           titleIcon: "assets/icons/clock.svg",
+                        ),
+                      ],
+                    ),
+                    ProfileOptionsSectionWidget(
+                      title: "Ustawienia AI",
+                      buttons: [
+                        ProfileOptionButtonWidget(
+                          onTap: () {
+                            changeAINameDialog();
+                          },
+                          title: "Zmień nazwe AI przyjaciela",
+                          buttonIcon: "assets/icons/arrow-right.svg",
+                          titleIcon: "assets/icons/robot.svg",
                         ),
                       ],
                     ),

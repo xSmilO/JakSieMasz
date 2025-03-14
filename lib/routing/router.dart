@@ -53,7 +53,9 @@ GoRouter router() => GoRouter(
                 ),
                 GoRoute(
                   path: Routes.aiChat,
-                  builder: (context, state) => AIChatScreen(),
+                  builder: (context, state) => AIChatScreen(
+                    viewModel: context.read(),
+                  ),
                 ),
               ],
             )
