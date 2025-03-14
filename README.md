@@ -1,16 +1,35 @@
-# jak_sie_masz
+# JakSieMasz
 
-A new Flutter project.
+## Overview
+lorem chuj
 
-## Getting Started
+## Features
+- ✅ 
+- ✅
+- ✅
+- ✅
+- ✅
 
-This project is a starting point for a Flutter application.
+## Upcoming features
+- 🚧
+- 🚧
+- 🚧
+- 🚧
+  
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+- Homepage
+- AIChat
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Technologies used
+- Flutter
+- Node
+- Javascript etc.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+- git clone https://github.com/yourusername/project-name.git
+- cd project-name
+
+## Contributing
+
+## Contact
