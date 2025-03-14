@@ -74,7 +74,9 @@ class RateContainerWidget extends StatelessWidget {
               viewmodel: RateButtonViewmodel(
                 rateSliderRepository: context.read(),
                 dayRatingRepository: context.read(),
-                chatService: context.read()
+                chatService: context.read(),
+                chatDatabaseService: context.read(),
+                aiChatViewModel: context.read() 
               ),
             ),
           ],

@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Data/models/day_rating_model.dart';
 import 'package:jak_sie_masz/Data/repositories/day_rating_repository.dart';
 import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
+import 'package:jak_sie_masz/UI/AIChat/services/chat_database_service.dart';
 import 'package:jak_sie_masz/UI/AIChat/services/chat_service.dart';
+import 'package:jak_sie_masz/UI/AIChat/viewmodels/aichat_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/utility.dart';
 
 class RateButtonViewmodel {
   final RateSliderRepository rateSliderRepository;
   final DayRatingRepository dayRatingRepository;
   final ChatService chatService;
+  final ChatDatabaseService chatDatabaseService;
+  final AIChatViewModel aiChatViewModel;
   const RateButtonViewmodel({
     required this.dayRatingRepository,
     required this.rateSliderRepository,
-    required this.chatService
+    required this.chatService,
+    required this.chatDatabaseService,
+    required this.aiChatViewModel
   });
 
   Future<void> analyzeRateChart(BuildContext context) async {
@@ -27,7 +33,10 @@ class RateButtonViewmodel {
 
     if(dayRatingsMean < 5) {
       Utility.showSimpleOutput(context, "Hej, może powinieneś rozważyć profesjonalną pomoc? 😢");
-      chatService.sendMessage("Dostaliśmy informację o tym, że średni poziom samopoczucia twojego rozmówcy spadł poniżej dopuszczalnej wartości. Powinieneś zapytać się, co u twojego rozmówcy, najlepiej zrób to żartobliwie, żeby pobudzić go trochę na duchu.");
+      
+      chatDatabaseService.createTopic("Jak się czujesz?");
+      aiChatViewModel.startNewChat();
+      chatService.sendMessage("Twój rozmówca czuje się trochę gorzej. Pogadaj z nim o tym oraz poleć mu może kilka stron, które potencjalnie pomogą w rozwiązaniu problemu.");
     }
   }
 
