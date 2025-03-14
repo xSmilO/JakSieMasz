@@ -9,6 +9,7 @@ import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
 import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/FirstRate/viewmodel/first_rate_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/articles_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Exercises/viewmodels/exercises_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
@@ -106,7 +107,7 @@ void main() async {
           create: (context) => ProfilePictureDialogViewmodel(
             userRepository: context.read(),
           ),
-        )
+        ),
       ],
       child: MainApp(),
     ),

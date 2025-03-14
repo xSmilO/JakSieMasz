@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jak_sie_masz/Data/services/database_helper_service.dart';
 import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/UI/AIChat/aichat_screen.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercises_screen.dart';
+import 'package:jak_sie_masz/UI/FirstRate/first_rate_screen.dart';
 import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
@@ -13,6 +15,8 @@ import 'package:provider/provider.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
+DatabaseHelperService databaseHelperService = DatabaseHelperService();
+
 GoRouter router() => GoRouter(
       initialLocation: Routes.home,
       debugLogDiagnostics: true,
@@ -20,7 +24,16 @@ GoRouter router() => GoRouter(
       redirect: (context, state) async {
         String? username =
             await SharedPreferencesService().fetchString("username");
-        return username == null ? Routes.welcome : null;
+
+        if (username == null) {
+          return Routes.welcome;
+        }
+
+        bool isRated = await databaseHelperService.isCurrentDayRated();
+
+        if (isRated) return null;
+
+        return Routes.firstRate;
       },
       routes: [
         StatefulShellRoute.indexedStack(
@@ -66,6 +79,10 @@ GoRouter router() => GoRouter(
           builder: (context, state) => WelcomeScreen(
             userRepository: context.read(),
           ),
+        ),
+        GoRoute(
+          path: Routes.firstRate,
+          builder: (context, state) => FirstRateScreen(),
         )
       ],
     );
