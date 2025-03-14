@@ -1,0 +1,2 @@
+C:/Users/cez20/Desktop/ziomekjaksiemasz/JakSieMasz/android/app/.cxx/Debug/111o6n31/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/cez20/Desktop/ziomekjaksiemasz/JakSieMasz/android/app/.cxx/Debug/111o6n31/arm64-v8a/CMakeFiles/rebuild_cache.dir

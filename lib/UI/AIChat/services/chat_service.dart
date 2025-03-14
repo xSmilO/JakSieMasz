@@ -12,6 +12,7 @@ class ChatService {
   void Function()? onTypingStopped;
   void Function()? onConnected;
   void Function()? onDisconnected;
+  void Function(String)? onError;
 
   String? get serverIp => _serverIp;
 
@@ -89,6 +90,11 @@ class ChatService {
     _socket!.on('receiveMessage', (data) {
       print('Received message from server: $data');
       onMessageReceived?.call(Message(data['text'], true));
+    });
+
+    _socket!.on('error', (errorMessage) {
+      print('Error from server: $errorMessage');
+      onError?.call(errorMessage);
     });
   }
 

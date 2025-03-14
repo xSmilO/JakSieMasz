@@ -37,6 +37,10 @@ class AIChatViewModel extends ChangeNotifier {
       isConnected = false;
       notifyListeners();
     };
+    _chatService.onError = (errorMessage) {
+      // Add the error message to the chat as a bot message
+      _handleNewMessage(Message("Error: $errorMessage", true));
+    };
   }
 
   void _handleNewMessage(Message message) async {
@@ -101,6 +105,8 @@ class AIChatViewModel extends ChangeNotifier {
         _chatService.sendMessage(message, context: context);
       } catch (e) {
         print('Error in sendMessage: $e');
+        messages.add(Message("Error sending message: $e", true));
+        notifyListeners();
       }
     }
   }
@@ -125,6 +131,8 @@ class AIChatViewModel extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print('Error loading chat history: $e');
+      messages.add(Message("Error loading chat history: $e", true));
+      notifyListeners();
     }
   }
 
@@ -134,6 +142,8 @@ class AIChatViewModel extends ChangeNotifier {
       await loadRecentTopics();
     } catch (e) {
       print('Error in initialize: $e');
+      messages.add(Message("Error initializing chat: $e", true));
+      notifyListeners();
     }
   }
 

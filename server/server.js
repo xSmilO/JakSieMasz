@@ -21,9 +21,21 @@ io.on("connection", (socket) => {
       if (data.context) {
         const contextMessages = data.context.split("\n");
         for (const msg of contextMessages) {
-          const [role, content] = msg.split(": ");
-          const correctRole =
-            role.toLowerCase() === "user" ? "user" : "assistant";
+          // Skip empty messages
+          if (!msg.trim()) continue;
+          
+          const parts = msg.split(": ");
+          // Ensure we have both role and content
+          if (parts.length < 2) continue;
+          
+          const role = parts[0].trim().toLowerCase();
+          // Join the rest of the parts in case the message content itself contains ": "
+          const content = parts.slice(1).join(": ").trim();
+          
+          // Skip messages with empty content
+          if (!content) continue;
+          
+          const correctRole = role === "user" ? "user" : "assistant";
           messages.push({
             role: correctRole,
             content: content,
@@ -35,6 +47,8 @@ io.on("connection", (socket) => {
         role: "user",
         content: data.message,
       });
+
+      console.log("Sending messages to Mistral:", JSON.stringify(messages));
 
       const response = await fetch(
         "https://api.mistral.ai/v1/chat/completions",
@@ -81,6 +95,11 @@ io.on("connection", (socket) => {
       }
 
       socket.emit("error", errorMessage);
+      // Also send the error message to the chat
+      socket.emit("receiveMessage", {
+        text: `Error: ${errorMessage}`,
+        isBot: true,
+      });
     }
   });
 
