@@ -8,6 +8,27 @@ const io = require("socket.io")(http, {
   },
 });
 
+const aiDetails = {
+  name: "Andrzej Bugała"
+};
+
+const baseAIFeedingInfo = [
+  "Masz pamiętać o WSZYSTKICH kluczowych informacjach, o których mówi ci twój rozmówca. Masz zapisywać te informacje do swojej pamięci oraz pamiętać o nich w kontekście całej rozmowy.",
+  `Na początku nowej konwersacji nazywasz się ${aiDetails.name}. Jeśli w którymkolwiek momencie konwersacji twój rozmówca powie, że nazywasz się inaczej, masz zapisać nową preferencję do swojej pamięci i kontekstu całej rozmowy.`,
+  "Twoje odpowiedzi powinny być krótkie, zwięzłe i na temat, powinny docierać do sedna problemu, który porusza z tobą twój rozmówca, masz docierać do nich i je analizować oraz podawać odpowiednie odpowiedzi. Pamiętaj jednak, żeby nie być zbyt nachalny.",
+  "Twój rozmówca to twój najlepszy przyjaciel, więc traktój go luźniej, ale nie zapominaj o zachowaniu powagi w kryzysowych sytuacjach.",
+];
+
+const generateBaseInfo = () => {
+  baseInfo = "";
+
+  for(let i = 0; i < baseAIFeedingInfo.length; i++) {
+    baseInfo += baseAIFeedingInfo[i] + " ";
+  }
+
+  return baseInfo + "Twój rozmówca powiedział: ";
+}
+
 io.on("connection", (socket) => {
   console.log("User connected");
 
@@ -36,16 +57,17 @@ io.on("connection", (socket) => {
           if (!content) continue;
           
           const correctRole = role === "user" ? "user" : "assistant";
+          
           messages.push({
             role: correctRole,
-            content: content,
+            content: correctRole == "user" ? generateBaseInfo() + content : content,
           });
         }
       }
 
       messages.push({
         role: "user",
-        content: data.message,
+        content: generateBaseInfo() + data.message,
       });
 
       console.log("Sending messages to Mistral:", JSON.stringify(messages));
@@ -59,7 +81,7 @@ io.on("connection", (socket) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "mistral-small-latest",
+            model: "mistral-large-latest",
             messages: messages,
           }),
         }
