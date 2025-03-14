@@ -159,6 +159,13 @@ class _AIChatScreenState extends State<AIChatScreen>
                       ),
                       child: Row(
                         children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_downward_rounded),
+                            color: Colors.grey,
+                            onPressed: () {
+                              _scrollToBottom();
+                            },
+                          ),
                           Expanded(
                             child: TextField(
                               controller: _messageController,
@@ -177,7 +184,6 @@ class _AIChatScreenState extends State<AIChatScreen>
                             )
                           ),
                           Container(
-                            margin: const EdgeInsets.only(right: 8),
                             child: Row(
                               children: [
                                 IconButton(
