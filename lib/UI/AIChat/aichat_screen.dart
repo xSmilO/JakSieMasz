@@ -7,10 +7,12 @@ import 'widgets/chat_drawer_widget.dart';
 import 'widgets/chat_message_list_widget.dart';
 
 class AIChatScreen extends StatefulWidget {
-  const AIChatScreen({super.key});
+  const AIChatScreen({super.key, required this.viewModel});
 
   @override
   State<AIChatScreen> createState() => _AIChatScreenState();
+
+  final AIChatViewModel viewModel;
 }
 
 class _AIChatScreenState extends State<AIChatScreen>
@@ -26,6 +28,7 @@ class _AIChatScreenState extends State<AIChatScreen>
   void initState() {
     super.initState();
 
+    widget.viewModel.getBotName();
     _drawerController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),

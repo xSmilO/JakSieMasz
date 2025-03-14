@@ -85,7 +85,7 @@ class _ChatMessageListWidgetState extends State<ChatMessageListWidget> {
           children: [
             Text(
               //todo make bot name
-              "Andrzej Bugała pisze",
+              widget.viewModel.botName,
               style: TextStyle(
                 fontSize: Styles.fontSizeH4,
                 fontFamily: Styles.fontFamily,
