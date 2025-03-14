@@ -3,33 +3,33 @@
 ## Overview
 lorem chuj
 
-## Features
+# Features
 - ✅ 
 - ✅
 - ✅
 - ✅
 - ✅
 
-## Upcoming features
+# Upcoming features
 - 🚧
 - 🚧
 - 🚧
 - 🚧
   
-## Screenshots
+# Screenshots
 
 - Homepage
 - AIChat
 
-## Technologies used
+# Technologies used
 - Flutter
 - Node
 - Javascript etc.
 
-## Installation
+# Installation
 - git clone https://github.com/yourusername/project-name.git
 - cd project-name
 
-## Contributing
+# Contributing
 
-## Contact
+# Contact
