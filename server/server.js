@@ -9,19 +9,22 @@ const io = require("socket.io")(http, {
 });
 
 const aiDetails = {
-  name: "Andrzej Bugała"
+  aiName: "",
+  username: ""
 };
 
 const baseAIFeedingInfo = [
   "Masz pamiętać o WSZYSTKICH kluczowych informacjach, o których mówi ci twój rozmówca. Masz zapisywać te informacje do swojej pamięci oraz pamiętać o nich w kontekście całej rozmowy.",
-  `Na początku nowej konwersacji nazywasz się ${aiDetails.name}. Jeśli w którymkolwiek momencie konwersacji twój rozmówca powie, że nazywasz się inaczej, masz zapisać nową preferencję do swojej pamięci i kontekstu całej rozmowy.`,
   "Twoje odpowiedzi powinny być krótkie, zwięzłe i na temat, powinny docierać do sedna problemu, który porusza z tobą twój rozmówca, masz docierać do nich i je analizować oraz podawać odpowiednie odpowiedzi. Pamiętaj jednak, żeby nie być zbyt nachalny.",
   "Twój rozmówca to twój najlepszy przyjaciel, więc traktój go luźniej, ale nie zapominaj o zachowaniu powagi w kryzysowych sytuacjach. Możesz również zwracać się do niego po jego imieniu.",
-  "Jeśli twój rozmówca sprawi, że nie będziesz mógł kontynuować z nim danej konwersacji, spróbuj zapomnieć o tym, co spowodowało taką sytuację i możesz ponownie zapytać, co trapi twojego rozmówcę, aby nie kończyć konwersacji i nie pozostawiać go samego."
+  "Jeśli twój rozmówca sprawi, że nie będziesz mógł kontynuować z nim danej konwersacji, spróbuj zapomnieć o tym, co spowodowało taką sytuację i możesz ponownie zapytać, co trapi twojego rozmówcę, aby nie kończyć konwersacji i nie pozostawiać go samego.",
 ];
 
-const generateBaseInfo = () => {
-  baseInfo = "";
+const generateBaseInfo = (details) => {
+  
+
+  baseInfo = `Na początku nowej konwersacji nazywasz się ${details?.aiName}. Jeśli w którymkolwiek momencie konwersacji twój rozmówca powie, że nazywasz się inaczej, masz zapisać nową preferencję do swojej pamięci i kontekstu całej rozmowy. `;
+  baseInfo += `Do twojego rozmówcy powinieneś zwracać się za każdym razem za pomocą pseudonimu ${details?.username}. Zapamiętaj to sobie. `;
 
   for(let i = 0; i < baseAIFeedingInfo.length; i++) {
     baseInfo += baseAIFeedingInfo[i] + " ";
@@ -34,9 +37,12 @@ io.on("connection", (socket) => {
   console.log("User connected");
 
   socket.on("sendMessage", async (data) => {
-    console.log("Received message:", data);
+    // console.log("Received message:", data);
+    console.log(data.username);
     try {
       socket.emit("botStartedTyping");
+      aiDetails.aiName = data.aiName;
+      aiDetails.username = data.username;
 
       const messages = [];
 
@@ -61,17 +67,17 @@ io.on("connection", (socket) => {
           
           messages.push({
             role: correctRole,
-            content: correctRole == "user" ? generateBaseInfo() + content : content,
+            content: correctRole == "user" ? generateBaseInfo(aiDetails) + content : content,
           });
         }
       }
 
       messages.push({
         role: "user",
-        content: generateBaseInfo() + data.message,
+        content: generateBaseInfo(aiDetails) + data.message,
       });
 
-      console.log("Sending messages to Mistral:", JSON.stringify(messages));
+      // console.log("Sending messages to Mistral:", JSON.stringify(messages));
 
       const response = await fetch(
         "https://api.mistral.ai/v1/chat/completions",
@@ -89,7 +95,7 @@ io.on("connection", (socket) => {
       );
 
       const responseData = await response.json();
-      console.log("Mistral response:", responseData);
+      // console.log("Mistral response:", responseData);
 
       if (!response.ok) {
         throw new Error(responseData.message || "API error");

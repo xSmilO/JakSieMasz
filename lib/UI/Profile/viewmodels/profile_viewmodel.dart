@@ -85,6 +85,7 @@ class ProfileViewmodel extends ChangeNotifier {
 
     await spService.saveString("ai_name", name);
     _aiName = name;
+    _userRepository.setAiName(name);
     notifyListeners();
   }
 

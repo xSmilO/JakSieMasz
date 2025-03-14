@@ -3,6 +3,7 @@ import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 class UserRepository {
   late String _username = "";
   late String _avatarPath = "assets/avatars/dog.jpg";
+  late String _aiName = "";
   final SharedPreferencesService shared;
   Function(String)? onUsernameChange;
   Function(String)? onAvatarChange;
@@ -23,11 +24,17 @@ class UserRepository {
 
       onAvatarChange?.call(_avatarPath);
     });
+
+    shared.fetchString("ai_name").then(
+      (val) {
+        _aiName = val!;
+      },
+    );
   }
 
   String get username => _username;
-
   String get avatarPath => _avatarPath;
+  String get aiName => _aiName;
 
   Future<String> getUsername() async {
     return _username;
@@ -42,5 +49,9 @@ class UserRepository {
     _avatarPath = path;
     shared.saveString("avatar_path", path);
     onAvatarChange?.call(_avatarPath);
+  }
+
+  void setAiName(String name) {
+    _aiName = name;
   }
 }

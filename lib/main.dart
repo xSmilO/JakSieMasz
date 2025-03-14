@@ -85,7 +85,9 @@ void main() async {
         ),
         ChangeNotifierProvider(create: (context) => ArticlesViewmodel()),
         Provider(
-          create: (context) => ChatService(),
+          create: (context) => ChatService(
+            userRepository: context.read(),
+          ),
         ),
         Provider(
           create: (context) => ChatDatabaseService(

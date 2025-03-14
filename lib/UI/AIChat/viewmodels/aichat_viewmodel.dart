@@ -15,7 +15,7 @@ class AIChatViewModel extends ChangeNotifier {
   bool isDrawerOpen = false;
   bool isConnected = false;
   int? currentTopicId;
-  late String botName;
+  late String aiName;
 
   AIChatViewModel(
     this._chatService,
@@ -182,9 +182,9 @@ class AIChatViewModel extends ChangeNotifier {
     super.dispose();
   }
 
-  Future<void> getBotName() async {
+  Future<void> getAiName() async {
     final sp = await SharedPreferences.getInstance();
-    botName = await sp.getString("ai_name") as String;
-    print("kurwa $botName");
+    aiName = await sp.getString("ai_name") as String;
+    print("kurwa $aiName");
   }
 }

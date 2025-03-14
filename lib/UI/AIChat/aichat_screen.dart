@@ -28,7 +28,7 @@ class _AIChatScreenState extends State<AIChatScreen>
   void initState() {
     super.initState();
 
-    widget.viewModel.getBotName();
+    widget.viewModel.getAiName();
     _drawerController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),

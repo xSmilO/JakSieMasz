@@ -85,7 +85,7 @@ class _ChatMessageListWidgetState extends State<ChatMessageListWidget> {
           children: [
             Text(
               //todo make bot name
-              "${widget.viewModel.botName} pisze",
+              "${widget.viewModel.aiName} pisze",
               style: TextStyle(
                 fontSize: Styles.fontSizeH4,
                 fontFamily: Styles.fontFamily,

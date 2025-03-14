@@ -1,9 +1,14 @@
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../models/message.dart';
 
 class ChatService {
   SharedPreferencesService sp = SharedPreferencesService();
+  UserRepository userRepository;
+
+  ChatService({required this.userRepository});
+
   static IO.Socket? _socket;
   String? _serverIp = "";
 
@@ -99,9 +104,12 @@ class ChatService {
   }
 
   void sendMessage(String message, {String context = ''}) {
+    print("nazwa bota to jest kurwa ${userRepository.aiName}");
     _socket?.emit('sendMessage', {
       'message': message,
       'context': context,
+      'aiName': userRepository.aiName,
+      'username': userRepository.username,
     });
   }
 
