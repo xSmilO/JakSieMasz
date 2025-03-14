@@ -23,20 +23,23 @@ class RateButtonViewmodel {
 
   Future<void> analyzeRateChart(BuildContext context) async {
     List<DayRatingModel> dayRatings = await dayRatingRepository.databaseHelperService.getRatings();
-    int dayRatingsMean = 0;
+    
+    if(dayRatings.length > 3) {
+      int dayRatingsMean = 0;
 
-    for(DayRatingModel dayRating in dayRatings) {
-      dayRatingsMean += dayRating.rating;
-    }
+      for(DayRatingModel dayRating in dayRatings) {
+        dayRatingsMean += dayRating.rating;
+      }
 
-    dayRatingsMean = (dayRatingsMean / dayRatings.length).round();
+      dayRatingsMean = (dayRatingsMean / dayRatings.length).round();
 
-    if(dayRatingsMean < 5) {
-      Utility.showSimpleOutput(context, "Hej, może powinieneś rozważyć profesjonalną pomoc? 😢");
-      
-      chatDatabaseService.createTopic("Jak się czujesz?");
-      aiChatViewModel.startNewChat();
-      chatService.sendMessage("Twój rozmówca czuje się trochę gorzej. Pogadaj z nim o tym oraz poleć mu może kilka stron, które potencjalnie pomogą w rozwiązaniu problemu.");
+      if(dayRatingsMean < 5) {
+        Utility.showSimpleOutput(context, "Hej, może powinieneś rozważyć profesjonalną pomoc? 😢");
+        
+        chatDatabaseService.createTopic("Jak się czujesz?");
+        aiChatViewModel.startNewChat();
+        chatService.sendMessage("Twój rozmówca czuje się trochę gorzej przez ostatni czas. Pogadaj z nim o tym oraz poleć mu może kilka stron, które potencjalnie pomogą w rozwiązaniu problemu.");
+      }
     }
   }
 
