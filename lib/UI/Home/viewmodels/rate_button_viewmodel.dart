@@ -23,11 +23,11 @@ class RateButtonViewmodel {
       dayRatingsMean += dayRating.rating;
     }
 
-    dayRatingsMean = (dayRatingsMean / dayRatings.length).toInt();
+    dayRatingsMean = (dayRatingsMean / dayRatings.length).round();
 
     if(dayRatingsMean < 5) {
       Utility.showSimpleOutput(context, "Hej, może powinieneś rozważyć profesjonalną pomoc? 😢");
-      chatService.sendMessage("Hej, poziom samopoczucia twojego rozmówcy jest całkiem niski. Porozmawiaj z nim o tym. Możesz podać mu linki do stron, które mogą mu potencjalnie pomóc.");
+      chatService.sendMessage("Dostaliśmy informację o tym, że średni poziom samopoczucia twojego rozmówcy spadł poniżej dopuszczalnej wartości. Powinieneś zapytać się, co u twojego rozmówcy, najlepiej zrób to żartobliwie, żeby pobudzić go trochę na duchu.");
     }
   }
 
