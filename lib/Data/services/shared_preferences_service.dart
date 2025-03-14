@@ -4,6 +4,7 @@ class SharedPreferencesService {
   SharedPreferencesService() {
     // set default values
     saveString("ip_addr", "http://10.0.2.2:3000");
+    saveString("ai_name", "Stasiek");
   }
 
   Future<String?> fetchString(String token) async {

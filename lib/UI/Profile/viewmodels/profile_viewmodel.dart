@@ -7,6 +7,7 @@ class ProfileViewmodel extends ChangeNotifier {
   String _username = "";
   String _avatarPath = "";
   String _ipAddr = "";
+  String _aiName = "";
   TimeOfDay? _selectedTime;
   final UserRepository _userRepository;
   final SharedPreferencesService spService;
@@ -26,7 +27,7 @@ class ProfileViewmodel extends ChangeNotifier {
     };
 
     _loadSavedTime();
-    _loadIpAddr();
+    _loadData();
   }
 
   String get username => _username;
@@ -34,6 +35,8 @@ class ProfileViewmodel extends ChangeNotifier {
   String get avatarPath => _avatarPath;
 
   String get ipAddr => _ipAddr;
+
+  String get aiName => _aiName;
 
   TimeOfDay? get selectedTime => _selectedTime;
 
@@ -57,9 +60,9 @@ class ProfileViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _loadIpAddr() async {
+  Future<void> _loadData() async {
     _ipAddr = await spService.fetchString("ip_addr") as String;
-
+    _aiName = await spService.fetchString("ai_name") as String;
     notifyListeners();
   }
 
@@ -71,9 +74,15 @@ class ProfileViewmodel extends ChangeNotifier {
   }
 
   Future<void> changeIpAddr(String addr) async {
-    print("new addr $addr");
+    // print("new addr $addr");
     await spService.saveString("ip_addr", addr);
     _ipAddr = addr;
+    notifyListeners();
+  }
+
+  Future<void> changeAiName(String name) async {
+    await spService.saveString("ai_name", name);
+    _aiName = name;
     notifyListeners();
   }
 
