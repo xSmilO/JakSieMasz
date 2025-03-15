@@ -125,7 +125,7 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
                     RateSliderItemWidget(
                       label: "10",
                       callback: slider.setCurrentIndex,
-                      activeColor: Styles.primaryColor100,
+                      activeColor: Styles.primaryColor300,
                       active: slider.currentIndex == 9,
                       id: 9,
                     ),
