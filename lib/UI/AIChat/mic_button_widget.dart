@@ -24,7 +24,7 @@ class _MicButtonState extends State<MicButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(_isListening ? Icons.mic_off_outlined : Icons.mic_outlined, color: Colors.grey),
+      icon: Icon(_isListening ? Icons.mic_off_rounded : Icons.mic_rounded, color: Colors.grey),
       onPressed: () async {
         speechToText = speechToText == null ? SpeechToText() : speechToText;
         bool available = await speechToText!.initialize();
