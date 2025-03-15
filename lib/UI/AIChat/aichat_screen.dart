@@ -183,23 +183,21 @@ class _AIChatScreenState extends State<AIChatScreen>
                               ),
                             )
                           ),
-                          Container(
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  icon: const Icon(Icons.send, color: Colors.grey),
-                                  onPressed: () {
-                                    if (_messageController.text.isNotEmpty) {
-                                      viewModel
-                                          .sendMessage(_messageController.text);
-                                      _messageController.clear();
-                                    }
-                                  },
-                                ),
-                                MicButtonWidget(textEditingController: _messageController)
-                              ]
-                            )
-                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.send, color: Colors.grey),
+                                onPressed: () {
+                                  if (_messageController.text.isNotEmpty) {
+                                    viewModel
+                                        .sendMessage(_messageController.text);
+                                    _messageController.clear();
+                                  }
+                                },
+                              ),
+                              MicButtonWidget(textEditingController: _messageController)
+                            ]
+                          )
                         ],
                       ),
                     ),
