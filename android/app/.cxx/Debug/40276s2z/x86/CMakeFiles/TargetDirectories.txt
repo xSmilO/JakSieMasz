@@ -1,0 +1,2 @@
+C:/Users/hackathon2025/Desktop/jaksiemasz/android/app/.cxx/Debug/40276s2z/x86/CMakeFiles/edit_cache.dir
+C:/Users/hackathon2025/Desktop/jaksiemasz/android/app/.cxx/Debug/40276s2z/x86/CMakeFiles/rebuild_cache.dir
