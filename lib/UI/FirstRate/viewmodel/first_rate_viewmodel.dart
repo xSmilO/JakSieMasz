@@ -11,15 +11,8 @@ class FirstRateViewmodel extends ChangeNotifier {
     print("rateview constructor");
 
     this.sp.fetchString("username").then((value) {
-      print("kurwa mac do chuja $value");
-
       username = value!;
       notifyListeners();
     });
-  }
-  void loadUsername() async {
-    if (username != "") return;
-
-    notifyListeners();
   }
 }
