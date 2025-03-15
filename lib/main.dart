@@ -16,6 +16,7 @@ import 'package:jak_sie_masz/UI/Home/viewmodels/rate_chart_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_picture_dialog_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Profile/viewmodels/profile_viewmodel.dart';
+import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/Access_button_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'routing/router.dart';
@@ -115,6 +116,9 @@ void main() async {
             userRepository: context.read(),
           ),
         ),
+        ChangeNotifierProvider(
+          create: (context) => AccessButtonViewmodel(),
+        )
       ],
       child: MainApp(),
     ),

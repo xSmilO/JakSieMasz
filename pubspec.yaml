@@ -109,6 +109,8 @@ flutter:
         - "assets/icons/trash.svg"
         - "assets/icons/link.svg"
         - "assets/icons/robot.svg"
+        - "assets/icons/search.svg"
+        - "assets/icons/access-arrow.svg"
 
 
         - "assets/avatars/dog.jpg"
