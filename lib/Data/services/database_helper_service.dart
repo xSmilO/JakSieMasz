@@ -221,4 +221,13 @@ class DatabaseHelperService {
       orderBy: 'timestamp ASC',
     );
   }
+
+  Future<bool> isCurrentDayRated() async {
+    final currDate = DateTime.now();
+    final dateOnly = "${currDate.day}.${currDate.month}.${currDate.year}";
+
+    DayRatingModel? data = await findRatingByDate(dateOnly);
+
+    return data == null ? false : true;
+  }
 }

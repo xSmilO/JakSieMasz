@@ -6,12 +6,14 @@ class RateSliderItemWidget extends StatelessWidget {
   final int id;
   final bool? active;
   final Function(int idx) callback;
+  final Color activeColor;
   const RateSliderItemWidget({
     super.key,
     required this.label,
     required this.id,
     required this.callback,
     this.active,
+    required this.activeColor,
   });
 
   @override
@@ -22,7 +24,7 @@ class RateSliderItemWidget extends StatelessWidget {
         onTap: () => {callback(id)},
         child: Container(
           decoration: BoxDecoration(
-            color: active == true ? Styles.primaryColor500 : Colors.transparent,
+            color: active == true ? activeColor : Colors.transparent,
           ),
           child: Center(
             child: Text(
