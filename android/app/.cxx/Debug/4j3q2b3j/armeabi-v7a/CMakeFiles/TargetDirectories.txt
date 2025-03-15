@@ -1,2 +1,0 @@
-C:/Users/conta/OneDrive/Pulpit/hackathonnn/JakSieMasz/android/app/.cxx/Debug/4j3q2b3j/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/conta/OneDrive/Pulpit/hackathonnn/JakSieMasz/android/app/.cxx/Debug/4j3q2b3j/armeabi-v7a/CMakeFiles/rebuild_cache.dir

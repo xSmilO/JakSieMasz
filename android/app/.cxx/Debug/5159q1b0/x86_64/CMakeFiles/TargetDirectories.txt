@@ -1,2 +1,0 @@
-C:/Users/conta/OneDrive/Pulpit/ziomekjaksiemasz/JakSieMasz/android/app/.cxx/Debug/5159q1b0/x86_64/CMakeFiles/edit_cache.dir
-C:/Users/conta/OneDrive/Pulpit/ziomekjaksiemasz/JakSieMasz/android/app/.cxx/Debug/5159q1b0/x86_64/CMakeFiles/rebuild_cache.dir

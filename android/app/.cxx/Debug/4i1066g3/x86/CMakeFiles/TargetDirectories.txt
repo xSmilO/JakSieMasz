@@ -1,2 +1,0 @@
-C:/Users/maygr/Desktop/Programowanie/ProjektyWszelakie/JakSieMasz/android/app/.cxx/Debug/4i1066g3/x86/CMakeFiles/edit_cache.dir
-C:/Users/maygr/Desktop/Programowanie/ProjektyWszelakie/JakSieMasz/android/app/.cxx/Debug/4i1066g3/x86/CMakeFiles/rebuild_cache.dir
