@@ -32,7 +32,7 @@ class AIMessageWidgetState extends State<AIMessageWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.centerLeft,
       child: InkWell(
         splashColor: Styles.primaryColor200,
         borderRadius: BorderRadius.circular(15),
