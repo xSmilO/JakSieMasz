@@ -22,7 +22,7 @@ const baseAIFeedingInfo = [
 ];
 
 const generateBaseInfo = (details) => {
-  baseInfo = `Nazywasz się ${details?.aiName}, ponieważ w ten sposób preferuje do ciebie mówić twój rozmówca. `;
+  baseInfo = `Twój rozmówca będzie się do ciebie zwracał za pomocą pseudonimu ${details?.aiName}. Zapamiętaj o tym, zapisz to do swojej pamięci i kontekstu rozmowy. `;
   baseInfo += `Do twojego rozmówcy powinieneś zwracać się za każdym razem za pomocą pseudonimu ${details?.username}. Zapamiętaj to sobie. `;
 
   for(let i = 0; i < baseAIFeedingInfo.length; i++) {
