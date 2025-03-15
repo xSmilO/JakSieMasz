@@ -5,14 +5,15 @@ import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/Access_button_viewmode
 import 'package:provider/provider.dart';
 
 class AccessButtonWidget extends StatelessWidget {
-  const AccessButtonWidget({super.key, required this.viewmodel});
+  const AccessButtonWidget(
+      {super.key, required this.viewmodel, required this.bottom});
 
   final AccessButtonViewmodel viewmodel;
-
+  final double bottom;
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 32,
+      bottom: bottom,
       right: 0,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,

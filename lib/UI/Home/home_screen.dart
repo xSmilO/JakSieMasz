@@ -105,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         AccessButtonWidget(
           viewmodel: context.read(),
+          bottom: 32,
         )
       ],
     );

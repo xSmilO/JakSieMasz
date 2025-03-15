@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/AIChat/mic_button_widget.dart';
 import 'package:jak_sie_masz/UI/AIChat/widgets/drawer_icon.dart';
+import 'package:jak_sie_masz/UI/Shared/widgets/access_button_widget.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/aichat_viewmodel.dart';
 import 'widgets/chat_drawer_widget.dart';
@@ -62,11 +63,9 @@ class _AIChatScreenState extends State<AIChatScreen>
   }
 
   void _scrollToBottom() {
-    _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 1000),
-      curve: Curves.easeInOutCubic
-    );
+    _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 1000),
+        curve: Curves.easeInOutCubic);
   }
 
   @override
@@ -167,37 +166,35 @@ class _AIChatScreenState extends State<AIChatScreen>
                             },
                           ),
                           Expanded(
-                            child: TextField(
-                              controller: _messageController,
-                              decoration: const InputDecoration(
-                                hintText: 'Zapytaj o cokolwiek',
-                                border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.symmetric(horizontal: 20),
-                              ),
-                              style: TextStyle(
-                                color: Styles.fontColorDark,
-                                fontSize: Styles.fontSizeH4,
-                                fontFamily: Styles.fontFamily,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            )
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.send, color: Colors.grey),
-                                onPressed: () {
-                                  if (_messageController.text.isNotEmpty) {
-                                    viewModel
-                                        .sendMessage(_messageController.text);
-                                    _messageController.clear();
-                                  }
-                                },
-                              ),
-                              MicButtonWidget(textEditingController: _messageController)
-                            ]
-                          )
+                              child: TextField(
+                            controller: _messageController,
+                            decoration: const InputDecoration(
+                              hintText: 'Zapytaj o cokolwiek',
+                              border: InputBorder.none,
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
+                            ),
+                            style: TextStyle(
+                              color: Styles.fontColorDark,
+                              fontSize: Styles.fontSizeH4,
+                              fontFamily: Styles.fontFamily,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
+                          Row(children: [
+                            IconButton(
+                              icon: const Icon(Icons.send, color: Colors.grey),
+                              onPressed: () {
+                                if (_messageController.text.isNotEmpty) {
+                                  viewModel
+                                      .sendMessage(_messageController.text);
+                                  _messageController.clear();
+                                }
+                              },
+                            ),
+                            MicButtonWidget(
+                                textEditingController: _messageController)
+                          ])
                         ],
                       ),
                     ),
@@ -210,6 +207,10 @@ class _AIChatScreenState extends State<AIChatScreen>
               drawerController: _drawerController,
               drawerAnimation: _drawerAnimation,
             ),
+            AccessButtonWidget(
+              bottom: 64,
+              viewmodel: context.read(),
+            )
           ],
         );
       },
