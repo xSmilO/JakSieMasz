@@ -93,6 +93,7 @@ class WelcomeScreen extends StatelessWidget {
                             userRepository.setUsername(username);
                             userRepository
                                 .setAvatarPath("assets/avatars/dog.jpg");
+
                             context.go(Routes.home);
                           },
                           style: ButtonStyle(

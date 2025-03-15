@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
+
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 
 class FirstRateViewmodel extends ChangeNotifier {
   String username = "";
 
-  FirstRateViewmodel() {
-    // userRepository.onUsernameChange = (String name) {
-    //   username = name;
-    //   print("kurwa");
-    //   notifyListeners();
-    // };
+  SharedPreferencesService sp;
+
+  FirstRateViewmodel({required this.sp}) {
+    print("rateview constructor");
+
+    this.sp.fetchString("username").then((value) {
+      print("kurwa mac do chuja $value");
+
+      username = value!;
+      notifyListeners();
+    });
   }
-  void loadUsername() {
-    // username = userRepository.username;
-    // notifyListeners();
+  void loadUsername() async {
+    if (username != "") return;
+
+    notifyListeners();
   }
 }

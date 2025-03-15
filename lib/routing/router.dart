@@ -5,6 +5,7 @@ import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/UI/AIChat/aichat_screen.dart';
 import 'package:jak_sie_masz/UI/Exercises/exercises_screen.dart';
 import 'package:jak_sie_masz/UI/FirstRate/first_rate_screen.dart';
+import 'package:jak_sie_masz/UI/FirstRate/viewmodel/first_rate_viewmodel.dart';
 import 'package:jak_sie_masz/UI/Forum/forum_screen.dart';
 import 'package:jak_sie_masz/UI/Home/home_screen.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_screen.dart';
@@ -82,7 +83,9 @@ GoRouter router() => GoRouter(
         ),
         GoRoute(
           path: Routes.firstRate,
-          builder: (context, state) => FirstRateScreen(),
+          builder: (context, state) => FirstRateScreen(
+            viewmodel: FirstRateViewmodel(sp: context.read()),
+          ),
         )
       ],
     );

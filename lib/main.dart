@@ -84,7 +84,14 @@ void main() async {
             repository: ExerciseDataRepository(),
           ),
         ),
-        ChangeNotifierProvider(create: (context) => ArticlesViewmodel()),
+        ChangeNotifierProvider(
+          create: (context) => ArticlesViewmodel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FirstRateViewmodel(
+            sp: context.read(),
+          ),
+        ),
         Provider(
           create: (context) => ChatService(
             userRepository: context.read(),
