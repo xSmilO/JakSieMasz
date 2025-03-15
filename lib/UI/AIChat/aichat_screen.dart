@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/AIChat/mic_button_widget.dart';
 import 'package:jak_sie_masz/UI/AIChat/widgets/drawer_icon.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/aichat_viewmodel.dart';
@@ -63,8 +64,8 @@ class _AIChatScreenState extends State<AIChatScreen>
   void _scrollToBottom() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 1000),
+      curve: Curves.easeInOutCubic
     );
   }
 
@@ -80,6 +81,7 @@ class _AIChatScreenState extends State<AIChatScreen>
   @override
   Widget build(BuildContext context) {
     double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
     return Consumer<AIChatViewModel>(
       builder: (context, viewModel, child) {
         return Stack(
@@ -157,6 +159,13 @@ class _AIChatScreenState extends State<AIChatScreen>
                       ),
                       child: Row(
                         children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_downward_rounded),
+                            color: Colors.grey,
+                            onPressed: () {
+                              _scrollToBottom();
+                            },
+                          ),
                           Expanded(
                             child: TextField(
                               controller: _messageController,
@@ -172,21 +181,23 @@ class _AIChatScreenState extends State<AIChatScreen>
                                 fontFamily: Styles.fontFamily,
                                 fontWeight: FontWeight.normal,
                               ),
-                            ),
+                            )
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            child: IconButton(
-                              icon: const Icon(Icons.send, color: Colors.grey),
-                              onPressed: () {
-                                if (_messageController.text.isNotEmpty) {
-                                  viewModel
-                                      .sendMessage(_messageController.text);
-                                  _messageController.clear();
-                                }
-                              },
-                            ),
-                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.send, color: Colors.grey),
+                                onPressed: () {
+                                  if (_messageController.text.isNotEmpty) {
+                                    viewModel
+                                        .sendMessage(_messageController.text);
+                                    _messageController.clear();
+                                  }
+                                },
+                              ),
+                              MicButtonWidget(textEditingController: _messageController)
+                            ]
+                          )
                         ],
                       ),
                     ),

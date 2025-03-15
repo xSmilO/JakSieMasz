@@ -38,29 +38,21 @@ class _RateChartWidgetState extends State<RateChartWidget> {
     return Consumer<RateChartViewmodel>(
       builder: (context, value, child) {
         int maxX = value.timespans[value.activeTimespanId] - 1;
-        DateTime currentDate = DateTime.now();
         dataSpots = [];
-        for (int idx = 0; idx < value.ratings.length; ++idx) {
-          //todo calculate offset of todays day
-          //todo maybe create labels with date
-          int x = value.timespans[value.activeTimespanId] -
-              currentDate
-                  .difference(DateTime.parse(value.ratings[idx].fullDate))
-                  .inDays -
-              1;
-
-          if (x < 0) continue;
-
+        
+        for(int i = 0; i < value.ratings.length; i++) {
           dataSpots.add(
             FlSpot(
-              x.toDouble(),
-              value.ratings[idx].rating.toDouble(),
+              (maxX - i).toDouble(),
+              value.ratings[i].rating.toDouble(),
             ),
           );
         }
+        
         if (dataSpots.isEmpty) {
           dataSpots.add(FlSpot(0, 1));
         }
+
         return LineChart(
           LineChartData(
             minY: 1,
