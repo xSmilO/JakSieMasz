@@ -59,7 +59,7 @@ Profil uzytkownika
 
 ### Kroki
 
-Sclonuj projekt
+Sklonuj projekt
 
 ```bash
   git clone https://github.com/yourusername/JakSieMasz.git
