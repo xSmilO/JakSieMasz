@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/UI/Shared/utility.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:jak_sie_masz/UI/AIChat/viewmodels/mic_button_viewmodel.dart';
 
 class MicButtonWidget extends StatefulWidget {
   final TextEditingController textEditingController;
@@ -10,45 +8,33 @@ class MicButtonWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _MicButtonState(textEditingController: textEditingController);
+    return MicButtonState(viewmodel: MicButtonViewmodel(textEditingController: textEditingController));
   }
 }
 
-class _MicButtonState extends State<MicButtonWidget> {
-  final TextEditingController textEditingController;
-  bool _isListening = false;
-  SpeechToText? speechToText = null;
+class MicButtonState extends State<MicButtonWidget> {
+  final MicButtonViewmodel viewmodel;
+  bool isListening = false;
 
-  _MicButtonState({required this.textEditingController});
+  MicButtonState({required this.viewmodel});
+
+  @override
+  void initState() {
+    super.initState();
+    viewmodel.bindState(this);
+  }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(_isListening ? Icons.mic_off_rounded : Icons.mic_rounded, color: Colors.grey),
+      icon: Icon(isListening ? Icons.mic_off_rounded : Icons.mic_rounded, color: Colors.grey),
       onPressed: () async {
-        speechToText = speechToText == null ? SpeechToText() : speechToText;
-        bool available = await speechToText!.initialize();
-
-        if(available) {
-          if(!_isListening) {
-            setState(() {
-              _isListening = true;
-
-              Utility.showSimpleOutput(context, "Mów teraz...");
-              speechToText!.listen(
-                onResult: (SpeechRecognitionResult result) {
-                  textEditingController.text = result.recognizedWords;
-                }
-              );
-            });
-          } else {
-            setState(() {
-              _isListening = false;
-              speechToText!.stop();
-            });
-          }
-        }
+        await viewmodel.onPressed(context);
       }
     );
+  }
+
+  void publicSetState(VoidCallback callback) {
+    setState(callback);
   }
 }

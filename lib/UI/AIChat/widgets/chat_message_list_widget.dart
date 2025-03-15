@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/AIChat/widgets/ai_message_widget.dart';
 import '../viewmodels/aichat_viewmodel.dart';
 import '../models/message.dart';
 
@@ -115,8 +116,12 @@ class _ChatMessageListWidgetState extends State<ChatMessageListWidget> {
   }
 
   Widget _buildMessageBubble(Message message) {
+    if(message.isBot) {
+      return AIMessageWidget(message: message);
+    }
+
     return Align(
-      alignment: message.isBot ? Alignment.centerLeft : Alignment.centerRight,
+      alignment: Alignment.centerRight,
       child: Container(
         margin: const EdgeInsets.all(8.0),
         padding: const EdgeInsets.all(12.0),
