@@ -46,6 +46,9 @@ dependencies:
     sqflite: ^2.4.1
     path: ^1.9.0
     url_launcher: ^6.3.1
+    vector_math: ^2.1.4
+    restart_app: ^1.3.2
+    speech_to_text: ^7.0.0
 
 dev_dependencies:
     flutter_test:
@@ -90,22 +93,30 @@ flutter:
         - "assets/navigation_icons/home.svg"
         - "assets/navigation_icons/profile.svg"
 
-        - "assets/exercises_images/breathe_example.png"
-        - "assets/exercises_images/climbing_example.png"
-        - "assets/exercises_images/meditation_example.png"
-        - "assets/exercises_images/pull_up_example.png"
-        - "assets/exercises_images/relaxation_example.png"
-        - "assets/exercises_images/running_example.png"
-
+        - "assets/exercises_images/breathing.jpg"
+        - "assets/exercises_images/biohacking.jpg"
+        - "assets/exercises_images/physical_activity.jpg"
+        - "assets/exercises_images/meditation.jpg"
+        - "assets/exercises_images/psychologist.jpg"
+        - "assets/exercises_images/relax.jpg"
         - "lib/UI/Exercises/data/exercises_data.json"
 
         - "assets/icons/arrow-solid.svg"
         - "assets/icons/arrow-right.svg"
+        - "assets/icons/arrow-left.svg"
         - "assets/icons/edit.svg"
         - "assets/icons/clock.svg"
         - "assets/icons/trash.svg"
+        - "assets/icons/link.svg"
+        - "assets/icons/robot.svg"
 
-        - "assets/avatars/default.jpg"
+
+        - "assets/avatars/dog.jpg"
+        - "assets/avatars/penguin.png"
+        - "assets/avatars/cow.png"
+        - "assets/avatars/fish.png"
+        - "assets/avatars/duck.png"
+        - "assets/avatars/lion.png"
 
         # articles data
         - "assets/data/articles.json"

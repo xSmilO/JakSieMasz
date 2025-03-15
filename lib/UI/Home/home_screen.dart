@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/user_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/Articles/articles_section_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateChart/rate_chart_section_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/rate_container_widget.dart';
+import 'package:jak_sie_masz/UI/Shared/widgets/viewmodels/navigation_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.userRepository});
+  const HomeScreen(
+      {super.key, required this.userRepository, required this.navViewmodel});
   final UserRepository userRepository;
+  final NavigationViewmodel navViewmodel;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,10 +24,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     username = widget.userRepository.getUsername();
-    widget.userRepository.onUsernameChange = this.loadUserName;
+    widget.userRepository.onUsernameChange = this.loadUsername;
+    if (widget.navViewmodel.selectedPageIdx != 2)
+      widget.navViewmodel.setPageIdx(2);
   }
 
-  void loadUserName(String newUsername) {
+  void loadUsername(String newUsername) {
     setState(() {
       username = widget.userRepository.getUsername();
     });
@@ -61,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 16),
+                  margin: EdgeInsets.only(top: 32),
                   child: FutureBuilder(
                     builder: (context, snapshot) {
                       return Text(

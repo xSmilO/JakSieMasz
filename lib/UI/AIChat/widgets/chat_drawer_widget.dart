@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import '../viewmodels/aichat_viewmodel.dart';
 import 'topics_list_widget.dart';
+import 'drawer_icon.dart';
 
 class ChatDrawerWidget extends StatelessWidget {
   final AIChatViewModel viewModel;
@@ -14,6 +16,11 @@ class ChatDrawerWidget extends StatelessWidget {
     required this.drawerAnimation,
   }) : super(key: key);
 
+  void _closeDrawer() {
+    viewModel.toggleDrawer();
+    drawerController.reverse();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -21,12 +28,13 @@ class ChatDrawerWidget extends StatelessWidget {
       builder: (context, child) {
         return Stack(
           children: [
+            // Overlay for closing drawer
             if (viewModel.isDrawerOpen)
               Positioned.fill(
                 child: GestureDetector(
-                  onTap: viewModel.toggleDrawer,
+                  onTap: _closeDrawer,
                   child: Container(
-                    color: Colors.black.withValues(alpha: 0.5),
+                    color: Colors.black.withAlpha(127),
                   ),
                 ),
               ),
@@ -45,7 +53,24 @@ class ChatDrawerWidget extends StatelessWidget {
                         children: [
                           IconButton(
                             icon: const DrawerIcon(),
-                            onPressed: viewModel.toggleDrawer,
+                            onPressed: _closeDrawer,
+                          ),
+                          const Spacer(),
+                          TextButton.icon(
+                            onPressed: () {
+                              viewModel.startNewChat();
+                              _closeDrawer();
+                            },
+                            icon: const Icon(Icons.add),
+                            label: Text(
+                              'Nowy temat',
+                              style: TextStyle(
+                                fontFamily: Styles.fontFamily,
+                                color: Styles.primaryColor500,
+                                fontWeight: FontWeight.normal,
+                                fontSize: Styles.fontSizeH3,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -56,7 +81,10 @@ class ChatDrawerWidget extends StatelessWidget {
                         todayTopics: viewModel.todayTopics,
                         lastWeekTopics: viewModel.lastWeekTopics,
                         lastMonthTopics: viewModel.lastMonthTopics,
-                        onTopicTap: viewModel.toggleDrawer,
+                        onTopicTap: (id) {
+                          viewModel.loadChatHistory(id);
+                          _closeDrawer();
+                        },
                       ),
                     ),
                   ],
@@ -66,41 +94,6 @@ class ChatDrawerWidget extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-}
-
-class DrawerIcon extends StatelessWidget {
-  const DrawerIcon({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 24,
-      height: 24,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 18,
-            height: 2,
-            color: Colors.black,
-          ),
-          const SizedBox(height: 4),
-          Container(
-            width: 14,
-            height: 2,
-            color: Colors.black,
-          ),
-          const SizedBox(height: 4),
-          Container(
-            width: 10,
-            height: 2,
-            color: Colors.black,
-          ),
-        ],
-      ),
     );
   }
 }

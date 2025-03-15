@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/ai_name_dialog_widget.dart';
+import 'package:jak_sie_masz/UI/Profile/Dialogs/profile_picture_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/Dialogs/username_dialog_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_delete_button_widget.dart';
 import 'package:jak_sie_masz/UI/Profile/profile_option_button_widget.dart';
@@ -11,10 +13,11 @@ import 'package:toastification/toastification.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.viewModel});
-  final ProfileViewModel viewModel;
+  final ProfileViewmodel viewModel;
 
   @override
   Widget build(BuildContext context) {
+    viewModel.loadUserData();
     Future changeUsernameDialog() => showDialog(
           context: context,
           builder: (context) => UsernameDialogWidget(
@@ -23,7 +26,10 @@ class ProfileScreen extends StatelessWidget {
           ),
         );
 
-    // changeUsernameDialog();
+    Future changeAINameDialog() => showDialog(
+        context: context,
+        builder: (context) => AiNameDialogWidget(
+            currentAIName: viewModel.aiName, onSubmit: viewModel.changeAiName));
 
     return Container(
       color: Styles.primaryColor500,
@@ -33,34 +39,40 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             height: 300,
             child: Center(
-              child: Consumer<ProfileViewModel>(
-                builder: (context, value, child) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
+              child: Consumer<ProfileViewmodel>(
+                builder: (context, value, child) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100)),
+                        width: 96,
+                        height: 96,
+                        child: Image.asset(
+                          //todo change to selected
+                          // "assets/avatars/dog.jpg",
+                          value.avatarPath == ""
+                              ? "assets/avatars/dog.jpg"
+                              : value.avatarPath,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      Text(
+                        viewModel.username,
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: Styles.fontFamily,
+                          fontWeight: FontWeight.w500,
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(100)),
-                      width: 96,
-                      height: 96,
-                      child: Image.asset(
-                        "assets/avatars/default.jpg",
-                        fit: BoxFit.fill,
+                          fontSize: Styles.fontSizeH1,
+                        ),
                       ),
-                    ),
-                    Text(
-                      viewModel.username,
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
-                        fontFamily: Styles.fontFamily,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        fontSize: Styles.fontSizeH1,
-                      ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
@@ -102,7 +114,14 @@ class ProfileScreen extends StatelessWidget {
                           title: "Zmień awatar",
                           buttonIcon: "assets/icons/arrow-right.svg",
                           titleIcon: "assets/icons/edit.svg",
-                          onTap: () => print("witam"),
+                          onTap: () => {
+                            showDialog(
+                              context: context,
+                              builder: (context) => ProfilePictureDialogWidget(
+                                viewmodel: context.read(),
+                              ),
+                            )
+                          },
                         ),
                       ],
                     ),
@@ -145,8 +164,23 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    ProfileOptionsSectionWidget(
+                      title: "Ustawienia AI",
+                      buttons: [
+                        ProfileOptionButtonWidget(
+                          onTap: () {
+                            changeAINameDialog();
+                          },
+                          title: "Zmień nazwe AI przyjaciela",
+                          buttonIcon: "assets/icons/arrow-right.svg",
+                          titleIcon: "assets/icons/robot.svg",
+                        ),
+                      ],
+                    ),
                     ProfileDeleteButtonWidget(),
-                    ProfileServerInputWidget()
+                    ProfileServerInputWidget(
+                      viewmodel: viewModel,
+                    )
                   ],
                 ),
               ),

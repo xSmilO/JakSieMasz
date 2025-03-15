@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/rate_slider_repository.dart';
+import 'package:jak_sie_masz/Data/repositories/rate_slider_repository.dart';
+import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/emojis_container_widget.dart';
 import 'package:jak_sie_masz/UI/Home/RateDay/rate_slider_item_widget.dart';
 import 'package:jak_sie_masz/UI/Home/viewmodels/rate_slider_viewmodel.dart';
@@ -63,41 +64,48 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
                       label: "1",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 0,
+                      activeColor: Styles.primaryColor500,
                     ),
                     RateSliderItemWidget(
                       label: "2",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 1,
+                      activeColor: Styles.primaryColor500,
                       id: 1,
                     ),
                     RateSliderItemWidget(
                       label: "3",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 2,
+                      activeColor: Styles.primaryColor500,
                       id: 2,
                     ),
                     RateSliderItemWidget(
                       label: "4",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 3,
+                      activeColor: Styles.primaryColor500,
                       id: 3,
                     ),
                     RateSliderItemWidget(
                       label: "5",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 4,
+                      activeColor: Styles.primaryColor500,
                       id: 4,
                     ),
                     RateSliderItemWidget(
                       label: "6",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 5,
+                      activeColor: Styles.primaryColor500,
                       id: 5,
                     ),
                     RateSliderItemWidget(
                       label: "7",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 6,
+                      activeColor: Styles.primaryColor500,
                       id: 6,
                     ),
                     RateSliderItemWidget(
@@ -105,17 +113,20 @@ class _RateSliderWidgetState extends State<RateSliderWidget> {
                       id: 7,
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 7,
+                      activeColor: Styles.primaryColor500,
                     ),
                     RateSliderItemWidget(
                       label: "9",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 8,
+                      activeColor: Styles.primaryColor500,
                       id: 8,
                     ),
                     RateSliderItemWidget(
                       label: "10",
                       callback: slider.setCurrentIndex,
                       active: slider.currentIndex == 9,
+                      activeColor: Styles.primaryColor500,
                       id: 9,
                     ),
                   ],

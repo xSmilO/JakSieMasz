@@ -1,42 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
-
-class Message {
-  final String text;
-  final bool isBot;
-  Message(this.text, this.isBot);
-}
-
-class Topic {
-  final String text;
-  final DateTime timestamp;
-
-  Topic(this.text, this.timestamp);
-}
+import 'package:shared_preferences/shared_preferences.dart';
+import '../models/message.dart';
+import '../models/topic.dart';
+import '../services/chat_service.dart';
+import '../services/chat_database_service.dart';
 
 class AIChatViewModel extends ChangeNotifier {
-  final List<Message> messages = [];
-  final List<Topic> recentTopics = [
-    Topic("Jak radzić sobie ze stresem?",
-        DateTime.now().subtract(const Duration(hours: 2))),
-    Topic("Techniki relaksacji",
-        DateTime.now().subtract(const Duration(hours: 5))),
-    Topic("Zdrowe nawyki życiowe",
-        DateTime.now().subtract(const Duration(days: 2))),
-    Topic("Medytacja dla początkujących",
-        DateTime.now().subtract(const Duration(days: 3))),
-    Topic(
-        "Zarządzanie czasem", DateTime.now().subtract(const Duration(days: 5))),
-    Topic(
-        "Sztuka komunikacji", DateTime.now().subtract(const Duration(days: 8))),
-    Topic("Rozwój osobisty", DateTime.now().subtract(const Duration(days: 15))),
-    Topic(
-        "Work-life balance", DateTime.now().subtract(const Duration(days: 25))),
-  ];
+  final ChatService _chatService;
+  final ChatDatabaseService _dbService;
 
+  List<Message> messages = [];
+  List<Topic> recentTopics = [];
   bool isTyping = false;
   bool isDrawerOpen = false;
-  static IO.Socket? _socket;
+  bool isConnected = false;
+  int? currentTopicId;
+  late String aiName;
+
+  AIChatViewModel(
+    this._chatService,
+    this._dbService,
+  ) {
+    _setupChatServiceListeners();
+  }
+
+  void _setupChatServiceListeners() {
+    _chatService.onMessageReceived = _handleNewMessage;
+    _chatService.onTypingStarted = () {
+      isTyping = true;
+      notifyListeners();
+    };
+    _chatService.onTypingStopped = () {
+      isTyping = false;
+      notifyListeners();
+    };
+    _chatService.onConnected = () {
+      isConnected = true;
+      notifyListeners();
+    };
+    _chatService.onDisconnected = () {
+      isConnected = false;
+      notifyListeners();
+    };
+    _chatService.onError = (errorMessage) {
+      // Add the error message to the chat as a bot message
+      _handleNewMessage(Message("Error: $errorMessage", true));
+    };
+  }
+
+  void _handleNewMessage(Message message) async {
+    if (currentTopicId != null) {
+      await _dbService.saveMessage(currentTopicId!, message.text, true);
+    }
+    messages.add(message);
+    notifyListeners();
+  }
 
   List<Topic> get todayTopics => recentTopics
       .where((topic) => topic.timestamp
@@ -59,58 +77,91 @@ class AIChatViewModel extends ChangeNotifier {
               .isBefore(DateTime.now().subtract(const Duration(days: 7))))
       .toList();
 
-  void connectToServer() {
-    if (_socket != null) {
-      if (!_socket!.connected) {
-        _socket!.connect();
-      }
-      setupSocketListeners();
-      return;
-    }
+  Future<String> _getContextFromMessages() async {
+    if (currentTopicId == null) return '';
 
-    _socket = IO.io('http://10.0.2.2:3000', <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': true,
-    });
+    final lastMessages = messages
+        .sublist(
+      messages.length > 10 ? messages.length - 10 : 0,
+      messages.length,
+    )
+        .map((msg) {
+      return "${msg.isBot ? 'Assistant' : 'User'}: ${msg.text}";
+    }).join('\n');
 
-    setupSocketListeners();
+    return lastMessages;
   }
 
-  void setupSocketListeners() {
-    _socket!.onConnect((_) {
-      print('Connected to server');
-    });
-
-    _socket!.on('botStartedTyping', (_) {
-      isTyping = true;
-      notifyListeners();
-    });
-
-    _socket!.on('botStoppedTyping', (_) {
-      isTyping = false;
-      notifyListeners();
-    });
-
-    _socket!.onConnectError((data) {
-      print('Connection Error: $data');
-    });
-
-    _socket!.on('error', (data) {
-      print('Socket Error: $data');
-    });
-
-    _socket!.on('receiveMessage', (data) {
-      print('Received message from server: $data');
-      messages.add(Message(data['text'], data['isBot']));
-      notifyListeners();
-    });
-  }
-
-  void sendMessage(String message) {
+  Future<void> sendMessage(String message) async {
     if (message.isNotEmpty) {
-      messages.add(Message(message, false));
-      _socket?.emit('sendMessage', message);
+      try {
+        if (currentTopicId == null) {
+          currentTopicId = await _dbService.createTopic(message);
+          recentTopics.insert(
+              0, Topic(currentTopicId!, message, DateTime.now()));
+          notifyListeners();
+        }
+
+        await _dbService.saveMessage(currentTopicId!, message, false);
+        messages.add(Message(message, false));
+        notifyListeners();
+
+        final context = await _getContextFromMessages();
+        _chatService.sendMessage(message, context: context);
+      } catch (e) {
+        print('Error in sendMessage: $e');
+        messages.add(Message("Error sending message: $e", true));
+        notifyListeners();
+      }
+    }
+  }
+
+  Future<void> loadChatHistory(int topicId) async {
+    try {
+      print('Loading chat history for topic: $topicId');
+      currentTopicId = topicId;
+
+      messages.clear();
+
+      final topics = await _dbService.getTopics();
+      final selectedTopic = topics.firstWhere((t) => t.id == topicId);
+      print('Loading messages for topic: ${selectedTopic.text}');
+
+      final chatMessages = await _dbService.getMessagesForTopic(topicId);
+      print('Loaded ${chatMessages.length} messages from database');
+
+      messages.addAll(chatMessages);
+
+      isDrawerOpen = false;
       notifyListeners();
+    } catch (e) {
+      print('Error loading chat history: $e');
+      messages.add(Message("Error loading chat history: $e", true));
+      notifyListeners();
+    }
+  }
+
+  Future<void> initialize() async {
+    try {
+      _chatService.connectToServer();
+      await loadRecentTopics();
+    } catch (e) {
+      print('Error in initialize: $e');
+      messages.add(Message("Error initializing chat: $e", true));
+      notifyListeners();
+    }
+  }
+
+  Future<void> changeServer() async {
+    _chatService.changeServer();
+  }
+
+  Future<void> loadRecentTopics() async {
+    try {
+      recentTopics = await _dbService.getTopics();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading recent topics: $e');
     }
   }
 
@@ -119,10 +170,21 @@ class AIChatViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void startNewChat() {
+    currentTopicId = null;
+    messages.clear();
+    notifyListeners();
+  }
+
   @override
   void dispose() {
-    _socket?.disconnect();
-    _socket?.dispose();
+    _chatService.dispose();
     super.dispose();
+  }
+
+  Future<void> getAiName() async {
+    final sp = await SharedPreferences.getInstance();
+    aiName = await sp.getString("ai_name") as String;
+    print("kurwa $aiName");
   }
 }

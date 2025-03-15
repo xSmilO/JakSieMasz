@@ -2,6 +2,7 @@ C/C++ Structured Logc
 a
 _C:\Users\cez20\Desktop\DEV\flutter\packages\flutter_tools\gradle\src\main\groovy\CMakeLists.txtC
 A
+<<<<<<< HEAD
 ?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ñ¿èƒØ2§ èÇ¼ƒØ2l
 j
 hC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\additional_project_files.txt	ñ¿èƒØ2 ý¾èƒØ2i
@@ -26,3 +27,29 @@ kC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\met
 ^C:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\prefab_config.json	ñ¿èƒØ2( Ë¿èƒØ2g
 e
 cC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\symbol_folder_index.txt	ñ¿èƒØ2Z Ì¿èƒØ2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ØÈ¿ÃÙ2§ ¡¤ˆ‚Ø2l
+j
+hC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\additional_project_files.txt	ØÈ¿ÃÙ2 ÷Š®¨Ù2i
+g
+eC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\android_gradle_build.json	ØÈ¿ÃÙ2Ê ùŠ®¨Ù2n
+l
+jC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\android_gradle_build_mini.json	ØÈ¿ÃÙ2¥ ýŠ®¨Ù2[
+Y
+WC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\build.ninja	ØÈ¿ÃÙ2×Ô ÎŠ®¨Ù2_
+]
+[C:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\build.ninja.txt	ØÈ¿ÃÙ2d
+b
+`C:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\build_file_index.txt	ØÈ¿ÃÙ2_ ‹®¨Ù2e
+c
+aC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\compile_commands.json	ØÈ¿ÃÙ2	i
+g
+eC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\compile_commands.json.bin	ØÈ¿ÃÙ2
+o
+m
+kC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\metadata_generation_command.txt	ØÈ¿ÃÙ2Ú €‹®¨Ù2b
+`
+^C:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\prefab_config.json	ØÈ¿ÃÙ2( ‹®¨Ù2g
+e
+cC:\Users\cez20\Desktop\JakSieMasz\android\app\.cxx\Debug\3b4w704g\arm64-v8a\symbol_folder_index.txt	ØÈ¿ÃÙ2Z ‹®¨Ù2
+>>>>>>> 897bcdc63a590b95a6877a2a61c887a79276d06c

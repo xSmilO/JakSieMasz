@@ -22,50 +22,24 @@ class UsernameDialogWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              spacing: 4,
-              children: [
-                Text(
-                  "Jak",
-                  style: TextStyle(
-                    color: Styles.fontColorDark,
-                    fontFamily: Styles.fontFamily,
-                    fontSize: Styles.fontSizeH3,
-                  ),
+            RichText(
+              text: TextSpan(
+                text: "Jak chcesz się  ",
+                style: TextStyle(
+                  color: Styles.fontColorDark,
+                  fontSize: Styles.fontSizeH3,
+                  fontFamily: Styles.fontFamily,
                 ),
-                Text(
-                  "chcesz",
-                  style: TextStyle(
-                    color: Styles.fontColorDark,
-                    fontFamily: Styles.fontFamily,
-                    fontSize: Styles.fontSizeH3,
+                children: [
+                  TextSpan(
+                    text: "nazywać ",
+                    style: TextStyle(color: Styles.primaryColor500),
                   ),
-                ),
-                Text(
-                  "się",
-                  style: TextStyle(
-                    color: Styles.fontColorDark,
-                    fontFamily: Styles.fontFamily,
-                    fontSize: Styles.fontSizeH3,
-                  ),
-                ),
-                Text(
-                  "nazywać",
-                  style: TextStyle(
-                    color: Styles.primaryColor500,
-                    fontFamily: Styles.fontFamily,
-                    fontSize: Styles.fontSizeH3,
-                  ),
-                ),
-                Text(
-                  "?",
-                  style: TextStyle(
-                    color: Styles.fontColorDark,
-                    fontFamily: Styles.fontFamily,
-                    fontSize: Styles.fontSizeH3,
-                  ),
-                ),
-              ],
+                  TextSpan(
+                    text: "?",
+                  )
+                ],
+              ),
             ),
             TextField(
               autofocus: true,

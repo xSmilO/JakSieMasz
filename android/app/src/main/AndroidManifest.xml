@@ -4,10 +4,12 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" /> 
       <!-- Required for notification vibration -->
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:label="JakSieMasz"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
           <!-- Handles showing scheduled notifications -->
         <receiver 
             android:exported="false" 

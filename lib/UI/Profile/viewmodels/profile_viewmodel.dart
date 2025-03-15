@@ -1,36 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:jak_sie_masz/Data/notification_service.dart';
-import 'package:jak_sie_masz/Data/shared_preferences_service.dart';
-import 'package:jak_sie_masz/Data/user_repository.dart';
+import 'package:jak_sie_masz/Data/services/notification_service.dart';
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
+import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
 
-class ProfileViewModel extends ChangeNotifier {
-  //todo add toast notifcation when user selects notification time
+class ProfileViewmodel extends ChangeNotifier {
   String _username = "";
+  String _avatarPath = "";
+  String _ipAddr = "";
+  String _aiName = "";
   TimeOfDay? _selectedTime;
   final UserRepository _userRepository;
   final SharedPreferencesService spService;
-  ProfileViewModel(UserRepository repo, this.spService)
+
+  ProfileViewmodel(UserRepository repo, this.spService)
       : _userRepository = repo {
     _username = repo.username;
+    _avatarPath = repo.avatarPath;
     repo.onUsernameChange = (String newUsername) {
       _username = newUsername;
       notifyListeners();
     };
 
+    repo.onAvatarChange = (String path) {
+      _avatarPath = path;
+      notifyListeners();
+    };
+
     _loadSavedTime();
+    _loadData();
   }
 
-  String get username {
-    return _username;
-  }
+  String get username => _username;
+
+  String get avatarPath => _avatarPath;
+
+  String get ipAddr => _ipAddr;
+
+  String get aiName => _aiName;
 
   TimeOfDay? get selectedTime => _selectedTime;
 
-  void changeName(String newName) {
-    if (newName == "") return;
-    _userRepository.setUsername(newName);
+  Future<void> loadUserData() async {
     _username = _userRepository.username;
-    notifyListeners();
   }
 
   Future<void> _loadSavedTime() async {
@@ -46,6 +57,35 @@ class ProfileViewModel extends ChangeNotifier {
       ),
     );
 
+    notifyListeners();
+  }
+
+  Future<void> _loadData() async {
+    _ipAddr = await spService.fetchString("ip_addr") as String;
+    _aiName = await spService.fetchString("ai_name") as String;
+    notifyListeners();
+  }
+
+  void changeName(String newName) {
+    if (newName == "") return;
+    _userRepository.setUsername(newName);
+    _username = _userRepository.username;
+    notifyListeners();
+  }
+
+  Future<void> changeIpAddr(String addr) async {
+    // print("new addr $addr");
+    await spService.saveString("ip_addr", addr);
+    _ipAddr = addr;
+    notifyListeners();
+  }
+
+  Future<void> changeAiName(String name) async {
+    if (name == "") return;
+
+    await spService.saveString("ai_name", name);
+    _aiName = name;
+    _userRepository.setAiName(name);
     notifyListeners();
   }
 
