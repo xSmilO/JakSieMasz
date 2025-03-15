@@ -64,8 +64,8 @@ class _AIChatScreenState extends State<AIChatScreen>
   void _scrollToBottom() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 1000),
+      curve: Curves.easeInOutCubic
     );
   }
 
