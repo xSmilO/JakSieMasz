@@ -17,23 +17,23 @@ JakSieMasz to kompleksowa aplikacja do zdrowia psychicznego zaprojektowana, aby 
 
 Start
 
-![App Screenshot]("https://github.com/xSmilO/JakSieMasz/blob/main/readme/Homepage.png")
+![App Screenshot](https://github.com/xSmilO/JakSieMasz/blob/main/readme/Homepage.png)
 
 AIChat
 
-![App Screenshot]("https://github.com/xSmilO/JakSieMasz/blob/main/readme/AiChat.png")
+![App Screenshot](https://github.com/xSmilO/JakSieMasz/blob/main/readme/AiChat.png)
 
 Ćwiczenia
 
-![App Screenshot]("https://github.com/xSmilO/JakSieMasz/blob/main/readme/Cwiczenia.png")
+![App Screenshot](https://github.com/xSmilO/JakSieMasz/blob/main/readme/Cwiczenia.png)
 
 Ćwiczenie
 
-![App Screenshot]("https://github.com/xSmilO/JakSieMasz/blob/main/readme/Cwiczenie.png")
+![App Screenshot](https://github.com/xSmilO/JakSieMasz/blob/main/readme/Cwiczenie.png)
 
 Profil uzytkownika
 
-![App Screenshot]("https://github.com/xSmilO/JakSieMasz/blob/main/readme/Profil.png")
+![App Screenshot](https://github.com/xSmilO/JakSieMasz/blob/main/readme/Profil.png)
 
 
 ## Użyte technologie
