@@ -62,7 +62,7 @@ Profil uzytkownika
 Sklonuj projekt
 
 ```bash
-  git clone https://github.com/yourusername/JakSieMasz.git
+  git clone https://github.com/xSmilO/JakSieMasz.git
 ```
 
 Wejdz do folderu z projektem
