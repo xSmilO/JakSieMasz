@@ -42,4 +42,8 @@ class ChatDatabaseService {
     return Topic(topicData['id'] as int, topicData['title'] as String,
         DateTime.parse(topicData['created_at'] as String));
   }
+
+  Future<void> deleteTopic(int topicId) async {
+    await _dbHelper.deleteTopic(topicId);
+  }
 }

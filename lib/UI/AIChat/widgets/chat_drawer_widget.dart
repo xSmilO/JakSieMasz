@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
+import 'package:provider/provider.dart';
 import '../viewmodels/aichat_viewmodel.dart';
 import 'topics_list_widget.dart';
 import 'drawer_icon.dart';
@@ -76,15 +77,21 @@ class ChatDrawerWidget extends StatelessWidget {
                       ),
                     ),
                     const Divider(height: 1),
-                    Expanded(
-                      child: TopicsListWidget(
-                        todayTopics: viewModel.todayTopics,
-                        lastWeekTopics: viewModel.lastWeekTopics,
-                        lastMonthTopics: viewModel.lastMonthTopics,
-                        onTopicTap: (id) {
-                          viewModel.loadChatHistory(id);
-                          _closeDrawer();
-                        },
+                    Consumer<AIChatViewModel>(
+                      builder: (context, aichat, child) => Expanded(
+                        child: TopicsListWidget(
+                          todayTopics: aichat.todayTopics,
+                          lastWeekTopics: aichat.lastWeekTopics,
+                          lastMonthTopics: aichat.lastMonthTopics,
+                          onTopicTap: (id) {
+                            viewModel.loadChatHistory(id);
+                            _closeDrawer();
+                          },
+                          onIconTap: (id) {
+                            viewModel.deleteTopic(id);
+                            print("id: $id");
+                          },
+                        ),
                       ),
                     ),
                   ],

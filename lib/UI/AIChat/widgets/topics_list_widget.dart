@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../models/topic.dart';
 
 class TopicsListWidget extends StatelessWidget {
@@ -6,6 +7,7 @@ class TopicsListWidget extends StatelessWidget {
   final List<Topic> lastWeekTopics;
   final List<Topic> lastMonthTopics;
   final Function(int) onTopicTap;
+  final Function(int) onIconTap;
 
   const TopicsListWidget({
     Key? key,
@@ -13,6 +15,7 @@ class TopicsListWidget extends StatelessWidget {
     required this.lastWeekTopics,
     required this.lastMonthTopics,
     required this.onTopicTap,
+    required this.onIconTap,
   }) : super(key: key);
 
   @override
@@ -47,12 +50,23 @@ class TopicsListWidget extends StatelessWidget {
         ...topics.map((topic) => ListTile(
               dense: true,
               visualDensity: const VisualDensity(vertical: -4),
-              title: Text(
-                topic.text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    topic.text,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      onIconTap(topic.id);
+                    },
+                    child: SvgPicture.asset("assets/icons/trash.svg"),
+                  )
+                ],
               ),
               subtitle: Text(
                 _formatDate(topic.timestamp),

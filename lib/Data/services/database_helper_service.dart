@@ -230,4 +230,11 @@ class DatabaseHelperService {
 
     return data == null ? false : true;
   }
+
+  Future<void> deleteTopic(int topicId) async {
+    final db = await database;
+    await db
+        .delete("chat_messages", where: "topic_id = ?", whereArgs: [topicId]);
+    await db.delete("chat_topics", where: "id = ?", whereArgs: [topicId]);
+  }
 }

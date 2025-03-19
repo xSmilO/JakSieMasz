@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/UI/AIChat/models/message.dart';
@@ -12,7 +11,9 @@ class AIMessageWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return AIMessageWidgetState(viewmodel: AIMessageViewmodel(flutterTts: FlutterTts()), message: message);
+    return AIMessageWidgetState(
+        viewmodel: AIMessageViewmodel(flutterTts: FlutterTts()),
+        message: message);
   }
 }
 
@@ -32,23 +33,21 @@ class AIMessageWidgetState extends State<AIMessageWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerLeft,
-      child: InkWell(
-        splashColor: Styles.primaryColor200,
-        borderRadius: BorderRadius.circular(15),
-        onLongPress: () async {
-          await viewmodel.read(message.text);
-        },
-        child: Container(
-          margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Text(message.text)
-        ),
-      )
-    );
+        alignment: Alignment.centerLeft,
+        child: InkWell(
+          splashColor: Styles.primaryColor200,
+          borderRadius: BorderRadius.circular(15),
+          onLongPress: () async {
+            await viewmodel.read(message.text);
+          },
+          child: Container(
+              margin: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Text(message.text)),
+        ));
   }
 }

@@ -165,6 +165,13 @@ class AIChatViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> deleteTopic(int topicId) async {
+    recentTopics = recentTopics.where((topic) => topic.id != topicId).toList();
+    if (currentTopicId == topicId) startNewChat();
+    notifyListeners();
+    await _dbService.deleteTopic(topicId);
+  }
+
   void toggleDrawer() {
     isDrawerOpen = !isDrawerOpen;
     notifyListeners();
@@ -185,6 +192,5 @@ class AIChatViewModel extends ChangeNotifier {
   Future<void> getAiName() async {
     final sp = await SharedPreferences.getInstance();
     aiName = await sp.getString("ai_name") as String;
-    print("kurwa $aiName");
   }
 }
