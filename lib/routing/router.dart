@@ -79,6 +79,7 @@ GoRouter router() => GoRouter(
           path: Routes.welcome,
           builder: (context, state) => WelcomeScreen(
             userRepository: context.read(),
+            sp: context.read(),
           ),
         ),
         GoRoute(

@@ -3,6 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesService {
   SharedPreferencesService();
 
+  Future<void> initializeData() async {
+    await saveString("ip_addr", "http://10.0.2.2:3000");
+    await saveString("ai_name", "Stasiek");
+  }
+
   Future<String?> fetchString(String token) async {
     final sharedPreferences = await SharedPreferences.getInstance();
 
@@ -18,8 +23,6 @@ class SharedPreferencesService {
     final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
 
-    // set default values
-    await saveString("ip_addr", "http://10.0.2.2:3000");
-    await saveString("ai_name", "Stasiek");
+    initializeData();
   }
 }

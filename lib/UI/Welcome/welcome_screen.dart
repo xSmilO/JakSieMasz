@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jak_sie_masz/Data/repositories/user_repository.dart';
+import 'package:jak_sie_masz/Data/services/shared_preferences_service.dart';
 import 'package:jak_sie_masz/Styles/styles.dart';
 import 'package:jak_sie_masz/routing/routes.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key, required this.userRepository});
+  const WelcomeScreen(
+      {super.key, required this.userRepository, required this.sp});
+  final SharedPreferencesService sp;
   final UserRepository userRepository;
 
   @override
@@ -94,6 +97,7 @@ class WelcomeScreen extends StatelessWidget {
                             userRepository
                                 .setAvatarPath("assets/avatars/dog.jpg");
 
+                            sp.initializeData();
                             context.go(Routes.home);
                           },
                           style: ButtonStyle(
