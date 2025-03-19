@@ -53,18 +53,26 @@ class TopicsListWidget extends StatelessWidget {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    topic.text,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      topic.text,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
                       onIconTap(topic.id);
                     },
-                    child: SvgPicture.asset("assets/icons/trash.svg"),
+                    child: SvgPicture.asset(
+                      "assets/icons/trash.svg",
+                      width: 16,
+                      height: 16,
+                    ),
                   )
                 ],
               ),
